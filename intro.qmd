@@ -1,8 +1,114 @@
 # Introduction
 
-This is a book created from markdown and executable code.
+
+## Hello World
+
+`println()` print to newline.
+
+```{julia}
+println("Hello, World")
+```
+
+
+## Assign Variable
+
+
+Dynamic typing 
+
+```{julia}
+my_int = 10
+typeof(my_int)
+```
+
+```{julia}
+my_pi = 3.1416
+typeof(my_pi)
+```
+
+```{julia}
+😸 = "smily cat"
+typeof(😸)
+```
 
 
 ```{julia}
+😀 = 1
+😞 = -1
+🤐 = 0
+
+🤐 == 😀 + 😞
+```
+
+## Comment
+
+```{julia}
+# This is comment
+```
+
+```{julia}
+#=
+
+This 
+is 
+Multiline Comment
+
+=#
+```
+
+## Basic Math
+
+```{julia}
 1 + 1
+```
+
+```{julia}
+1 - 1
+```
+
+```{julia}
+2 * 3
+```
+
+```{julia}
+3 / 2
+```
+
+like R
+
+```{julia}
+10 ^ 2
+```
+
+like Python
+
+```{julia}
+5 % 2
+```
+
+
+## Exercise
+
+`convert()` function
+
+```{julia}
+days = 365
+days_float = convert(Float64, days) # Convert to Float64
+```
+
+```{julia}
+days == days_float 
+```
+
+```{julia}
+@assert days == 365
+@assert days_float == 365.0
+```
+
+```{julia}
+#| eval: false
+convert(Int64, "1") # Error
+```
+
+```{julia}
+parse(Int64, "1")
 ```
