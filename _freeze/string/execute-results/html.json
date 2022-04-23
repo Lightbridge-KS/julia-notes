@@ -1,0 +1,16 @@
+{
+  "hash": "b761da64064b8ca78aac47451b650027",
+  "result": {
+    "markdown": "# String\n\n\n\n\n## Create String\n\nEnclose your String in \" \" or \"\"\" \"\"\"!\n\n::: {.cell}\n\n```{.julia .cell-code}\ns1 = \"I am a string.\"\n#> \"I am a string.\"\ntypeof(s1)\n#> String\n```\n:::\n\n::: {.cell}\n\n```{.julia .cell-code}\ns2 = \"\"\"I am also a string. \"\"\"\n#> \"I am also a string. \"\ntypeof(s2)\n#> String\n```\n:::\n\nSingle quote is for `Char`\n\n::: {.cell}\n\n```{.julia .cell-code}\ntypeof('a')\n#> Char\n```\n:::\n\n## String Interpolation\n\nSimilar to shell\n\n::: {.cell}\n\n```{.julia .cell-code}\nname = \"Joe\"\nnum_fingers = 10\nnum_toes = 10\n```\n:::\n\nUse `$` to refer to variable.\n\n::: {.cell}\n\n```{.julia .cell-code}\nprintln(\"Hello, my name is $name.\")\n#> Hello, my name is Joe.\nprintln(\"I have $num_fingers fingers and $num_toes toes.\")\n#> I have 10 fingers and 10 toes.\n```\n:::\n\nRun expression in `$(command)`\n\n::: {.cell}\n\n```{.julia .cell-code}\nprintln(\"That is $(num_fingers + num_toes) digits in all!!\")\n#> That is 20 digits in all!!\n```\n:::\n\n## Concatenate String\n\n::: {.cell}\n\n```{.julia .cell-code}\ns3 = \"How many cats \";\ns4 = \"is too many cats?\";\n😺 = 10\n```\n:::\n\n`string()` converts non-string inputs to strings.\n\n::: {.cell}\n\n```{.julia .cell-code}\nstring(s3, s4)\n#> \"How many cats is too many cats?\"\n```\n:::\n\nWe can also use `*` for concatenation!\n\n::: {.cell}\n\n```{.julia .cell-code}\ns3 * s4\n#> \"How many cats is too many cats?\"\n```\n:::\n\n\n## Exercise\n\nCreate a string that says \"hi\" 3 times, first with repeat and then with the exponentiation operator, which can call * under the hood. Assign it the variable hi below.\n\n::: {.cell}\n\n```{.julia .cell-code}\nrepeat(\"hi\", 3)\n#> \"hihihi\"\n```\n:::\n\n::: {.cell}\n\n```{.julia .cell-code}\n\"hi\"^3\n#> \"hihihi\"\n```\n:::\n\n\nDeclare two variables\n\n\n::: {.cell}\n\n```{.julia .cell-code}\na = 3\nb = 4\n```\n:::\n\nand use them to create two strings:\n\n::: {.cell}\n\n```{.julia .cell-code}\nc = string(a) * \" + \" * string(b)\n#> \"3 + 4\"\n```\n:::\n\n::: {.cell}\n\n```{.julia .cell-code}\nd = string(a + b)\n#> \"7\"\n```\n:::",
+    "supporting": [
+      "string_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": [],
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

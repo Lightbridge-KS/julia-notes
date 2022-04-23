@@ -11,14 +11,14 @@
     "href": "intro.html",
     "title": "1  Introduction",
     "section": "",
-    "text": "println() print to newline.\n\nprintln(\"Hello, World\")\n\nHello, World"
+    "text": "println() print to newline.\n\nprintln(\"Hello, World\")\n#> Hello, World"
   },
   {
     "objectID": "intro.html#assign-variable",
     "href": "intro.html#assign-variable",
     "title": "1  Introduction",
     "section": "1.2 Assign Variable",
-    "text": "1.2 Assign Variable\nDynamic typing\n\nmy_int = 10\ntypeof(my_int)\n\nInt64\n\n\n\nmy_pi = 3.1416\ntypeof(my_pi)\n\nFloat64\n\n\n\n😸 = \"smily cat\"\ntypeof(😸)\n\nString\n\n\n\n😀 = 1\n😞 = -1\n🤐 = 0\n\n🤐 == 😀 + 😞\n\ntrue"
+    "text": "1.2 Assign Variable\nDynamic typing\n\nmy_int = 10\n#> 10\ntypeof(my_int)\n#> Int64\n\n\nmy_pi = 3.1416\n#> 3.1416\ntypeof(my_pi)\n#> Float64\n\n\n😸 = \"smily cat\"\n#> \"smily cat\"\ntypeof(😸)\n#> String\n\n\n😀 = 1\n😞 = -1\n🤐 = 0\n\n\n🤐 == 😀 + 😞\n#> true"
   },
   {
     "objectID": "intro.html#comment",
@@ -32,19 +32,47 @@
     "href": "intro.html#basic-math",
     "title": "1  Introduction",
     "section": "1.4 Basic Math",
-    "text": "1.4 Basic Math\n\n1 + 1\n\n2\n\n\n\n1 - 1\n\n0\n\n\n\n2 * 3\n\n6\n\n\n\n3 / 2\n\n1.5\n\n\nlike R\n\n10 ^ 2\n\n100\n\n\nlike Python\n\n5 % 2\n\n1"
+    "text": "1.4 Basic Math\n\n1 + 1\n#> 2\n\n\n1 - 1\n#> 0\n\n\n2 * 3\n#> 6\n\n\n3 / 2\n#> 1.5\n\nlike R\n\n10 ^ 2\n#> 100\n\nlike Python\n\n5 % 2\n#> 1"
   },
   {
     "objectID": "intro.html#exercise",
     "href": "intro.html#exercise",
     "title": "1  Introduction",
     "section": "1.5 Exercise",
-    "text": "1.5 Exercise\nconvert() function\n\ndays = 365\ndays_float = convert(Float64, days) # Convert to Float64\n\n365.0\n\n\n\ndays == days_float \n\ntrue\n\n\n\n@assert days == 365\n@assert days_float == 365.0\n\n\nconvert(Int64, \"1\") # Error\n\n\nparse(Int64, \"1\")\n\n1"
+    "text": "1.5 Exercise\nconvert() function\n\ndays = 365\n\n\ndays_float = convert(Float64, days) # Convert to Float64\n#> 365.0\n\n\ndays == days_float \n#> true\n\n\n@assert days == 365\n@assert days_float == 365.0\n\n\nconvert(Int64, \"1\") # Error\n\n\nparse(Int64, \"1\")\n#> 1"
+  },
+  {
+    "objectID": "string.html",
+    "href": "string.html",
+    "title": "2  String",
+    "section": "",
+    "text": "Enclose your String in ” ” or ““” “““!\n\ns1 = \"I am a string.\"\n#> \"I am a string.\"\ntypeof(s1)\n#> String\n\n\ns2 = \"\"\"I am also a string. \"\"\"\n#> \"I am also a string. \"\ntypeof(s2)\n#> String\n\nSingle quote is for Char\n\ntypeof('a')\n#> Char"
+  },
+  {
+    "objectID": "string.html#string-interpolation",
+    "href": "string.html#string-interpolation",
+    "title": "2  String",
+    "section": "2.2 String Interpolation",
+    "text": "2.2 String Interpolation\nSimilar to shell\n\nname = \"Joe\"\nnum_fingers = 10\nnum_toes = 10\n\nUse $ to refer to variable.\n\nprintln(\"Hello, my name is $name.\")\n#> Hello, my name is Joe.\nprintln(\"I have $num_fingers fingers and $num_toes toes.\")\n#> I have 10 fingers and 10 toes.\n\nRun expression in $(command)\n\nprintln(\"That is $(num_fingers + num_toes) digits in all!!\")\n#> That is 20 digits in all!!"
+  },
+  {
+    "objectID": "string.html#concatenate-string",
+    "href": "string.html#concatenate-string",
+    "title": "2  String",
+    "section": "2.3 Concatenate String",
+    "text": "2.3 Concatenate String\n\ns3 = \"How many cats \";\ns4 = \"is too many cats?\";\n😺 = 10\n\nstring() converts non-string inputs to strings.\n\nstring(s3, s4)\n#> \"How many cats is too many cats?\"\n\nWe can also use * for concatenation!\n\ns3 * s4\n#> \"How many cats is too many cats?\""
+  },
+  {
+    "objectID": "string.html#exercise",
+    "href": "string.html#exercise",
+    "title": "2  String",
+    "section": "2.4 Exercise",
+    "text": "2.4 Exercise\nCreate a string that says “hi” 3 times, first with repeat and then with the exponentiation operator, which can call * under the hood. Assign it the variable hi below.\n\nrepeat(\"hi\", 3)\n#> \"hihihi\"\n\n\n\"hi\"^3\n#> \"hihihi\"\n\nDeclare two variables\n\na = 3\nb = 4\n\nand use them to create two strings:\n\nc = string(a) * \" + \" * string(b)\n#> \"3 + 4\"\n\n\nd = string(a + b)\n#> \"7\""
   },
   {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "2  Summary",
+    "title": "3  Summary",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
   }

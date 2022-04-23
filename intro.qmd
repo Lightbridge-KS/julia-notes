@@ -1,5 +1,10 @@
 # Introduction
 
+```{r, include=FALSE}
+library(here)
+here::i_am("intro.qmd")
+source(here("./_common.R"))
+```
 
 ## Hello World
 
@@ -32,10 +37,13 @@ typeof(😸)
 
 
 ```{julia}
+#| output: false
 😀 = 1
 😞 = -1
 🤐 = 0
+```
 
+```{julia}
 🤐 == 😀 + 😞
 ```
 
@@ -91,7 +99,11 @@ like Python
 `convert()` function
 
 ```{julia}
+#| output: false
 days = 365
+```
+
+```{julia}
 days_float = convert(Float64, days) # Convert to Float64
 ```
 

@@ -1,0 +1,106 @@
+# String
+
+```{r, include=FALSE}
+library(here)
+here::i_am("intro.qmd")
+source(here("./_common.R"))
+```
+
+
+## Create String
+
+Enclose your String in " " or """ """!
+
+```{julia}
+s1 = "I am a string."
+typeof(s1)
+```
+
+```{julia}
+s2 = """I am also a string. """
+typeof(s2)
+```
+
+Single quote is for `Char`
+
+```{julia}
+typeof('a')
+```
+
+## String Interpolation
+
+Similar to shell
+
+```{julia}
+#| output: false
+name = "Joe"
+num_fingers = 10
+num_toes = 10
+```
+
+Use `$` to refer to variable.
+
+```{julia}
+println("Hello, my name is $name.")
+println("I have $num_fingers fingers and $num_toes toes.")
+```
+
+Run expression in `$(command)`
+
+```{julia}
+println("That is $(num_fingers + num_toes) digits in all!!")
+```
+
+## Concatenate String
+
+```{julia}
+#| output: false
+s3 = "How many cats ";
+s4 = "is too many cats?";
+😺 = 10
+```
+
+`string()` converts non-string inputs to strings.
+
+```{julia}
+string(s3, s4)
+```
+
+We can also use `*` for concatenation!
+
+```{julia}
+s3 * s4
+```
+
+
+## Exercise
+
+Create a string that says "hi" 3 times, first with repeat and then with the exponentiation operator, which can call * under the hood. Assign it the variable hi below.
+
+```{julia}
+repeat("hi", 3)
+```
+
+```{julia}
+"hi"^3
+```
+
+
+Declare two variables
+
+
+```{julia}
+#| output: false
+a = 3
+b = 4
+```
+
+and use them to create two strings:
+
+```{julia}
+c = string(a) * " + " * string(b)
+```
+
+```{julia}
+d = string(a + b)
+```
