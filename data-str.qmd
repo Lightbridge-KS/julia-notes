@@ -1,0 +1,169 @@
+# Data Structure
+
+
+```{r, include=FALSE}
+library(here)
+here::i_am("data-str.qmd")
+source(here("./_common.R"))
+```
+
+
+Types of data structures covered:
+
+1. **Tuples**: unmutable, ordered or named, subset with integer `tup[1]` or dot notation `tup.key`
+
+2. **Dictionaries**: mutable, named only, subset with name only `dct["key"]`.
+
+3. **Arrays**: mutable, ordered only, can mixed type of elements, subset with `arr[1]`
+
+tuples and arrays are both ordered sequences of elements (so we can index into them). Dictionaries and arrays are both mutable. 
+
+Julia is *1* indexing.
+
+
+## Tuples
+
+We can create a tuple by enclosing an ordered collection of elements in `( )`.
+
+Tuple can be named or unnamed. 
+
+`(name1 = item1, name2 = item2, ...)`
+
+```{julia}
+fav_anims = ("penguins", "cats", "sugargliders")
+fav_anims_named = (bird = "penguins", mammal = "cats", marsupial = "sugargliders")
+
+# Indexing
+fav_anims[1]
+fav_anims_named[2]
+
+# Dot Notation
+fav_anims_named.bird
+```
+
+```{julia}
+typeof(fav_anims)
+typeof(fav_anims_named)
+```
+
+Subset first & Last value
+
+```{julia}
+fav_anims[begin]
+fav_anims[end]
+```
+
+Tuples is unmutable. This will get Error.
+
+```{julia}
+#| eval: false
+fav_anims[1] = "Otters" # Error
+```
+
+## Dictionary
+
+`Dict(key1 => value1, key2 => value2, ...)`
+
+```{julia}
+myphonebook = Dict("Jenny" => "867-5309", "Ghostbusters" => "555-2368")
+```
+
+or construct by tuples:
+
+```{julia}
+Dict( [("A", 1), ("B", 2)] )
+```
+
+Subset with Key 
+
+```{julia}
+myphonebook["Jenny"]
+```
+
+Add another item
+
+```{julia}
+myphonebook["Kramer"] = "555-FILK"
+```
+
+```{julia}
+myphonebook
+```
+
+Remove Item (modify in-place)
+
+```{julia}
+pop!(myphonebook, "Kramer")
+```
+
+
+## Arrays
+
+`[item1, item2, ...]`
+
+similar to R vector
+
+```{julia}
+myfriends = ["Ted", "Robyn", "Barney", "Lily", "Marshall"]
+```
+
+`Array{String,1}` means this is a one dimensional vector. An `Array{String,2}` would be a 2d matrix.
+
+
+```{julia}
+fibonacci = [1, 1, 2, 3, 5, 8, 13]
+```
+
+```{julia}
+mixture = [1, 1, 2, 3, "Ted", "Robyn"]
+mixture[1]
+```
+
+
+
+`push!` adds an element to the end of an array and `pop!` removes the last element of an array.
+
+```{julia}
+push!(fibonacci, 21)
+```
+
+```{julia}
+pop!(fibonacci)
+```
+
+### Multi-dims Array
+
+```{julia}
+favorites = [
+    ["koobideh", "chocolate", "eggs"],
+    ["penguins", "cats", "sugargliders"]
+    ]
+```
+
+```{julia}
+rand(4, 3)
+```
+
+### Copy Array
+
+The correct way is
+
+```{julia}
+somemorenumbers = copy(fibonacci)
+```
+
+which will bound to different memory ID.
+
+
+## Exercise
+
+```{julia}
+a_ray = [1, 2, 3]
+
+# Add 4
+push!(a_ray, 4)
+# Remove 4
+pop!(a_ray)
+
+a_ray
+```

@@ -2,7 +2,7 @@
 
 ```{r, include=FALSE}
 library(here)
-here::i_am("intro.qmd")
+here::i_am("string.qmd")
 source(here("./_common.R"))
 ```
 

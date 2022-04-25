@@ -9,8 +9,11 @@ book:
   repo-url: https://github.com/Lightbridge-KS/julia-notes
   chapters:
     - index.qmd
-    - intro.qmd
-    - string.qmd
+    - part: "Basic"
+      chapters:
+        - intro.qmd
+        - string.qmd
+        - data-str.qmd
     - summary.qmd
     - references.qmd
 

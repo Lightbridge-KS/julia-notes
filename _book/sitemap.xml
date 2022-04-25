@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://julia-notes-lightbridge.netlify.app/index.html</loc>
-    <lastmod>2022-04-23T17:28:55.605Z</lastmod>
+    <lastmod>2022-04-25T16:43:42.247Z</lastmod>
   </url>
   <url>
     <loc>https://julia-notes-lightbridge.netlify.app/intro.html</loc>
-    <lastmod>2022-04-23T17:29:08.756Z</lastmod>
+    <lastmod>2022-04-25T16:43:41.427Z</lastmod>
   </url>
   <url>
     <loc>https://julia-notes-lightbridge.netlify.app/string.html</loc>
-    <lastmod>2022-04-23T17:29:01.964Z</lastmod>
+    <lastmod>2022-04-25T16:43:47.173Z</lastmod>
+  </url>
+  <url>
+    <loc>https://julia-notes-lightbridge.netlify.app/data-str.html</loc>
+    <lastmod>2022-04-25T16:43:41.432Z</lastmod>
   </url>
   <url>
     <loc>https://julia-notes-lightbridge.netlify.app/summary.html</loc>
-    <lastmod>2022-04-23T17:28:54.912Z</lastmod>
+    <lastmod>2022-04-25T16:43:41.433Z</lastmod>
   </url>
   <url>
     <loc>https://julia-notes-lightbridge.netlify.app/references.html</loc>
-    <lastmod>2022-04-23T17:28:54.913Z</lastmod>
+    <lastmod>2022-04-25T16:43:41.433Z</lastmod>
   </url>
 </urlset>
