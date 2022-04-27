@@ -110,5 +110,26 @@
     "title": "4  Summary",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "loop.html",
+    "href": "loop.html",
+    "title": "4  Loop",
+    "section": "",
+    "text": "while *condition*\n    *loop body*\nend\n\n🍑 = 0\nwhile 🍑 < 10\n    🍑 += 1\n    println(🍑)\nend\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\nmyfriends = [\"Ted\", \"Robyn\", \"Barney\", \"Lily\", \"Marshall\"]\n\ni = 1\nwhile i <= length(myfriends)\n    friend = myfriends[i]\n    println(\"Hi $friend, it's great to see you!\")\n    i += 1\nend\n\nHi Ted, it's great to see you!\nHi Robyn, it's great to see you!\nHi Barney, it's great to see you!\nHi Lily, it's great to see you!\nHi Marshall, it's great to see you!"
+  },
+  {
+    "objectID": "loop.html#for-loop",
+    "href": "loop.html#for-loop",
+    "title": "4  Loop",
+    "section": "4.2 For Loop",
+    "text": "4.2 For Loop\nfor *var* in *loop iterable*\n    *loop body*\nend\n\nfor n in 1:10\n    println(n)\nend\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\nmyfriends = [\"Ted\", \"Robyn\", \"Barney\", \"Lily\", \"Marshall\"]\n\nfor friend in myfriends\n    println(\"Hi $friend, it's great to see you!\")\nend\n\nHi Ted, it's great to see you!\nHi Robyn, it's great to see you!\nHi Barney, it's great to see you!\nHi Lily, it's great to see you!\nHi Marshall, it's great to see you!\n\n\nNow let’s use for loops to create some addition tables, where the value of every entry is the sum of its row and column indices.\n\nm, n = 5, 5\nA = fill(0, (m, n))\n\n5×5 Matrix{Int64}:\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n\n\n\ntypeof(1:10)\n\nUnitRange{Int64}\n\n\n\nfor j in 1:n\n    for i in 1:m\n        A[i, j] = i + j\n    end\nend\nA\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10\n\n\n\n4.2.1 Double Loop\n\nm, n = 5, 5\nB = fill(0, (m, n))\n\n5×5 Matrix{Int64}:\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n\n\n\nm, n = 5, 5\nfor j in 1:n, i in 1:m\n    B[i, j] = i + j\nend\nB\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10\n\n\n\n\n4.2.2 Array Comprehension\nOne line array comprehension\n\nC = [i + j for i in 1:n, j in 1:m]\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10"
+  },
+  {
+    "objectID": "loop.html#exercise",
+    "href": "loop.html#exercise",
+    "title": "4  Loop",
+    "section": "4.3 Exercise",
+    "text": "4.3 Exercise\nLoop over integers between 1 and 10 and print their squares.\nArray Loop\n\n## Create Vector\nD = fill(0, 10)\n\n## Loop\nfor i in 1:10\n    D[i] = i^2\nend\nD\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nArray Comprehension\n\nD = [i^2 for i in 1:10]\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nDict\n\n## Create Empty Dict\nE = Dict{Int, Int}()\n\n## Loop\nfor i in 1:10\n    E[i] = i^2\nend\nE\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1\n\n\nDict Comprehension\n\nE = Dict(i => i^2 for i in 1:10)\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1"
   }
 ]

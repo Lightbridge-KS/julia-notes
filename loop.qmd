@@ -1,0 +1,142 @@
+# Loop
+
+## While Loop
+
+```julia
+while *condition*
+    *loop body*
+end
+```
+
+```{julia}
+🍑 = 0
+while 🍑 < 10
+    🍑 += 1
+    println(🍑)
+end
+```
+
+
+```{julia}
+myfriends = ["Ted", "Robyn", "Barney", "Lily", "Marshall"]
+
+i = 1
+while i <= length(myfriends)
+    friend = myfriends[i]
+    println("Hi $friend, it's great to see you!")
+    i += 1
+end
+```
+
+## For Loop
+
+```julia
+for *var* in *loop iterable*
+    *loop body*
+end
+```
+
+```{julia}
+for n in 1:10
+    println(n)
+end
+```
+
+```{julia}
+myfriends = ["Ted", "Robyn", "Barney", "Lily", "Marshall"]
+
+for friend in myfriends
+    println("Hi $friend, it's great to see you!")
+end
+```
+
+
+
+Now let's use for loops to create some addition tables, where the value of every entry is the sum of its row and column indices. 
+
+```{julia}
+m, n = 5, 5
+A = fill(0, (m, n))
+```
+
+```{julia}
+typeof(1:10)
+```
+
+```{julia}
+for j in 1:n
+    for i in 1:m
+        A[i, j] = i + j
+    end
+end
+A
+```
+
+### Double Loop
+
+```{julia}
+m, n = 5, 5
+B = fill(0, (m, n))
+```
+
+
+```{julia}
+m, n = 5, 5
+for j in 1:n, i in 1:m
+    B[i, j] = i + j
+end
+B
+```
+
+### Array Comprehension
+
+One line **array comprehension**
+ 
+```{julia}
+C = [i + j for i in 1:n, j in 1:m]
+```
+
+
+## Exercise
+
+Loop over integers between 1 and 10 and print their squares.
+
+**Array Loop**
+
+```{julia}
+## Create Vector
+D = fill(0, 10)
+
+## Loop
+for i in 1:10
+    D[i] = i^2
+end
+D
+```
+
+**Array Comprehension**
+
+```{julia}
+D = [i^2 for i in 1:10]
+```
+
+
+**Dict**
+
+```{julia}
+## Create Empty Dict
+E = Dict{Int, Int}()
+
+## Loop
+for i in 1:10
+    E[i] = i^2
+end
+E
+```
+
+**Dict Comprehension**
+
+```{julia}
+E = Dict(i => i^2 for i in 1:10)
+```
+
