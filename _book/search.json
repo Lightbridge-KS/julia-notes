@@ -105,13 +105,6 @@
     "text": "3.4 Exercise\n\na_ray = [1, 2, 3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n\n# Add 4\npush!(a_ray, 4)\n#> 4-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n#>  4\n# Remove 4\npop!(a_ray)\n#> 4\n\na_ray\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3"
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "4  Summary",
-    "section": "",
-    "text": "1 + 1\n\n[1] 2"
-  },
-  {
     "objectID": "loop.html",
     "href": "loop.html",
     "title": "4  Loop",
@@ -131,5 +124,12 @@
     "title": "4  Loop",
     "section": "4.3 Exercise",
     "text": "4.3 Exercise\nLoop over integers between 1 and 10 and print their squares.\nArray Loop\n\n## Create Vector\nD = fill(0, 10)\n\n## Loop\nfor i in 1:10\n    D[i] = i^2\nend\nD\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nArray Comprehension\n\nD = [i^2 for i in 1:10]\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nDict\n\n## Create Empty Dict\nE = Dict{Int, Int}()\n\n## Loop\nfor i in 1:10\n    E[i] = i^2\nend\nE\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1\n\n\nDict Comprehension\n\nE = Dict(i => i^2 for i in 1:10)\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1"
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "5  Summary",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
   }
 ]
