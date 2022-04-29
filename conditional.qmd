@@ -1,0 +1,58 @@
+# Conditional
+
+## IF
+
+```jl
+if *condition 1*
+    *option 1*
+elseif *condition 2*
+    *option 2*
+else
+    *option 3*
+end
+```
+
+
+```{julia}
+function FizzBuzz(🥚)
+    
+    if (🥚 % 3 == 0) && (🥚 % 5 == 0)
+        println("Fizz Buzz 🚌")
+    elseif 🥚 % 3 == 0
+        println("$(🥚 ÷ 3) Fizz")
+    elseif 🥚 % 5 == 0
+        println("$(🥚 ÷ 5) Buzz 🚌")
+    else
+        println("$🥚")
+    end
+
+end
+```
+
+```{julia}
+FizzBuzz(15)
+```
+
+
+
+## Ternary operators
+
+```jl
+a ? b : c
+```
+
+Translate to
+
+```jl
+if a
+    b
+else
+    c
+end
+```
+
+```{julia}
+what_is_larger(x, y) = x > y ? "$x is larger than $y" : "$y is larger than $x" 
+
+what_is_larger(1, 2)
+```

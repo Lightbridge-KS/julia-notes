@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Julia Notes",
     "section": "",
-    "text": "About\n\n\n\nThis is my Julia notes."
+    "text": "About\n\n\n\nThis is my notes on playing with Julia language."
   },
   {
     "objectID": "intro.html",
@@ -126,9 +126,23 @@
     "text": "4.3 Exercise\nLoop over integers between 1 and 10 and print their squares.\nArray Loop\n\n## Create Vector\nD = fill(0, 10)\n\n## Loop\nfor i in 1:10\n    D[i] = i^2\nend\nD\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nArray Comprehension\n\nD = [i^2 for i in 1:10]\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nDict\n\n## Create Empty Dict\nE = Dict{Int, Int}()\n\n## Loop\nfor i in 1:10\n    E[i] = i^2\nend\nE\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1\n\n\nDict Comprehension\n\nE = Dict(i => i^2 for i in 1:10)\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1"
   },
   {
+    "objectID": "conditional.html",
+    "href": "conditional.html",
+    "title": "5  Conditional",
+    "section": "",
+    "text": "if *condition 1*\n    *option 1*\nelseif *condition 2*\n    *option 2*\nelse\n    *option 3*\nend\n\nfunction FizzBuzz(🥚)\n    \n    if (🥚 % 3 == 0) && (🥚 % 5 == 0)\n        println(\"Fizz Buzz 🚌\")\n    elseif 🥚 % 3 == 0\n        println(\"$(🥚 ÷ 3) Fizz\")\n    elseif 🥚 % 5 == 0\n        println(\"$(🥚 ÷ 5) Buzz 🚌\")\n    else\n        println(\"$🥚\")\n    end\n\nend\n\nFizzBuzz (generic function with 1 method)\n\n\n\nFizzBuzz(15)\n\nFizz Buzz 🚌"
+  },
+  {
+    "objectID": "conditional.html#ternary-operators",
+    "href": "conditional.html#ternary-operators",
+    "title": "5  Conditional",
+    "section": "5.2 Ternary operators",
+    "text": "5.2 Ternary operators\na ? b : c\nTranslate to\nif a\n    b\nelse\n    c\nend\n\nwhat_is_larger(x, y) = x > y ? \"$x is larger than $y\" : \"$y is larger than $x\" \n\nwhat_is_larger(1, 2)\n\n\"2 is larger than 1\""
+  },
+  {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "5  Summary",
+    "title": "6  Summary",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
   }

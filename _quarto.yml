@@ -17,6 +17,7 @@ book:
     - part: "Flow Control"
       chapters:
         - loop.qmd
+        - conditional.qmd
     - summary.qmd
     - references.qmd
 
