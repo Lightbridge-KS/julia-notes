@@ -35,6 +35,20 @@ end
 FizzBuzz(15)
 ```
 
+`if` return a value, so we can assign a value after that. 
+
+```{julia}
+x = 2
+
+❓ = if x > 0
+        "positive"
+    else
+        "negative"
+    end
+        
+❓
+```
+
 Boolean in `if` must be `true` or `false`.
 
 ```{julia}

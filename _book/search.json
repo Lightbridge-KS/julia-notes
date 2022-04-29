@@ -151,7 +151,7 @@
     "href": "conditional.html#if",
     "title": "6  Conditional",
     "section": "6.1 IF",
-    "text": "6.1 IF\nif *condition 1*\n    *option 1*\nelseif *condition 2*\n    *option 2*\nelse\n    *option 3*\nend\n\nfunction FizzBuzz(🥚)\n    \n    if (🥚 % 3 == 0) && (🥚 % 5 == 0)\n        println(\"Fizz Buzz 🚌\")\n    elseif 🥚 % 3 == 0\n        println(\"$(🥚 ÷ 3) Fizz\")\n    elseif 🥚 % 5 == 0\n        println(\"$(🥚 ÷ 5) Buzz 🚌\")\n    else\n        println(\"$🥚\")\n    end\n\nend\n\nFizzBuzz (generic function with 1 method)\n\n\n\nFizzBuzz(15)\n\nFizz Buzz 🚌\n\n\nBoolean in if must be true or false.\n\nif 1\n    println(\"true\")\nend\n# This will error"
+    "text": "6.1 IF\nif *condition 1*\n    *option 1*\nelseif *condition 2*\n    *option 2*\nelse\n    *option 3*\nend\n\nfunction FizzBuzz(🥚)\n    \n    if (🥚 % 3 == 0) && (🥚 % 5 == 0)\n        println(\"Fizz Buzz 🚌\")\n    elseif 🥚 % 3 == 0\n        println(\"$(🥚 ÷ 3) Fizz\")\n    elseif 🥚 % 5 == 0\n        println(\"$(🥚 ÷ 5) Buzz 🚌\")\n    else\n        println(\"$🥚\")\n    end\n\nend\n\nFizzBuzz (generic function with 1 method)\n\n\n\nFizzBuzz(15)\n\nFizz Buzz 🚌\n\n\nif return a value, so we can assign a value after that.\n\nx = 2\n\n❓ = if x > 0\n        \"positive\"\n    else\n        \"negative\"\n    end\n        \n❓\n\n\"positive\"\n\n\nBoolean in if must be true or false.\n\nif 1\n    println(\"true\")\nend\n# This will error"
   },
   {
     "objectID": "conditional.html#ternary-operators",
