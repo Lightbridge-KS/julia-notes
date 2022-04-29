@@ -105,44 +105,65 @@
     "text": "3.4 Exercise\n\na_ray = [1, 2, 3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n\n# Add 4\npush!(a_ray, 4)\n#> 4-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n#>  4\n# Remove 4\npop!(a_ray)\n#> 4\n\na_ray\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3"
   },
   {
+    "objectID": "function.html",
+    "href": "function.html",
+    "title": "4  Function",
+    "section": "",
+    "text": "function sayhi(name)\n    println(\"Hi $name, it's great to see you!\")\nend\n#> sayhi (generic function with 1 method)\n\n\nsayhi(\"😸\")\n#> Hi 😸, it's great to see you!\n\nSingle line\n\nsquare(x) = x^2\n#> square (generic function with 1 method)\n\nsquare(3)\n#> 9"
+  },
+  {
+    "objectID": "function.html#broadcast",
+    "href": "function.html#broadcast",
+    "title": "4  Function",
+    "section": "4.2 Broadcast",
+    "text": "4.2 Broadcast\nbroadcast a function just like using R’s purrr::map()\n\nA = [i for i in 1:3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n\nsquare.(A)\n#> 3-element Vector{Int64}:\n#>  1\n#>  4\n#>  9"
+  },
+  {
     "objectID": "loop.html",
     "href": "loop.html",
-    "title": "4  Loop",
+    "title": "5  Loop",
     "section": "",
     "text": "while *condition*\n    *loop body*\nend\n\n🍑 = 0\nwhile 🍑 < 10\n    🍑 += 1\n    println(🍑)\nend\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\nmyfriends = [\"Ted\", \"Robyn\", \"Barney\", \"Lily\", \"Marshall\"]\n\ni = 1\nwhile i <= length(myfriends)\n    friend = myfriends[i]\n    println(\"Hi $friend, it's great to see you!\")\n    i += 1\nend\n\nHi Ted, it's great to see you!\nHi Robyn, it's great to see you!\nHi Barney, it's great to see you!\nHi Lily, it's great to see you!\nHi Marshall, it's great to see you!"
   },
   {
     "objectID": "loop.html#for-loop",
     "href": "loop.html#for-loop",
-    "title": "4  Loop",
-    "section": "4.2 For Loop",
-    "text": "4.2 For Loop\nfor *var* in *loop iterable*\n    *loop body*\nend\n\nfor n in 1:10\n    println(n)\nend\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\nmyfriends = [\"Ted\", \"Robyn\", \"Barney\", \"Lily\", \"Marshall\"]\n\nfor friend in myfriends\n    println(\"Hi $friend, it's great to see you!\")\nend\n\nHi Ted, it's great to see you!\nHi Robyn, it's great to see you!\nHi Barney, it's great to see you!\nHi Lily, it's great to see you!\nHi Marshall, it's great to see you!\n\n\nNow let’s use for loops to create some addition tables, where the value of every entry is the sum of its row and column indices.\n\nm, n = 5, 5\nA = fill(0, (m, n))\n\n5×5 Matrix{Int64}:\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n\n\n\ntypeof(1:10)\n\nUnitRange{Int64}\n\n\n\nfor j in 1:n\n    for i in 1:m\n        A[i, j] = i + j\n    end\nend\nA\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10\n\n\n\n4.2.1 Double Loop\n\nm, n = 5, 5\nB = fill(0, (m, n))\n\n5×5 Matrix{Int64}:\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n\n\n\nm, n = 5, 5\nfor j in 1:n, i in 1:m\n    B[i, j] = i + j\nend\nB\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10\n\n\n\n\n4.2.2 Array Comprehension\nOne line array comprehension\n\nC = [i + j for i in 1:n, j in 1:m]\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10"
+    "title": "5  Loop",
+    "section": "5.2 For Loop",
+    "text": "5.2 For Loop\nfor *var* in *loop iterable*\n    *loop body*\nend\n\nfor n in 1:10\n    println(n)\nend\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\nmyfriends = [\"Ted\", \"Robyn\", \"Barney\", \"Lily\", \"Marshall\"]\n\nfor friend in myfriends\n    println(\"Hi $friend, it's great to see you!\")\nend\n\nHi Ted, it's great to see you!\nHi Robyn, it's great to see you!\nHi Barney, it's great to see you!\nHi Lily, it's great to see you!\nHi Marshall, it's great to see you!\n\n\nor use ∈\n\nfor i ∈ 1:3\n    println(i)\nend\n\n1\n2\n3\n\n\nNow let’s use for loops to create some addition tables, where the value of every entry is the sum of its row and column indices.\n\nm, n = 5, 5\nA = fill(0, (m, n))\n\n5×5 Matrix{Int64}:\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n\n\n\ntypeof(1:10)\n\nUnitRange{Int64}\n\n\n\nfor j in 1:n\n    for i in 1:m\n        A[i, j] = i + j\n    end\nend\nA\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10\n\n\n\n5.2.1 Double Loop\nMultiple nested for loops can be combined into a single outer loop, forming the cartesian product of its iterables:\n\nfor i = 1:2, j = 3:4\n    println((i, j))\nend\n\n(1, 3)\n(1, 4)\n(2, 3)\n(2, 4)\n\n\n\nm, n = 5, 5\nB = fill(0, (m, n))\n\n5×5 Matrix{Int64}:\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n\n\n\nm, n = 5, 5\nfor j in 1:n, i in 1:m\n    B[i, j] = i + j\nend\nB\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10\n\n\nMultiple containers can be iterated over at the same time in a single for loop using zip:\n\nfor (j, k) in zip([1 2 3], [4 5 6 7])\n    println((j,k))\nend\n\n(1, 4)\n(2, 5)\n(3, 6)\n\n\n\n\n5.2.2 Array Comprehension\nOne line array comprehension\n\nC = [i + j for i in 1:n, j in 1:m]\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10"
   },
   {
     "objectID": "loop.html#exercise",
     "href": "loop.html#exercise",
-    "title": "4  Loop",
-    "section": "4.3 Exercise",
-    "text": "4.3 Exercise\nLoop over integers between 1 and 10 and print their squares.\nArray Loop\n\n## Create Vector\nD = fill(0, 10)\n\n## Loop\nfor i in 1:10\n    D[i] = i^2\nend\nD\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nArray Comprehension\n\nD = [i^2 for i in 1:10]\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nDict\n\n## Create Empty Dict\nE = Dict{Int, Int}()\n\n## Loop\nfor i in 1:10\n    E[i] = i^2\nend\nE\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1\n\n\nDict Comprehension\n\nE = Dict(i => i^2 for i in 1:10)\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1"
+    "title": "5  Loop",
+    "section": "5.3 Exercise",
+    "text": "5.3 Exercise\nLoop over integers between 1 and 10 and print their squares.\nArray Loop\n\n## Create Vector\nD = fill(0, 10)\n\n## Loop\nfor i in 1:10\n    D[i] = i^2\nend\nD\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nArray Comprehension\n\nD = [i^2 for i in 1:10]\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nDict\n\n## Create Empty Dict\nE = Dict{Int, Int}()\n\n## Loop\nfor i in 1:10\n    E[i] = i^2\nend\nE\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1\n\n\nDict Comprehension\n\nE = Dict(i => i^2 for i in 1:10)\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1"
   },
   {
     "objectID": "conditional.html",
     "href": "conditional.html",
-    "title": "5  Conditional",
+    "title": "6  Conditional",
     "section": "",
-    "text": "if *condition 1*\n    *option 1*\nelseif *condition 2*\n    *option 2*\nelse\n    *option 3*\nend\n\nfunction FizzBuzz(🥚)\n    \n    if (🥚 % 3 == 0) && (🥚 % 5 == 0)\n        println(\"Fizz Buzz 🚌\")\n    elseif 🥚 % 3 == 0\n        println(\"$(🥚 ÷ 3) Fizz\")\n    elseif 🥚 % 5 == 0\n        println(\"$(🥚 ÷ 5) Buzz 🚌\")\n    else\n        println(\"$🥚\")\n    end\n\nend\n\nFizzBuzz (generic function with 1 method)\n\n\n\nFizzBuzz(15)\n\nFizz Buzz 🚌"
+    "text": "Julia doc: Conditional Operation"
+  },
+  {
+    "objectID": "conditional.html#if",
+    "href": "conditional.html#if",
+    "title": "6  Conditional",
+    "section": "6.1 IF",
+    "text": "6.1 IF\nif *condition 1*\n    *option 1*\nelseif *condition 2*\n    *option 2*\nelse\n    *option 3*\nend\n\nfunction FizzBuzz(🥚)\n    \n    if (🥚 % 3 == 0) && (🥚 % 5 == 0)\n        println(\"Fizz Buzz 🚌\")\n    elseif 🥚 % 3 == 0\n        println(\"$(🥚 ÷ 3) Fizz\")\n    elseif 🥚 % 5 == 0\n        println(\"$(🥚 ÷ 5) Buzz 🚌\")\n    else\n        println(\"$🥚\")\n    end\n\nend\n\nFizzBuzz (generic function with 1 method)\n\n\n\nFizzBuzz(15)\n\nFizz Buzz 🚌\n\n\nBoolean in if must be true or false.\n\nif 1\n    println(\"true\")\nend\n# This will error"
   },
   {
     "objectID": "conditional.html#ternary-operators",
     "href": "conditional.html#ternary-operators",
-    "title": "5  Conditional",
-    "section": "5.2 Ternary operators",
-    "text": "5.2 Ternary operators\na ? b : c\nTranslate to\nif a\n    b\nelse\n    c\nend\n\nwhat_is_larger(x, y) = x > y ? \"$x is larger than $y\" : \"$y is larger than $x\" \n\nwhat_is_larger(1, 2)\n\n\"2 is larger than 1\""
+    "title": "6  Conditional",
+    "section": "6.2 Ternary operators",
+    "text": "6.2 Ternary operators\na ? b : c\nTranslate to\nif a\n    b\nelse\n    c\nend\n\nwhat_is_larger(x, y) = x > y ? \"$x is larger than $y\" : \"$y is larger than $x\" \n\nwhat_is_larger(1, 2)\n\n\"2 is larger than 1\""
   },
   {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "6  Summary",
+    "title": "7  Summary",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
   }

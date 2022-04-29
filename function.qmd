@@ -1,0 +1,40 @@
+# Function
+
+```{r, include=FALSE}
+library(here)
+here::i_am("function.qmd")
+source(here("./_common.R"))
+```
+
+
+## Declare a Function
+
+```{julia}
+function sayhi(name)
+    println("Hi $name, it's great to see you!")
+end
+```
+
+
+```{julia}
+sayhi("😸")
+```
+
+
+Single line
+
+```{julia}
+square(x) = x^2
+
+square(3)
+```
+
+## Broadcast
+
+`broadcast` a function just like using `R`'s `purrr::map()`
+
+```{julia}
+A = [i for i in 1:3]
+
+square.(A)
+```

@@ -50,6 +50,14 @@ for friend in myfriends
 end
 ```
 
+or use `∈`
+
+```{julia}
+for i ∈ 1:3
+    println(i)
+end
+```
+
 
 
 Now let's use for loops to create some addition tables, where the value of every entry is the sum of its row and column indices. 
@@ -74,6 +82,14 @@ A
 
 ### Double Loop
 
+Multiple nested for loops can be combined into a single outer loop, forming the cartesian product of its iterables:
+
+```{julia}
+for i = 1:2, j = 3:4
+    println((i, j))
+end
+```
+
 ```{julia}
 m, n = 5, 5
 B = fill(0, (m, n))
@@ -86,6 +102,14 @@ for j in 1:n, i in 1:m
     B[i, j] = i + j
 end
 B
+```
+
+Multiple containers can be iterated over at the same time in a single for loop using `zip`:
+
+```{julia}
+for (j, k) in zip([1 2 3], [4 5 6 7])
+    println((j,k))
+end
 ```
 
 ### Array Comprehension

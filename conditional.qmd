@@ -1,5 +1,7 @@
 # Conditional
 
+Julia doc: [Conditional Operation](Lightbridge-KS/julia-notes)
+
 ## IF
 
 ```jl
@@ -33,7 +35,15 @@ end
 FizzBuzz(15)
 ```
 
+Boolean in `if` must be `true` or `false`.
 
+```{julia}
+#| eval: false
+if 1
+    println("true")
+end
+# This will error
+```
 
 ## Ternary operators
 

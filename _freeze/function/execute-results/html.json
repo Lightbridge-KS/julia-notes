@@ -1,0 +1,14 @@
+{
+  "hash": "bd01d2a83b2cba378543bedf9c55a32f",
+  "result": {
+    "markdown": "# Function\n\n\n\n\n## Declare a Function\n\n::: {.cell}\n\n```{.julia .cell-code}\nfunction sayhi(name)\n    println(\"Hi $name, it's great to see you!\")\nend\n#> sayhi (generic function with 1 method)\n```\n:::\n\n\n::: {.cell}\n\n```{.julia .cell-code}\nsayhi(\"😸\")\n#> Hi 😸, it's great to see you!\n```\n:::\n\n\nSingle line\n\n::: {.cell}\n\n```{.julia .cell-code}\nsquare(x) = x^2\n#> square (generic function with 1 method)\n\nsquare(3)\n#> 9\n```\n:::\n\n## Broadcast\n\n`broadcast` a function just like using `R`'s `purrr::map()`\n\n::: {.cell}\n\n```{.julia .cell-code}\nA = [i for i in 1:3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n\nsquare.(A)\n#> 3-element Vector{Int64}:\n#>  1\n#>  4\n#>  9\n```\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": [],
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}
