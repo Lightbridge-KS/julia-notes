@@ -58,6 +58,8 @@ If function has no return value (called for side-effect), return `nothing` by co
 
 ## Argument-type Declaration
 
+`Integer` method
+
 ```{julia}
 fib(n::Integer) = n ≤ 2 ? one(n) : fib(n-1) + fib(n-2)
 ```
@@ -65,6 +67,27 @@ fib(n::Integer) = n ≤ 2 ? one(n) : fib(n-1) + fib(n-2)
 ```{julia}
 fib(4)
 ```
+
+
+`String` method
+
+
+```{julia}
+fib(x::String) = x^fib(length(x))
+```
+
+```{julia}
+fib("abcd")
+```
+
+Input non-defined argument type will error.
+
+```{julia}
+#| eval: false
+fib(1.5)
+# This will error
+```
+
 
 ## Anonymous Function
 
