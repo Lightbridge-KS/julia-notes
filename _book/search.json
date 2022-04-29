@@ -154,6 +154,27 @@
     "text": "4.6 Functional Programming\n\n4.6.1 Map\n\n📖 = [1.2, 2.7]\n#> 2-element Vector{Float64}:\n#>  1.2\n#>  2.7\n\n\nmap(round, 📖)\n#> 2-element Vector{Float64}:\n#>  1.0\n#>  3.0\n\n\nmap(x -> 2x + 1, 📖)\n#> 2-element Vector{Float64}:\n#>  3.4\n#>  6.4\n\n\n\n4.6.2 Broadcast\nShorter way is to broadcast a function.\n\nh(x) = 2x + 1\n#> h (generic function with 1 method)\nh.(📖)\n#> 2-element Vector{Float64}:\n#>  3.4\n#>  6.4"
   },
   {
+    "objectID": "function.html#multiple-return-values",
+    "href": "function.html#multiple-return-values",
+    "title": "4  Function",
+    "section": "4.7 Multiple Return Values",
+    "text": "4.7 Multiple Return Values\nA tuple is useful for return multiple values from a function.\n\nfunction foo(a,b)\n    (add = a+b, prod = a*b)\nend\n#> foo (generic function with 1 method)\n\n\nx = foo(2,3)\n#> (add = 5, prod = 6)\n\nx\n#> (add = 5, prod = 6)\nx.add\n#> 5"
+  },
+  {
+    "objectID": "function.html#destructuring-assignment",
+    "href": "function.html#destructuring-assignment",
+    "title": "4  Function",
+    "section": "4.8 Destructuring Assignment",
+    "text": "4.8 Destructuring Assignment\nA comma-separated list of variables (optionally wrapped in parentheses) can appear on the left side of an assignment: the value on the right side is destructured by iterating over and assigning to each variable in turn:\n\n(a,b,c) = 1:3 \n#> 1:3\n# or \na, b, c = 1:3\n#> 1:3\n\nb\n#> 2\n\nDestructuring assignment extracts each value from function into a variable:\n\na, b = foo(4, 5)\n#> (add = 9, prod = 20)\n\na\n#> 9\nb\n#> 20\n\nUnderscore _\nIf only a subset of the elements of the iterator are required, a common convention is to assign ignored elements to a variable consisting of only underscores _\n\n_, _, _, d = 1:10\n#> 1:10\n\nd\n#> 4\n\nslurping ...\nIf the last symbol in the assignment list is suffixed by ... (known as slurping), then it will be assigned a collection or lazy iterator of the remaining elements of the right-hand side iterator:\n\na, b... = \"hello\"\n#> \"hello\"\n\na\n#> 'h': ASCII/Unicode U+0068 (category Ll: Letter, lowercase)\nb\n#> \"ello\"\n\n\n_, a, b... = 1:5\n#> 1:5\n\na\n#> 2\nb\n#> 3-element Vector{Int64}:\n#>  3\n#>  4\n#>  5"
+  },
+  {
+    "objectID": "function.html#argument-destructuring",
+    "href": "function.html#argument-destructuring",
+    "title": "4  Function",
+    "section": "4.9 Argument destructuring",
+    "text": "4.9 Argument destructuring\nIf a function argument name is written as a tuple (e.g. (x, y)) instead of just a symbol, then an assignment (x, y) = argument will be inserted for you:\n\ngap((min, max)) = max - min\n#> gap (generic function with 1 method)\ngap((1, 3))\n#> 2\n\n\nminmax(x, y) = (y < x) ? (y, x) : (x, y)\n#> minmax (generic function with 1 method)\nminmax(3, 2)\n#> (2, 3)\n\n\nminmax(3, 2) |> gap\n#> 1\n\nNotice the |> pipe operator.\nFor anonymous functions, destructuring a single tuple requires an extra comma:\n\nmap(((x,y),) -> x + y, [(1,2), (3,4)])\n#> 2-element Vector{Int64}:\n#>  3\n#>  7"
+  },
+  {
     "objectID": "loop.html",
     "href": "loop.html",
     "title": "5  Loop",
@@ -201,19 +222,5 @@
     "title": "7  Summary",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "function.html#destructuring-assignment",
-    "href": "function.html#destructuring-assignment",
-    "title": "4  Function",
-    "section": "4.7 Destructuring Assignment",
-    "text": "4.7 Destructuring Assignment\nA comma-separated list of variables (optionally wrapped in parentheses) can appear on the left side of an assignment: the value on the right side is destructured by iterating over and assigning to each variable in turn:\n\n(a,b,c) = 1:3 \n#> 1:3\n# or \na, b, c = 1:3\n#> 1:3\n\nb\n#> 2"
-  },
-  {
-    "objectID": "function.html#multiple-return-values",
-    "href": "function.html#multiple-return-values",
-    "title": "4  Function",
-    "section": "4.8 Multiple Return Values",
-    "text": "4.8 Multiple Return Values\nA tuple is useful for return multiple values from a function.\n\nfunction foo(a,b)\n    (add = a+b, prod = a*b)\nend\n#> foo (generic function with 1 method)\n\n\nx = foo(2,3)\n#> (add = 5, prod = 6)\n\nx\n#> (add = 5, prod = 6)\nx.add\n#> 5\n\nDestructuring assignment extracts each value into a variable:\n\na, b = foo(4, 5)\n#> (add = 9, prod = 20)\n\na\n#> 9\nb\n#> 20"
   }
 ]

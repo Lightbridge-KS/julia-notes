@@ -107,17 +107,6 @@ h.(📖)
 ```
 
 
-## Destructuring Assignment
-
-A comma-separated list of variables (optionally wrapped in parentheses) can appear on the left side of an assignment: the value on the right side is destructured by iterating over and assigning to each variable in turn:
-
-```{julia}
-(a,b,c) = 1:3 
-# or 
-a, b, c = 1:3
-
-b
-```
 
 
 ## Multiple Return Values
@@ -138,11 +127,82 @@ x
 x.add
 ```
 
-Destructuring assignment extracts each value into a variable:
+## Destructuring Assignment
+
+A comma-separated list of variables (optionally wrapped in parentheses) can appear on the left side of an assignment: the value on the right side is destructured by iterating over and assigning to each variable in turn:
+
+```{julia}
+(a,b,c) = 1:3 
+# or 
+a, b, c = 1:3
+
+b
+```
+
+
+Destructuring assignment extracts each value from function into a variable:
 
 ```{julia}
 a, b = foo(4, 5)
 
 a
 b
+```
+
+**Underscore `_`**
+
+If only a subset of the elements of the iterator are required, a common convention is to assign ignored elements to a variable consisting of only underscores _ 
+
+```{julia}
+_, _, _, d = 1:10
+
+d
+```
+
+**slurping `...`**
+
+If the last symbol in the assignment list is suffixed by `...` (known as *slurping*), then it will be assigned a collection or lazy iterator of the remaining elements of the right-hand side iterator:
+
+```{julia}
+a, b... = "hello"
+
+a
+b
+```
+
+```{julia}
+_, a, b... = 1:5
+
+a
+b
+```
+
+
+## Argument destructuring
+
+If a function argument name is written as a tuple (e.g. (x, y)) instead of just a symbol, then an assignment (x, y) = argument will be inserted for you:
+
+```{julia}
+gap((min, max)) = max - min
+gap((1, 3))
+```
+
+
+```{julia}
+minmax(x, y) = (y < x) ? (y, x) : (x, y)
+minmax(3, 2)
+```
+
+
+```{julia}
+minmax(3, 2) |> gap
+```
+
+Notice the `|>` pipe operator.
+
+
+For anonymous functions, destructuring a single tuple requires an extra comma:
+
+```{julia}
+map(((x,y),) -> x + y, [(1,2), (3,4)])
 ```
