@@ -53,6 +53,7 @@ R = Language("R", "R & R", 1993, false)
 typeof(julia)
 ```
 
+
 ### Accessing individual values
 
 ```{julia}

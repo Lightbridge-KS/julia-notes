@@ -18,7 +18,7 @@
     "href": "basic/intro.html#assign-variable",
     "title": "1  Introduction",
     "section": "1.2 Assign Variable",
-    "text": "1.2 Assign Variable\nDynamic typing\n\nmy_int = 10\n#> 10\ntypeof(my_int)\n#> Int64\n\n\nmy_pi = 3.1416\n#> 3.1416\ntypeof(my_pi)\n#> Float64\n\n\n😸 = \"smily cat\"\n#> \"smily cat\"\ntypeof(😸)\n#> String\n\n\n😀 = 1\n😞 = -1\n🤐 = 0\n\n\n🤐 == 😀 + 😞\n#> true\n\nCheck methods with a given type\n\n# first(methodswith(Int64), 2)"
+    "text": "1.2 Assign Variable\nDynamic typing\n\nmy_int = 10\n#> 10\ntypeof(my_int)\n#> Int64\n\n\nmy_pi = 3.1416\n#> 3.1416\ntypeof(my_pi)\n#> Float64\n\n\n😸 = \"smily cat\"\n#> \"smily cat\"\ntypeof(😸)\n#> String\n\nSting interpolation with $\n\n\"This is $😸\"\n#> \"This is smily cat\"\n\n\n😀 = 1\n😞 = -1\n🤐 = 0\n\n\n🤐 == 😀 + 😞\n#> true"
   },
   {
     "objectID": "basic/intro.html#comment",
@@ -35,11 +35,25 @@
     "text": "1.4 Basic Math\n\n1 + 1\n#> 2\n\n\n1 - 1\n#> 0\n\n\n2 * 3\n#> 6\n\n\n3 / 2\n#> 1.5\n\nlike R\n\n10 ^ 2\n#> 100\n\nlike Python\n\n5 % 2\n#> 1"
   },
   {
+    "objectID": "basic/intro.html#operator",
+    "href": "basic/intro.html#operator",
+    "title": "1  Introduction",
+    "section": "1.5 Operator",
+    "text": "1.5 Operator\nOperators Docs\nBoolean Operators\n\n!true\n#> false\nfalse && true\n#> false\nfalse || true\n#> true\n\nLogical Operator ignore type\n\n1 == 1.0\n#> true"
+  },
+  {
+    "objectID": "basic/intro.html#vectorized-dot-operators",
+    "href": "basic/intro.html#vectorized-dot-operators",
+    "title": "1  Introduction",
+    "section": "1.6 Vectorized “dot” operators",
+    "text": "1.6 Vectorized “dot” operators\n\n[1,2,3] ^ 3 \n# This would Error\n\n\n[1,2,3] .^ 3\n#> 3-element Vector{Int64}:\n#>   1\n#>   8\n#>  27\n\na .^ b is parsed as the “dot” call (^).(a,b), which performs a broadcast operation:\n\ncombine arrays and scalars,\narrays of the same size (performing the operation elementwise)\neven arrays of different shapes (e.g. combining row and column vectors to produce a matrix)."
+  },
+  {
     "objectID": "basic/intro.html#exercise",
     "href": "basic/intro.html#exercise",
     "title": "1  Introduction",
-    "section": "1.6 Exercise",
-    "text": "1.6 Exercise\nconvert() function\n\ndays = 365\n\n\ndays_float = convert(Float64, days) # Convert to Float64\n#> 365.0\n\n\ndays == days_float \n#> true\n\n\n@assert days == 365\n@assert days_float == 365.0\n\n\nconvert(Int64, \"1\") # Error\n\n\nparse(Int64, \"1\")\n#> 1"
+    "section": "1.7 Exercise",
+    "text": "1.7 Exercise\nconvert() function\n\ndays = 365\n\n\ndays_float = convert(Float64, days) # Convert to Float64\n#> 365.0\n\n\ndays == days_float \n#> true\n\n\n@assert days == 365\n@assert days_float == 365.0\n\n\nconvert(Int64, \"1\") # Error\n\n\nparse(Int64, \"1\")\n#> 1"
   },
   {
     "objectID": "basic/type.html",
@@ -49,11 +63,18 @@
     "text": "isa(1, Int)\n#> true\nisa(1, Int64)\n#> true\nisa(1, Int128)\n#> false\n\nor\n\n1 isa Int\n#> true"
   },
   {
+    "objectID": "basic/type.html#user-defined-type",
+    "href": "basic/type.html#user-defined-type",
+    "title": "2  Type",
+    "section": "2.2 User-defined Type",
+    "text": "2.2 User-defined Type\nlet’s create a struct to represent scientific open source programming languages.\n\nstruct Language\n    name::String\n    title::String\n    year_of_birth::Int64\n    fast::Bool\nend\n\nAccess field names\n\nfieldnames(Language)\n#> (:name, :title, :year_of_birth, :fast)\n\n\n2.2.1 Initiate objects (immutable)\n\njulia = Language(\"Julia\", \"Rapidus\", 2012, true)\n#> Language(\"Julia\", \"Rapidus\", 2012, true)\nR = Language(\"R\", \"R & R\", 1993, false)\n#> Language(\"R\", \"R & R\", 1993, false)\n\n\ntypeof(julia)\n#> Language\n\n\n\n2.2.2 Accessing individual values\n\njulia.name\n#> \"Julia\"\nR.name\n#> \"R\"\n\n\n\n2.2.3 Printing with Base.show method\n\n\"Hello World\"\n#> \"Hello World\"\nBase.show(\"Hello World\")\n#> \"Hello World\"\n\nImplement using print()\n\nprint(\"Hello World\")\n#> Hello World\n\n\nusing Dates\n\n\nfunction Base.show(io::IO, l::Language)\n\n    years_old = year(today()) - l.year_of_birth\n    print(io, \"$(l.name) is $years_old years old,\")\n    print(io, \" created by $(l.title).\") \n\n    return nothing\nend\n\n\njulia\n#> Julia is 10 years old, created by Rapidus.\n\n\nR\n#> R is 29 years old, created by R & R."
+  },
+  {
     "objectID": "basic/string.html",
     "href": "basic/string.html",
     "title": "3  String",
     "section": "",
-    "text": "Enclose your String in ” ” or ““” “““!\n\ns1 = \"I am a string.\"\n#> \"I am a string.\"\ntypeof(s1)\n#> String\n\n\ns2 = \"\"\"I am also a string. \"\"\"\n#> \"I am also a string. \"\ntypeof(s2)\n#> String\n\nSingle quote is for Char\n\ntypeof('a')\n#> Char"
+    "text": "Enclose your String in ” ” or ““” “““!\n\ns1 = \"I am a string.\"\n#> \"I am a string.\"\ntypeof(s1)\n#> String\n\n\ns2 = \"\"\"I am also a string. \"\"\"\n#> \"I am also a string. \"\ntypeof(s2)\n#> String\n\nMulti-line string should enclosed with triple quotes. The indentation will be ignored by Julia to improve readablility.\n\ns = \"\"\"\n    This is a big multiline string with a nested \"quotation\".\n    As you can see.\n    It is still a String to Julia.\n    \"\"\"\n#> \"This is a big multiline string with a nested \\\"quotation\\\".\\nAs you can see.\\nIt is still a String to Julia.\\n\"\n\n\nprint(s)\n#> This is a big multiline string with a nested \"quotation\".\n#> As you can see.\n#> It is still a String to Julia.\n\nSingle quote is for Char\n\ntypeof('a')\n#> Char"
   },
   {
     "objectID": "basic/string.html#string-interpolation",
@@ -67,14 +88,21 @@
     "href": "basic/string.html#concatenate-string",
     "title": "3  String",
     "section": "3.3 Concatenate String",
-    "text": "3.3 Concatenate String\n\ns3 = \"How many cats \";\ns4 = \"is too many cats?\";\n😺 = 10\n\nstring() converts non-string inputs to strings.\n\nstring(s3, s4)\n#> \"How many cats is too many cats?\"\n\nWe can also use * for concatenation!\n\ns3 * s4\n#> \"How many cats is too many cats?\""
+    "text": "3.3 Concatenate String\n\ns3 = \"How many cats \";\ns4 = \"is too many cats?\";\n😺 = 10\n\nstring() converts non-string inputs to strings.\n\nstring(s3, s4)\n#> \"How many cats is too many cats?\"\n\nWe can also use * for concatenation!\n\ns3 * s4\n#> \"How many cats is too many cats?\"\n\njoin() is better. It allows specifying delim and last separactor\n\nfruit = [\"apples\", \"bananas\", \"pineapples\"]\n#> 3-element Vector{String}:\n#>  \"apples\"\n#>  \"bananas\"\n#>  \"pineapples\"\n\njoin(fruit, \", \", \" and \")\n#> \"apples, bananas and pineapples\""
+  },
+  {
+    "objectID": "basic/string.html#vectorize-string",
+    "href": "basic/string.html#vectorize-string",
+    "title": "3  String",
+    "section": "3.4 Vectorize String",
+    "text": "3.4 Vectorize String\nLet’s greet some people\n\nh = \"Hello\"\n#> \"Hello\"\n\n\npeople = [\"Marty\", \"Johny\"]\n#> 2-element Vector{String}:\n#>  \"Marty\"\n#>  \"Johny\"\ntypeof(people)\n#> Vector{String} (alias for Array{String, 1})\n\n\nstring.(h, \" \", people)\n#> 2-element Vector{String}:\n#>  \"Hello Marty\"\n#>  \"Hello Johny\"\n\n\nh .* \" \" .* people\n#> 2-element Vector{String}:\n#>  \"Hello Marty\"\n#>  \"Hello Johny\"\n\nNow write function hello() with 2 methods\n\nhello(people::AbstractString) = \"Hello\" * \" \" * people\n#> hello (generic function with 1 method)\nhello(people::AbstractArray) = \"Hello\" .* \" \" .* people\n#> hello (generic function with 2 methods)\n\n\nmethods(hello)\n#> # 2 methods for generic function \"hello\":\n#> [1] hello(people::AbstractString) in Main at none:3\n#> [2] hello(people::AbstractArray) in Main at none:3\n\n\nhello(\"A\")\n#> \"Hello A\"\n\n\nstudents = [\"Harry\", \"Ron\"]\n#> 2-element Vector{String}:\n#>  \"Harry\"\n#>  \"Ron\"\nhello(students)\n#> 2-element Vector{String}:\n#>  \"Hello Harry\"\n#>  \"Hello Ron\""
   },
   {
     "objectID": "basic/string.html#exercise",
     "href": "basic/string.html#exercise",
     "title": "3  String",
-    "section": "3.4 Exercise",
-    "text": "3.4 Exercise\nCreate a string that says “hi” 3 times, first with repeat and then with the exponentiation operator, which can call * under the hood. Assign it the variable hi below.\n\nrepeat(\"hi\", 3)\n#> \"hihihi\"\n\n\n\"hi\"^3\n#> \"hihihi\"\n\nDeclare two variables\n\na = 3\nb = 4\n\nand use them to create two strings:\n\nc = string(a) * \" + \" * string(b)\n#> \"3 + 4\"\n\n\nd = string(a + b)\n#> \"7\""
+    "section": "3.7 Exercise",
+    "text": "3.7 Exercise\nCreate a string that says “hi” 3 times, first with repeat and then with the exponentiation operator, which can call * under the hood. Assign it the variable hi below.\n\nrepeat(\"hi\", 3)\n#> \"hihihi\"\n\n\n\"hi\"^3\n#> \"hihihi\"\n\nDeclare two variables\n\na = 3\nb = 4\n\nand use them to create two strings:\n\nc = string(a) * \" + \" * string(b)\n#> \"3 + 4\"\n\n\nd = string(a + b)\n#> \"7\""
   },
   {
     "objectID": "basic/data-str.html",
@@ -136,50 +164,50 @@
     "objectID": "basic/function.html#infix-function",
     "href": "basic/function.html#infix-function",
     "title": "5  Function",
-    "section": "5.3 Infix Function",
-    "text": "5.3 Infix Function\n\n1 + 2 + 3\n#> 6\n\n+(1,2,3)\n#> 6"
+    "section": "5.4 Infix Function",
+    "text": "5.4 Infix Function\n\n1 + 2 + 3\n#> 6\n\n+(1,2,3)\n#> 6"
   },
   {
     "objectID": "basic/function.html#argument-type-declaration",
     "href": "basic/function.html#argument-type-declaration",
     "title": "5  Function",
-    "section": "5.4 Argument-type Declaration",
-    "text": "5.4 Argument-type Declaration\nInteger method\n\nfib(n::Integer) = n ≤ 2 ? one(n) : fib(n-1) + fib(n-2)\n#> fib (generic function with 1 method)\n\n\nfib(4)\n#> 3\n\nString method\nI declare x as a super-type AbstractString to include all possible string type.\n\nfib(x::AbstractString) = x^fib(length(x))\n#> fib (generic function with 2 methods)\n\nNow fib has 2 methods\n\nmethods(fib)\n#> # 2 methods for generic function \"fib\":\n#> [1] fib(n::Integer) in Main at none:3\n#> [2] fib(x::AbstractString) in Main at none:3\n\n\nfib(\"abcd\")\n#> \"abcdabcdabcd\"\n\nInput non-defined argument type will error.\n\nfib(1.5)\n# This will error"
+    "section": "5.5 Argument-type Declaration",
+    "text": "5.5 Argument-type Declaration\nInteger method\n\nfib(n::Integer) = n ≤ 2 ? one(n) : fib(n-1) + fib(n-2)\n#> fib (generic function with 1 method)\n\n\nfib(4)\n#> 3\n\nString method\nI declare x as a super-type AbstractString to include all possible string type.\n\nfib(x::AbstractString) = x^fib(length(x))\n#> fib (generic function with 2 methods)\n\nNow fib has 2 methods\n\nmethods(fib)\n#> # 2 methods for generic function \"fib\":\n#> [1] fib(n::Integer) in Main at none:3\n#> [2] fib(x::AbstractString) in Main at none:3\n\n\nfib(\"abcd\")\n#> \"abcdabcdabcd\"\n\nInput non-defined argument type will error.\n\nfib(1.5)\n# This will error"
   },
   {
     "objectID": "basic/function.html#anonymous-function",
     "href": "basic/function.html#anonymous-function",
     "title": "5  Function",
-    "section": "5.5 Anonymous Function",
-    "text": "5.5 Anonymous Function\n\nx -> x^2 + 2x - 1\n#> #37 (generic function with 1 method)\n\nThe primary use for anonymous functions is passing them to functions which take other functions as arguments.\nUseful in map(f, collection)"
+    "section": "5.6 Anonymous Function",
+    "text": "5.6 Anonymous Function\n\nx -> x^2 + 2x - 1\n#> #45 (generic function with 1 method)\n\nThe primary use for anonymous functions is passing them to functions which take other functions as arguments.\nUseful in map(f, collection)\n\nmap(x -> x^2, 1:3)\n#> 3-element Vector{Int64}:\n#>  1\n#>  4\n#>  9"
   },
   {
     "objectID": "basic/function.html#functional-programming",
     "href": "basic/function.html#functional-programming",
     "title": "5  Function",
-    "section": "5.6 Functional Programming",
-    "text": "5.6 Functional Programming\n\n5.6.1 Map\n\n📖 = [1.2, 2.7]\n#> 2-element Vector{Float64}:\n#>  1.2\n#>  2.7\n\n\nmap(round, 📖)\n#> 2-element Vector{Float64}:\n#>  1.0\n#>  3.0\n\n\nmap(x -> 2x + 1, 📖)\n#> 2-element Vector{Float64}:\n#>  3.4\n#>  6.4\n\n\n\n5.6.2 Broadcast\nShorter way is to broadcast a function.\n\nh(x) = 2x + 1\n#> h (generic function with 1 method)\nh.(📖)\n#> 2-element Vector{Float64}:\n#>  3.4\n#>  6.4"
+    "section": "5.7 Functional Programming",
+    "text": "5.7 Functional Programming\n\n5.7.1 Map\n\n📖 = [1.2, 2.7]\n#> 2-element Vector{Float64}:\n#>  1.2\n#>  2.7\n\n\nmap(round, 📖)\n#> 2-element Vector{Float64}:\n#>  1.0\n#>  3.0\n\n\nmap(x -> 2x + 1, 📖)\n#> 2-element Vector{Float64}:\n#>  3.4\n#>  6.4\n\n\n\n5.7.2 Broadcast\nShorter way is to broadcast a function.\n\nh(x) = 2x + 1\n#> h (generic function with 1 method)\nh.(📖)\n#> 2-element Vector{Float64}:\n#>  3.4\n#>  6.4"
   },
   {
     "objectID": "basic/function.html#multiple-return-values",
     "href": "basic/function.html#multiple-return-values",
     "title": "5  Function",
-    "section": "5.7 Multiple Return Values",
-    "text": "5.7 Multiple Return Values\nA tuple is useful for return multiple values from a function.\n\nfunction foo(a,b)\n    (add = a+b, prod = a*b)\nend\n#> foo (generic function with 1 method)\n\n\nx = foo(2,3)\n#> (add = 5, prod = 6)\n\nx\n#> (add = 5, prod = 6)\nx.add\n#> 5"
+    "section": "5.8 Multiple Return Values",
+    "text": "5.8 Multiple Return Values\nA tuple is useful for return multiple values from a function.\n\nfunction foo(a,b)\n    (add = a+b, prod = a*b)\nend\n#> foo (generic function with 1 method)\n\n\nx = foo(2,3)\n#> (add = 5, prod = 6)\n\nx\n#> (add = 5, prod = 6)\nx.add\n#> 5"
   },
   {
     "objectID": "basic/function.html#destructuring-assignment",
     "href": "basic/function.html#destructuring-assignment",
     "title": "5  Function",
-    "section": "5.8 Destructuring Assignment",
-    "text": "5.8 Destructuring Assignment\nA comma-separated list of variables (optionally wrapped in parentheses) can appear on the left side of an assignment: the value on the right side is destructured by iterating over and assigning to each variable in turn:\n\n(a,b,c) = 1:3 \n#> 1:3\n# or \na, b, c = 1:3\n#> 1:3\n\nb\n#> 2\n\nDestructuring assignment extracts each value from function into a variable:\n\na, b = foo(4, 5)\n#> (add = 9, prod = 20)\n\na\n#> 9\nb\n#> 20\n\nUnderscore _\nIf only a subset of the elements of the iterator are required, a common convention is to assign ignored elements to a variable consisting of only underscores _\n\n_, _, _, d = 1:10\n#> 1:10\n\nd\n#> 4\n\nslurping ...\nIf the last symbol in the assignment list is suffixed by ... (known as slurping), then it will be assigned a collection or lazy iterator of the remaining elements of the right-hand side iterator:\n\na, b... = \"hello\"\n#> \"hello\"\n\na\n#> 'h': ASCII/Unicode U+0068 (category Ll: Letter, lowercase)\nb\n#> \"ello\"\n\n\n_, a, b... = 1:5\n#> 1:5\n\na\n#> 2\nb\n#> 3-element Vector{Int64}:\n#>  3\n#>  4\n#>  5"
+    "section": "5.9 Destructuring Assignment",
+    "text": "5.9 Destructuring Assignment\nA comma-separated list of variables (optionally wrapped in parentheses) can appear on the left side of an assignment: the value on the right side is destructured by iterating over and assigning to each variable in turn:\n\n(a,b,c) = 1:3 \n#> 1:3\n# or \na, b, c = 1:3\n#> 1:3\n\nb\n#> 2\n\nDestructuring assignment extracts each value from function into a variable:\n\na, b = foo(4, 5)\n#> (add = 9, prod = 20)\n\na\n#> 9\nb\n#> 20\n\nUnderscore _\nIf only a subset of the elements of the iterator are required, a common convention is to assign ignored elements to a variable consisting of only underscores _\n\n_, _, _, d = 1:10\n#> 1:10\n\nd\n#> 4\n\nslurping ...\nIf the last symbol in the assignment list is suffixed by ... (known as slurping), then it will be assigned a collection or lazy iterator of the remaining elements of the right-hand side iterator:\n\na, b... = \"hello\"\n#> \"hello\"\n\na\n#> 'h': ASCII/Unicode U+0068 (category Ll: Letter, lowercase)\nb\n#> \"ello\"\n\n\n_, a, b... = 1:5\n#> 1:5\n\na\n#> 2\nb\n#> 3-element Vector{Int64}:\n#>  3\n#>  4\n#>  5"
   },
   {
     "objectID": "basic/function.html#argument-destructuring",
     "href": "basic/function.html#argument-destructuring",
     "title": "5  Function",
-    "section": "5.9 Argument destructuring",
-    "text": "5.9 Argument destructuring\nIf a function argument name is written as a tuple (e.g. (x, y)) instead of just a symbol, then an assignment (x, y) = argument will be inserted for you:\n\ngap((min, max)) = max - min\n#> gap (generic function with 1 method)\ngap((1, 3))\n#> 2\n\n\nminmax(x, y) = (y < x) ? (y, x) : (x, y)\n#> minmax (generic function with 1 method)\nminmax(3, 2)\n#> (2, 3)\n\n\nminmax(3, 2) |> gap\n#> 1\n\nNotice the |> pipe operator.\nFor anonymous functions, destructuring a single tuple requires an extra comma:\n\nmap(((x,y),) -> x + y, [(1,2), (3,4)])\n#> 2-element Vector{Int64}:\n#>  3\n#>  7"
+    "section": "5.10 Argument destructuring",
+    "text": "5.10 Argument destructuring\nIf a function argument name is written as a tuple (e.g. (x, y)) instead of just a symbol, then an assignment (x, y) = argument will be inserted for you:\n\ngap((min, max)) = max - min\n#> gap (generic function with 1 method)\ngap((1, 3))\n#> 2\n\n\nminmax(x, y) = (y < x) ? (y, x) : (x, y)\n#> minmax (generic function with 1 method)\nminmax(3, 2)\n#> (2, 3)\n\n\nminmax(3, 2) |> gap\n#> 1\n\nNotice the |> pipe operator.\nFor anonymous functions, destructuring a single tuple requires an extra comma:\n\nmap(((x,y),) -> x + y, [(1,2), (3,4)])\n#> 2-element Vector{Int64}:\n#>  3\n#>  7"
   },
   {
     "objectID": "basic/loop.html",
@@ -231,17 +259,24 @@
     "text": "1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "basic/type.html#user-defined-type",
-    "href": "basic/type.html#user-defined-type",
-    "title": "2  Type",
-    "section": "2.2 User-defined Type",
-    "text": "2.2 User-defined Type\nlet’s create a struct to represent scientific open source programming languages.\n\nstruct Language\n    name::String\n    title::String\n    year_of_birth::Int64\n    fast::Bool\nend\n\nAccess field names\n\nfieldnames(Language)\n#> (:name, :title, :year_of_birth, :fast)\n\n\n2.2.1 Initiate objects (immutable)\n\njulia = Language(\"Julia\", \"Rapidus\", 2012, true)\n#> Language(\"Julia\", \"Rapidus\", 2012, true)\nR = Language(\"R\", \"R & R\", 1993, false)\n#> Language(\"R\", \"R & R\", 1993, false)\n\n\ntypeof(julia)\n#> Language\n\n\n\n2.2.2 Accessing individual values\n\njulia.name\n#> \"Julia\"\nR.name\n#> \"R\"\n\n\n\n2.2.3 Printing with Base.show method\n\n\"Hello World\"\n#> \"Hello World\"\nBase.show(\"Hello World\")\n#> \"Hello World\"\n\nImplement using print()\n\nprint(\"Hello World\")\n#> Hello World\n\n\nusing Dates\n\n\nfunction Base.show(io::IO, l::Language)\n\n    years_old = year(today()) - l.year_of_birth\n    print(io, \"$(l.name) is $years_old years old,\")\n    print(io, \" created by $(l.title).\") \n\n    return nothing\nend\n\n\njulia\n#> Julia is 10 years old, created by Rapidus.\n\n\nR\n#> R is 29 years old, created by R & R."
+    "objectID": "basic/string.html#string-manipulation",
+    "href": "basic/string.html#string-manipulation",
+    "title": "3  String",
+    "section": "3.5 String Manipulation",
+    "text": "3.5 String Manipulation\n\njulia_string = \"Julia is an amazing open source programming language\"\n#> \"Julia is an amazing open source programming language\"\n\nRegex define with r“text”\n\nr\"sometext\"\n#> r\"sometext\"\ntypeof(r\"sometext\")\n#> Regex\n\n\n3.5.1 Conditional Testing\nsubstring of the first argument\n\ncontains(julia_string, \"Julia\")\n#> true\n# Regex\ncontains(julia_string, r\"J.+e$\")\n#> true\n\nStarts With of the first argument\n\nstartswith(julia_string, \"Julia\")\n#> true\n\nEnds With of the first argument\n\nendswith(julia_string, \"Julia\")\n#> false\n\n\n\n3.5.2 Change Cases\n\nlowercase(julia_string)\n#> \"julia is an amazing open source programming language\"\n\n\nuppercase(julia_string)\n#> \"JULIA IS AN AMAZING OPEN SOURCE PROGRAMMING LANGUAGE\"\n\n\ntitlecase(julia_string)\n#> \"Julia Is An Amazing Open Source Programming Language\"\n\n\n\n3.5.3 Replace & Split\n\nreplace(\"R is a programming language.\", \"R\" => \"Julia\")\n#> \"Julia is a programming language.\"\n\ncount args\n\nreplace(\"R user comes from useR.\", \"R\" => \"Julia\")\n#> \"Julia user comes from useJulia.\"\nreplace(\"R user comes from useR.\", \"R\" => \"Julia\", count=1)\n#> \"Julia user comes from useR.\"\n\n\nsplit(\"a b c d\")\n#> 4-element Vector{SubString{String}}:\n#>  \"a\"\n#>  \"b\"\n#>  \"c\"\n#>  \"d\"\nsplit(\"a, b, c, d\", r\"\\s*,\\s*\")\n#> 4-element Vector{SubString{String}}:\n#>  \"a\"\n#>  \"b\"\n#>  \"c\"\n#>  \"d\""
   },
   {
-    "objectID": "basic/intro.html#operator",
-    "href": "basic/intro.html#operator",
-    "title": "1  Introduction",
-    "section": "1.5 Operator",
-    "text": "1.5 Operator\nOperators Docs\nBoolean Operators\n\n!true\n#> false\nfalse && true\n#> false\nfalse || true\n#> true\n\nLogical Operator ignore type\n\n1 == 1.0\n#> true"
+    "objectID": "basic/string.html#string-conversion",
+    "href": "basic/string.html#string-conversion",
+    "title": "3  String",
+    "section": "3.6 String Conversion",
+    "text": "3.6 String Conversion\n\nparse(Int64, \"123\")\n#> 123\n\n\nparse(Int64, \"a\") # Error\n\nSilently parse to nothing\n\ntryparse(Int64, \"A very non-numeric string\")"
+  },
+  {
+    "objectID": "basic/function.html#side-effect",
+    "href": "basic/function.html#side-effect",
+    "title": "5  Function",
+    "section": "5.3 Side Effect !",
+    "text": "5.3 Side Effect !\nFunction that modifys argument in-place are suffix with !.\n\nfunction add_one!(V)\n    for i in 1:length(V)\n        V[i] += 1\n    end\n    return nothing\nend\n#> add_one! (generic function with 1 method)\n\n\nX = [i for i ∈ 1:3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n\n\nadd_one!(X)\nX\n#> 3-element Vector{Int64}:\n#>  2\n#>  3\n#>  4"
   }
 ]

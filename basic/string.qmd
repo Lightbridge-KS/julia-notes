@@ -21,6 +21,20 @@ s2 = """I am also a string. """
 typeof(s2)
 ```
 
+Multi-line string should enclosed with triple quotes. The indentation will be ignored by Julia to improve readablility.
+
+```{julia}
+s = """
+    This is a big multiline string with a nested "quotation".
+    As you can see.
+    It is still a String to Julia.
+    """
+```
+
+```{julia}
+print(s)
+```
+
 Single quote is for `Char`
 
 ```{julia}
@@ -73,6 +87,143 @@ s3 * s4
 ```
 
 
+`join()` is better. It allows specifying `delim` and `last` separactor
+
+```{julia}
+fruit = ["apples", "bananas", "pineapples"]
+
+join(fruit, ", ", " and ")
+```
+
+
+
+## Vectorize String
+
+Let's greet some people
+
+```{julia}
+h = "Hello"
+```
+
+```{julia}
+people = ["Marty", "Johny"]
+typeof(people)
+```
+
+```{julia}
+string.(h, " ", people)
+```
+
+```{julia}
+h .* " " .* people
+```
+
+Now write function `hello()` with 2 methods
+
+```{julia}
+hello(people::AbstractString) = "Hello" * " " * people
+hello(people::AbstractArray) = "Hello" .* " " .* people
+```
+
+```{julia}
+methods(hello)
+```
+
+```{julia}
+hello("A")
+```
+
+```{julia}
+students = ["Harry", "Ron"]
+hello(students)
+```
+
+## String Manipulation
+
+```{julia}
+julia_string = "Julia is an amazing open source programming language"
+```
+
+Regex define with `r`"text"
+
+```{julia}
+r"sometext"
+typeof(r"sometext")
+```
+
+### Conditional Testing
+
+**substring** of the first argument
+
+```{julia}
+contains(julia_string, "Julia")
+# Regex
+contains(julia_string, r"J.+e$")
+```
+
+**Starts With** of the first argument
+
+```{julia}
+startswith(julia_string, "Julia")
+```
+
+**Ends With** of the first argument
+
+```{julia}
+endswith(julia_string, "Julia")
+```
+
+### Change Cases
+
+```{julia}
+lowercase(julia_string)
+```
+
+```{julia}
+uppercase(julia_string)
+```
+
+```{julia}
+titlecase(julia_string)
+```
+
+### Replace & Split
+
+```{julia}
+replace("R is a programming language.", "R" => "Julia")
+```
+
+`count` args
+
+```{julia}
+replace("R user comes from useR.", "R" => "Julia")
+replace("R user comes from useR.", "R" => "Julia", count=1)
+```
+
+
+```{julia}
+split("a b c d")
+split("a, b, c, d", r"\s*,\s*")
+```
+
+## String Conversion
+
+```{julia}
+parse(Int64, "123")
+
+```
+
+```{julia}
+#| eval: false
+parse(Int64, "a") # Error
+```
+
+Silently parse to `nothing`
+
+```{julia}
+tryparse(Int64, "A very non-numeric string")
+```
+
 ## Exercise
 
 Create a string that says "hi" 3 times, first with repeat and then with the exponentiation operator, which can call * under the hood. Assign it the variable hi below.
@@ -104,3 +255,5 @@ c = string(a) * " + " * string(b)
 ```{julia}
 d = string(a + b)
 ```
+
+

@@ -35,6 +35,11 @@ typeof(my_pi)
 typeof(😸)
 ```
 
+Sting interpolation with `$`
+
+```{julia}
+"This is $😸"
+```
 
 ```{julia}
 #| output: false
@@ -48,11 +53,6 @@ typeof(😸)
 ```
 
 
-Check methods with a given type
-
-```{julia}
-# first(methodswith(Int64), 2)
-```
 
 ## Comment
 
@@ -117,6 +117,28 @@ Logical Operator ignore type
 ```{julia}
 1 == 1.0
 ```
+
+
+
+## Vectorized "dot" operators
+
+```{julia}
+#| eval: false
+[1,2,3] ^ 3 
+# This would Error
+```
+
+```{julia}
+[1,2,3] .^ 3
+```
+
+`a .^ b` is parsed as the "dot" call `(^).(a,b)`, which performs a broadcast operation:
+
+-   combine arrays and scalars, 
+-   arrays of the same size (performing the operation elementwise)
+-   even arrays of different shapes (e.g. combining row and column vectors to produce a matrix).
+
+
 
 
 
