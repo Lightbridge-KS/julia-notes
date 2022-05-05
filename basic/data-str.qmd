@@ -3,7 +3,7 @@
 
 ```{r, include=FALSE}
 library(here)
-here::i_am("data-str.qmd")
+here::i_am("basic/data-str.qmd")
 source(here("./_common.R"))
 ```
 

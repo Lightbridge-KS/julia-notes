@@ -2,7 +2,7 @@
 
 ```{r, include=FALSE}
 library(here)
-here::i_am("intro.qmd")
+here::i_am("basic/intro.qmd")
 source(here("./_common.R"))
 ```
 
@@ -45,6 +45,13 @@ typeof(😸)
 
 ```{julia}
 🤐 == 😀 + 😞
+```
+
+
+Check methods with a given type
+
+```{julia}
+# first(methodswith(Int64), 2)
 ```
 
 ## Comment

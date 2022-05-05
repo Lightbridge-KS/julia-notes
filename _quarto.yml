@@ -9,16 +9,17 @@ book:
   repo-url: https://github.com/Lightbridge-KS/julia-notes
   chapters:
     - index.qmd
-    - part: "Basic"
+    - part: "Foundation"
       chapters:
-        - intro.qmd
-        - string.qmd
-        - data-str.qmd
-        - function.qmd
+        - basic/intro.qmd
+        - basic/type.qmd
+        - basic/string.qmd
+        - basic/data-str.qmd
+        - basic/function.qmd
     - part: "Flow Control"
       chapters:
-        - loop.qmd
-        - conditional.qmd
+        - basic/loop.qmd
+        - basic/conditional.qmd
     - summary.qmd
     - references.qmd
 

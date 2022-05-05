@@ -1,0 +1,11 @@
+{
+  "hash": "b617b00730c2b65a7cf5d3200b323f22",
+  "result": {
+    "markdown": "# Type\n\n\n## User-defined Type\n\nlet’s create a `struct` to represent scientific open source programming languages. \n\n::: {.cell execution_count=1}\n``` {.julia .cell-code}\nstruct Language\n    name::String\n    title::String\n    year_of_birth::Int64\n    fast::Bool\nend\n```\n:::\n\n\nAccess field names\n\n::: {.cell execution_count=2}\n``` {.julia .cell-code}\nfieldnames(Language)\n```\n\n::: {.cell-output .cell-output-display execution_count=3}\n```\n(:name, :title, :year_of_birth, :fast)\n```\n:::\n:::\n\n\nInitiate objects (immutable)\n\n::: {.cell execution_count=3}\n``` {.julia .cell-code}\njulia = Language(\"Julia\", \"Rapidus\", 2012, true)\nR = Language(\"R\", \"R & R\", 1993, false)\n```\n\n::: {.cell-output .cell-output-display execution_count=4}\n```\nLanguage(\"R\", \"R & R\", 1993, false)\n```\n:::\n:::\n\n\n::: {.cell execution_count=4}\n``` {.julia .cell-code}\ntypeof(julia)\n```\n\n::: {.cell-output .cell-output-display execution_count=5}\n```\nLanguage\n```\n:::\n:::\n\n\nAccessing individual values\n\n::: {.cell execution_count=5}\n``` {.julia .cell-code}\njulia.name\nR.name\n```\n\n::: {.cell-output .cell-output-display execution_count=6}\n```\n\"R\"\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "type_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

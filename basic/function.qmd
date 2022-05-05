@@ -2,7 +2,7 @@
 
 ```{r, include=FALSE}
 library(here)
-here::i_am("function.qmd")
+here::i_am("basic/function.qmd")
 source(here("./_common.R"))
 ```
 

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.256">
+<meta name="generator" content="quarto-0.9.354">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Julia Notes - 4&nbsp; Function</title>
+<title>Julia Notes - 5&nbsp; Function</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,24 +80,24 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<link href="./loop.html" rel="next">
-<link href="./data-str.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<link href="../basic/loop.html" rel="next">
+<link href="../basic/data-str.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,13 +121,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="floating">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Function</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Function</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -140,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Julia Notes</a> 
+      <a href="../">Julia Notes</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/Lightbridge-KS/julia-notes" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
@@ -155,12 +155,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Basic</a>
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Foundation</a>
       <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
@@ -168,22 +168,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="../basic/intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./string.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">String</span></a>
+  <a href="../basic/type.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Type</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-str.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Structure</span></a>
+  <a href="../basic/string.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">String</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./function.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Function</span></a>
+  <a href="../basic/data-str.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Structure</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic/function.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Function</span></a>
   </div>
 </li>
     </ul>
@@ -198,24 +203,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./loop.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Loop</span></a>
+  <a href="../basic/loop.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Loop</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./conditional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conditional</span></a>
+  <a href="../basic/conditional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Conditional</span></a>
   </div>
 </li>
     </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></a>
+  <a href="../summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Summary</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="../references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
     </ul>
@@ -227,19 +232,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#declare-a-function" id="toc-declare-a-function" class="nav-link active" data-scroll-target="#declare-a-function"> <span class="header-section-number">4.1</span> Declare a Function</a></li>
-  <li><a href="#return-keyword" id="toc-return-keyword" class="nav-link" data-scroll-target="#return-keyword"> <span class="header-section-number">4.2</span> Return Keyword</a></li>
-  <li><a href="#infix-function" id="toc-infix-function" class="nav-link" data-scroll-target="#infix-function"> <span class="header-section-number">4.3</span> Infix Function</a></li>
-  <li><a href="#argument-type-declaration" id="toc-argument-type-declaration" class="nav-link" data-scroll-target="#argument-type-declaration"> <span class="header-section-number">4.4</span> Argument-type Declaration</a></li>
-  <li><a href="#anonymous-function" id="toc-anonymous-function" class="nav-link" data-scroll-target="#anonymous-function"> <span class="header-section-number">4.5</span> Anonymous Function</a></li>
-  <li><a href="#functional-programming" id="toc-functional-programming" class="nav-link" data-scroll-target="#functional-programming"> <span class="header-section-number">4.6</span> Functional Programming</a>
+  <li><a href="#declare-a-function" id="toc-declare-a-function" class="nav-link active" data-scroll-target="#declare-a-function"> <span class="header-section-number">5.1</span> Declare a Function</a></li>
+  <li><a href="#return-keyword" id="toc-return-keyword" class="nav-link" data-scroll-target="#return-keyword"> <span class="header-section-number">5.2</span> Return Keyword</a></li>
+  <li><a href="#infix-function" id="toc-infix-function" class="nav-link" data-scroll-target="#infix-function"> <span class="header-section-number">5.3</span> Infix Function</a></li>
+  <li><a href="#argument-type-declaration" id="toc-argument-type-declaration" class="nav-link" data-scroll-target="#argument-type-declaration"> <span class="header-section-number">5.4</span> Argument-type Declaration</a></li>
+  <li><a href="#anonymous-function" id="toc-anonymous-function" class="nav-link" data-scroll-target="#anonymous-function"> <span class="header-section-number">5.5</span> Anonymous Function</a></li>
+  <li><a href="#functional-programming" id="toc-functional-programming" class="nav-link" data-scroll-target="#functional-programming"> <span class="header-section-number">5.6</span> Functional Programming</a>
   <ul class="collapse">
-  <li><a href="#map" id="toc-map" class="nav-link" data-scroll-target="#map"> <span class="header-section-number">4.6.1</span> Map</a></li>
-  <li><a href="#broadcast" id="toc-broadcast" class="nav-link" data-scroll-target="#broadcast"> <span class="header-section-number">4.6.2</span> Broadcast</a></li>
+  <li><a href="#map" id="toc-map" class="nav-link" data-scroll-target="#map"> <span class="header-section-number">5.6.1</span> Map</a></li>
+  <li><a href="#broadcast" id="toc-broadcast" class="nav-link" data-scroll-target="#broadcast"> <span class="header-section-number">5.6.2</span> Broadcast</a></li>
   </ul></li>
-  <li><a href="#multiple-return-values" id="toc-multiple-return-values" class="nav-link" data-scroll-target="#multiple-return-values"> <span class="header-section-number">4.7</span> Multiple Return Values</a></li>
-  <li><a href="#destructuring-assignment" id="toc-destructuring-assignment" class="nav-link" data-scroll-target="#destructuring-assignment"> <span class="header-section-number">4.8</span> Destructuring Assignment</a></li>
-  <li><a href="#argument-destructuring" id="toc-argument-destructuring" class="nav-link" data-scroll-target="#argument-destructuring"> <span class="header-section-number">4.9</span> Argument destructuring</a></li>
+  <li><a href="#multiple-return-values" id="toc-multiple-return-values" class="nav-link" data-scroll-target="#multiple-return-values"> <span class="header-section-number">5.7</span> Multiple Return Values</a></li>
+  <li><a href="#destructuring-assignment" id="toc-destructuring-assignment" class="nav-link" data-scroll-target="#destructuring-assignment"> <span class="header-section-number">5.8</span> Destructuring Assignment</a></li>
+  <li><a href="#argument-destructuring" id="toc-argument-destructuring" class="nav-link" data-scroll-target="#argument-destructuring"> <span class="header-section-number">5.9</span> Argument destructuring</a></li>
   </ul>
 </nav>
     </div>
@@ -248,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Function</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Function</span></h1>
 </div>
 
 
@@ -265,8 +270,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>See <a href="https://docs.julialang.org/en/v1/manual/functions/">Function</a></p>
-<section id="declare-a-function" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="declare-a-function"><span class="header-section-number">4.1</span> Declare a Function</h2>
+<section id="declare-a-function" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="declare-a-function"><span class="header-section-number">5.1</span> Declare a Function</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">sayhi</span>(name)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"Hi </span><span class="sc">$</span>name<span class="st">, it's great to see you!"</span>)</span>
@@ -286,8 +291,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="return-keyword" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="return-keyword"><span class="header-section-number">4.2</span> Return Keyword</h2>
+<section id="return-keyword" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="return-keyword"><span class="header-section-number">5.2</span> Return Keyword</h2>
 <p>Like <code>R</code> the last line in the body of function is returned.</p>
 <p>If you want to return prematurely use <code>return</code> keyword.</p>
 <div class="cell">
@@ -302,8 +307,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>If function has no return value (called for side-effect), return <code>nothing</code> by convention.</p>
 </section>
-<section id="infix-function" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="infix-function"><span class="header-section-number">4.3</span> Infix Function</h2>
+<section id="infix-function" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="infix-function"><span class="header-section-number">5.3</span> Infix Function</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span> <span class="op">+</span> <span class="fl">2</span> <span class="op">+</span> <span class="fl">3</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6</span></span>
@@ -312,8 +317,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="argument-type-declaration" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="argument-type-declaration"><span class="header-section-number">4.4</span> Argument-type Declaration</h2>
+<section id="argument-type-declaration" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="argument-type-declaration"><span class="header-section-number">5.4</span> Argument-type Declaration</h2>
 <p><code>Integer</code> method</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fib</span>(n<span class="op">::</span><span class="dt">Integer</span>) <span class="op">=</span> n <span class="op">≤</span> <span class="fl">2</span> ? <span class="fu">one</span>(n) <span class="op">:</span> <span class="fu">fib</span>(n<span class="op">-</span><span class="fl">1</span>) <span class="op">+</span> <span class="fu">fib</span>(n<span class="op">-</span><span class="fl">2</span>)</span>
@@ -338,8 +343,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This will error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="anonymous-function" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="anonymous-function"><span class="header-section-number">4.5</span> Anonymous Function</h2>
+<section id="anonymous-function" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="anonymous-function"><span class="header-section-number">5.5</span> Anonymous Function</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">-&gt;</span> x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span>x <span class="op">-</span> <span class="fl">1</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #35 (generic function with 1 method)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -347,10 +352,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The primary use for anonymous functions is passing them to functions which take other functions as arguments.</p>
 <p>Useful in <code>map(f, collection)</code></p>
 </section>
-<section id="functional-programming" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="functional-programming"><span class="header-section-number">4.6</span> Functional Programming</h2>
-<section id="map" class="level3" data-number="4.6.1">
-<h3 data-number="4.6.1" class="anchored" data-anchor-id="map"><span class="header-section-number">4.6.1</span> Map</h3>
+<section id="functional-programming" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="functional-programming"><span class="header-section-number">5.6</span> Functional Programming</h2>
+<section id="map" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="map"><span class="header-section-number">5.6.1</span> Map</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>📖 <span class="op">=</span> [<span class="fl">1.2</span>, <span class="fl">2.7</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2-element Vector{Float64}:</span></span>
@@ -370,8 +375,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6.4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="broadcast" class="level3" data-number="4.6.2">
-<h3 data-number="4.6.2" class="anchored" data-anchor-id="broadcast"><span class="header-section-number">4.6.2</span> Broadcast</h3>
+<section id="broadcast" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="broadcast"><span class="header-section-number">5.6.2</span> Broadcast</h3>
 <p>Shorter way is to <code>broadcast</code> a function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">h</span>(x) <span class="op">=</span> <span class="fl">2</span>x <span class="op">+</span> <span class="fl">1</span></span>
@@ -383,8 +388,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 </section>
-<section id="multiple-return-values" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="multiple-return-values"><span class="header-section-number">4.7</span> Multiple Return Values</h2>
+<section id="multiple-return-values" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="multiple-return-values"><span class="header-section-number">5.7</span> Multiple Return Values</h2>
 <p>A tuple is useful for return multiple values from a function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">foo</span>(a,b)</span>
@@ -402,8 +407,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="destructuring-assignment" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="destructuring-assignment"><span class="header-section-number">4.8</span> Destructuring Assignment</h2>
+<section id="destructuring-assignment" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="destructuring-assignment"><span class="header-section-number">5.8</span> Destructuring Assignment</h2>
 <p>A comma-separated list of variables (optionally wrapped in parentheses) can appear on the left side of an assignment: the value on the right side is destructured by iterating over and assigning to each variable in turn:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(a,b,c) <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span> </span>
@@ -458,8 +463,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="argument-destructuring" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="argument-destructuring"><span class="header-section-number">4.9</span> Argument destructuring</h2>
+<section id="argument-destructuring" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="argument-destructuring"><span class="header-section-number">5.9</span> Argument destructuring</h2>
 <p>If a function argument name is written as a tuple (e.g.&nbsp;(x, y)) instead of just a symbol, then an assignment (x, y) = argument will be inserted for you:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gap</span>((min, max)) <span class="op">=</span> max <span class="op">-</span> min</span>
@@ -490,7 +495,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 
 </main> <!-- /main -->
-<script type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const icon = "";
   const anchorJS = new window.AnchorJS();
@@ -511,7 +516,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.blur();
     // flash "checked"
     button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
     setTimeout(function() {
+      button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
@@ -568,13 +576,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./data-str.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Structure</span></span>
+      <a href="../basic/data-str.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Structure</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./loop.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Loop</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../basic/loop.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Loop</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

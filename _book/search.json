@@ -7,219 +7,226 @@
     "text": "About\n\n\n\nThis is my notes on playing with Julia language."
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
+    "objectID": "basic/intro.html",
+    "href": "basic/intro.html",
     "title": "1  Introduction",
     "section": "",
     "text": "println() print to newline.\n\nprintln(\"Hello, World\")\n#> Hello, World"
   },
   {
-    "objectID": "intro.html#assign-variable",
-    "href": "intro.html#assign-variable",
+    "objectID": "basic/intro.html#assign-variable",
+    "href": "basic/intro.html#assign-variable",
     "title": "1  Introduction",
     "section": "1.2 Assign Variable",
-    "text": "1.2 Assign Variable\nDynamic typing\n\nmy_int = 10\n#> 10\ntypeof(my_int)\n#> Int64\n\n\nmy_pi = 3.1416\n#> 3.1416\ntypeof(my_pi)\n#> Float64\n\n\n😸 = \"smily cat\"\n#> \"smily cat\"\ntypeof(😸)\n#> String\n\n\n😀 = 1\n😞 = -1\n🤐 = 0\n\n\n🤐 == 😀 + 😞\n#> true"
+    "text": "1.2 Assign Variable\nDynamic typing\n\nmy_int = 10\n#> 10\ntypeof(my_int)\n#> Int64\n\n\nmy_pi = 3.1416\n#> 3.1416\ntypeof(my_pi)\n#> Float64\n\n\n😸 = \"smily cat\"\n#> \"smily cat\"\ntypeof(😸)\n#> String\n\n\n😀 = 1\n😞 = -1\n🤐 = 0\n\n\n🤐 == 😀 + 😞\n#> true\n\nCheck methods with a given type\n\n# first(methodswith(Int64), 2)"
   },
   {
-    "objectID": "intro.html#comment",
-    "href": "intro.html#comment",
+    "objectID": "basic/intro.html#comment",
+    "href": "basic/intro.html#comment",
     "title": "1  Introduction",
     "section": "1.3 Comment",
     "text": "1.3 Comment\n\n# This is comment\n\n\n#=\n\nThis \nis \nMultiline Comment\n\n=#"
   },
   {
-    "objectID": "intro.html#basic-math",
-    "href": "intro.html#basic-math",
+    "objectID": "basic/intro.html#basic-math",
+    "href": "basic/intro.html#basic-math",
     "title": "1  Introduction",
     "section": "1.4 Basic Math",
     "text": "1.4 Basic Math\n\n1 + 1\n#> 2\n\n\n1 - 1\n#> 0\n\n\n2 * 3\n#> 6\n\n\n3 / 2\n#> 1.5\n\nlike R\n\n10 ^ 2\n#> 100\n\nlike Python\n\n5 % 2\n#> 1"
   },
   {
-    "objectID": "intro.html#exercise",
-    "href": "intro.html#exercise",
+    "objectID": "basic/intro.html#exercise",
+    "href": "basic/intro.html#exercise",
     "title": "1  Introduction",
     "section": "1.5 Exercise",
     "text": "1.5 Exercise\nconvert() function\n\ndays = 365\n\n\ndays_float = convert(Float64, days) # Convert to Float64\n#> 365.0\n\n\ndays == days_float \n#> true\n\n\n@assert days == 365\n@assert days_float == 365.0\n\n\nconvert(Int64, \"1\") # Error\n\n\nparse(Int64, \"1\")\n#> 1"
   },
   {
-    "objectID": "string.html",
-    "href": "string.html",
-    "title": "2  String",
+    "objectID": "basic/type.html",
+    "href": "basic/type.html",
+    "title": "2  Type",
+    "section": "",
+    "text": "let’s create a struct to represent scientific open source programming languages.\n\nstruct Language\n    name::String\n    title::String\n    year_of_birth::Int64\n    fast::Bool\nend\n\nAccess field names\n\nfieldnames(Language)\n#> (:name, :title, :year_of_birth, :fast)\n\nInitiate objects (immutable)\n\njulia = Language(\"Julia\", \"Rapidus\", 2012, true)\n#> Language(\"Julia\", \"Rapidus\", 2012, true)\nR = Language(\"R\", \"R & R\", 1993, false)\n#> Language(\"R\", \"R & R\", 1993, false)\n\n\ntypeof(julia)\n#> Language\n\nAccessing individual values\n\njulia.name\n#> \"Julia\"\nR.name\n#> \"R\""
+  },
+  {
+    "objectID": "basic/string.html",
+    "href": "basic/string.html",
+    "title": "3  String",
     "section": "",
     "text": "Enclose your String in ” ” or ““” “““!\n\ns1 = \"I am a string.\"\n#> \"I am a string.\"\ntypeof(s1)\n#> String\n\n\ns2 = \"\"\"I am also a string. \"\"\"\n#> \"I am also a string. \"\ntypeof(s2)\n#> String\n\nSingle quote is for Char\n\ntypeof('a')\n#> Char"
   },
   {
-    "objectID": "string.html#string-interpolation",
-    "href": "string.html#string-interpolation",
-    "title": "2  String",
-    "section": "2.2 String Interpolation",
-    "text": "2.2 String Interpolation\nSimilar to shell\n\nname = \"Joe\"\nnum_fingers = 10\nnum_toes = 10\n\nUse $ to refer to variable.\n\nprintln(\"Hello, my name is $name.\")\n#> Hello, my name is Joe.\nprintln(\"I have $num_fingers fingers and $num_toes toes.\")\n#> I have 10 fingers and 10 toes.\n\nRun expression in $(command)\n\nprintln(\"That is $(num_fingers + num_toes) digits in all!!\")\n#> That is 20 digits in all!!"
+    "objectID": "basic/string.html#string-interpolation",
+    "href": "basic/string.html#string-interpolation",
+    "title": "3  String",
+    "section": "3.2 String Interpolation",
+    "text": "3.2 String Interpolation\nSimilar to shell\n\nname = \"Joe\"\nnum_fingers = 10\nnum_toes = 10\n\nUse $ to refer to variable.\n\nprintln(\"Hello, my name is $name.\")\n#> Hello, my name is Joe.\nprintln(\"I have $num_fingers fingers and $num_toes toes.\")\n#> I have 10 fingers and 10 toes.\n\nRun expression in $(command)\n\nprintln(\"That is $(num_fingers + num_toes) digits in all!!\")\n#> That is 20 digits in all!!"
   },
   {
-    "objectID": "string.html#concatenate-string",
-    "href": "string.html#concatenate-string",
-    "title": "2  String",
-    "section": "2.3 Concatenate String",
-    "text": "2.3 Concatenate String\n\ns3 = \"How many cats \";\ns4 = \"is too many cats?\";\n😺 = 10\n\nstring() converts non-string inputs to strings.\n\nstring(s3, s4)\n#> \"How many cats is too many cats?\"\n\nWe can also use * for concatenation!\n\ns3 * s4\n#> \"How many cats is too many cats?\""
+    "objectID": "basic/string.html#concatenate-string",
+    "href": "basic/string.html#concatenate-string",
+    "title": "3  String",
+    "section": "3.3 Concatenate String",
+    "text": "3.3 Concatenate String\n\ns3 = \"How many cats \";\ns4 = \"is too many cats?\";\n😺 = 10\n\nstring() converts non-string inputs to strings.\n\nstring(s3, s4)\n#> \"How many cats is too many cats?\"\n\nWe can also use * for concatenation!\n\ns3 * s4\n#> \"How many cats is too many cats?\""
   },
   {
-    "objectID": "string.html#exercise",
-    "href": "string.html#exercise",
-    "title": "2  String",
-    "section": "2.4 Exercise",
-    "text": "2.4 Exercise\nCreate a string that says “hi” 3 times, first with repeat and then with the exponentiation operator, which can call * under the hood. Assign it the variable hi below.\n\nrepeat(\"hi\", 3)\n#> \"hihihi\"\n\n\n\"hi\"^3\n#> \"hihihi\"\n\nDeclare two variables\n\na = 3\nb = 4\n\nand use them to create two strings:\n\nc = string(a) * \" + \" * string(b)\n#> \"3 + 4\"\n\n\nd = string(a + b)\n#> \"7\""
+    "objectID": "basic/string.html#exercise",
+    "href": "basic/string.html#exercise",
+    "title": "3  String",
+    "section": "3.4 Exercise",
+    "text": "3.4 Exercise\nCreate a string that says “hi” 3 times, first with repeat and then with the exponentiation operator, which can call * under the hood. Assign it the variable hi below.\n\nrepeat(\"hi\", 3)\n#> \"hihihi\"\n\n\n\"hi\"^3\n#> \"hihihi\"\n\nDeclare two variables\n\na = 3\nb = 4\n\nand use them to create two strings:\n\nc = string(a) * \" + \" * string(b)\n#> \"3 + 4\"\n\n\nd = string(a + b)\n#> \"7\""
   },
   {
-    "objectID": "data-str.html",
-    "href": "data-str.html",
-    "title": "3  Data Structure",
+    "objectID": "basic/data-str.html",
+    "href": "basic/data-str.html",
+    "title": "4  Data Structure",
     "section": "",
     "text": "Types of data structures covered:\ntuples and arrays are both ordered sequences of elements (so we can index into them). Dictionaries and arrays are both mutable.\nJulia is 1 indexing."
   },
   {
-    "objectID": "data-str.html#tuples",
-    "href": "data-str.html#tuples",
-    "title": "3  Data Structure",
-    "section": "3.1 Tuples",
-    "text": "3.1 Tuples\nWe can create a tuple by enclosing an ordered collection of elements in ( ).\nTuple can be named or unnamed.\n(name1 = item1, name2 = item2, ...)\n\nfav_anims = (\"penguins\", \"cats\", \"sugargliders\")\n#> (\"penguins\", \"cats\", \"sugargliders\")\nfav_anims_named = (bird = \"penguins\", mammal = \"cats\", marsupial = \"sugargliders\")\n#> (bird = \"penguins\", mammal = \"cats\", marsupial = \"sugargliders\")\n\n# Indexing\nfav_anims[1]\n#> \"penguins\"\nfav_anims_named[2]\n#> \"cats\"\n\n# Dot Notation\nfav_anims_named.bird\n#> \"penguins\"\n\n\ntypeof(fav_anims)\n#> Tuple{String, String, String}\ntypeof(fav_anims_named)\n#> NamedTuple{(:bird, :mammal, :marsupial), Tuple{String, String, String}}\n\nSubset first & Last value\n\nfav_anims[begin]\n#> \"penguins\"\nfav_anims[end]\n#> \"sugargliders\"\n\nTuples is unmutable. This will get Error.\n\nfav_anims[1] = \"Otters\" # Error"
+    "objectID": "basic/data-str.html#tuples",
+    "href": "basic/data-str.html#tuples",
+    "title": "4  Data Structure",
+    "section": "4.1 Tuples",
+    "text": "4.1 Tuples\nWe can create a tuple by enclosing an ordered collection of elements in ( ).\nTuple can be named or unnamed.\n(name1 = item1, name2 = item2, ...)\n\nfav_anims = (\"penguins\", \"cats\", \"sugargliders\")\n#> (\"penguins\", \"cats\", \"sugargliders\")\nfav_anims_named = (bird = \"penguins\", mammal = \"cats\", marsupial = \"sugargliders\")\n#> (bird = \"penguins\", mammal = \"cats\", marsupial = \"sugargliders\")\n\n# Indexing\nfav_anims[1]\n#> \"penguins\"\nfav_anims_named[2]\n#> \"cats\"\n\n# Dot Notation\nfav_anims_named.bird\n#> \"penguins\"\n\n\ntypeof(fav_anims)\n#> Tuple{String, String, String}\ntypeof(fav_anims_named)\n#> NamedTuple{(:bird, :mammal, :marsupial), Tuple{String, String, String}}\n\nSubset first & Last value\n\nfav_anims[begin]\n#> \"penguins\"\nfav_anims[end]\n#> \"sugargliders\"\n\nTuples is unmutable. This will get Error.\n\nfav_anims[1] = \"Otters\" # Error"
   },
   {
-    "objectID": "data-str.html#dictionary",
-    "href": "data-str.html#dictionary",
-    "title": "3  Data Structure",
-    "section": "3.2 Dictionary",
-    "text": "3.2 Dictionary\nDict(key1 => value1, key2 => value2, ...)\n\nmyphonebook = Dict(\"Jenny\" => \"867-5309\", \"Ghostbusters\" => \"555-2368\")\n#> Dict{String, String} with 2 entries:\n#>   \"Jenny\"        => \"867-5309\"\n#>   \"Ghostbusters\" => \"555-2368\"\n\nor construct by tuples:\n\nDict( [(\"A\", 1), (\"B\", 2)] )\n#> Dict{String, Int64} with 2 entries:\n#>   \"B\" => 2\n#>   \"A\" => 1\n\nSubset with Key\n\nmyphonebook[\"Jenny\"]\n#> \"867-5309\"\n\nAdd another item\n\nmyphonebook[\"Kramer\"] = \"555-FILK\"\n#> \"555-FILK\"\n\n\nmyphonebook\n#> Dict{String, String} with 3 entries:\n#>   \"Jenny\"        => \"867-5309\"\n#>   \"Kramer\"       => \"555-FILK\"\n#>   \"Ghostbusters\" => \"555-2368\"\n\nRemove Item (modify in-place)\n\npop!(myphonebook, \"Kramer\")\n#> \"555-FILK\""
+    "objectID": "basic/data-str.html#dictionary",
+    "href": "basic/data-str.html#dictionary",
+    "title": "4  Data Structure",
+    "section": "4.2 Dictionary",
+    "text": "4.2 Dictionary\nDict(key1 => value1, key2 => value2, ...)\n\nmyphonebook = Dict(\"Jenny\" => \"867-5309\", \"Ghostbusters\" => \"555-2368\")\n#> Dict{String, String} with 2 entries:\n#>   \"Jenny\"        => \"867-5309\"\n#>   \"Ghostbusters\" => \"555-2368\"\n\nor construct by tuples:\n\nDict( [(\"A\", 1), (\"B\", 2)] )\n#> Dict{String, Int64} with 2 entries:\n#>   \"B\" => 2\n#>   \"A\" => 1\n\nSubset with Key\n\nmyphonebook[\"Jenny\"]\n#> \"867-5309\"\n\nAdd another item\n\nmyphonebook[\"Kramer\"] = \"555-FILK\"\n#> \"555-FILK\"\n\n\nmyphonebook\n#> Dict{String, String} with 3 entries:\n#>   \"Jenny\"        => \"867-5309\"\n#>   \"Kramer\"       => \"555-FILK\"\n#>   \"Ghostbusters\" => \"555-2368\"\n\nRemove Item (modify in-place)\n\npop!(myphonebook, \"Kramer\")\n#> \"555-FILK\""
   },
   {
-    "objectID": "data-str.html#arrays",
-    "href": "data-str.html#arrays",
-    "title": "3  Data Structure",
-    "section": "3.3 Arrays",
-    "text": "3.3 Arrays\n[item1, item2, ...]\nsimilar to R vector\n\nmyfriends = [\"Ted\", \"Robyn\", \"Barney\", \"Lily\", \"Marshall\"]\n#> 5-element Vector{String}:\n#>  \"Ted\"\n#>  \"Robyn\"\n#>  \"Barney\"\n#>  \"Lily\"\n#>  \"Marshall\"\n\nArray{String,1} means this is a one dimensional vector. An Array{String,2} would be a 2d matrix.\n\nfibonacci = [1, 1, 2, 3, 5, 8, 13]\n#> 7-element Vector{Int64}:\n#>   1\n#>   1\n#>   2\n#>   3\n#>   5\n#>   8\n#>  13\n\n\nmixture = [1, 1, 2, 3, \"Ted\", \"Robyn\"]\n#> 6-element Vector{Any}:\n#>  1\n#>  1\n#>  2\n#>  3\n#>   \"Ted\"\n#>   \"Robyn\"\nmixture[1]\n#> 1\n\npush! adds an element to the end of an array and pop! removes the last element of an array.\n\npush!(fibonacci, 21)\n#> 8-element Vector{Int64}:\n#>   1\n#>   1\n#>   2\n#>   3\n#>   5\n#>   8\n#>  13\n#>  21\n\n\npop!(fibonacci)\n#> 21\n\n\n3.3.1 Multi-dims Array\n\nfavorites = [\n    [\"koobideh\", \"chocolate\", \"eggs\"],\n    [\"penguins\", \"cats\", \"sugargliders\"]\n    ]\n#> 2-element Vector{Vector{String}}:\n#>  [\"koobideh\", \"chocolate\", \"eggs\"]\n#>  [\"penguins\", \"cats\", \"sugargliders\"]\n\n\nrand(4, 3)\n#> 4×3 Matrix{Float64}:\n#>  0.241605   0.487782  0.324184\n#>  0.0850114  0.237596  0.108172\n#>  0.781271   0.180168  0.108469\n#>  0.573843   0.103586  0.420961\n\n\n\n3.3.2 Copy Array\nThe correct way is\n\nsomemorenumbers = copy(fibonacci)\n#> 7-element Vector{Int64}:\n#>   1\n#>   1\n#>   2\n#>   3\n#>   5\n#>   8\n#>  13\n\nwhich will bound to different memory ID."
+    "objectID": "basic/data-str.html#arrays",
+    "href": "basic/data-str.html#arrays",
+    "title": "4  Data Structure",
+    "section": "4.3 Arrays",
+    "text": "4.3 Arrays\n[item1, item2, ...]\nsimilar to R vector\n\nmyfriends = [\"Ted\", \"Robyn\", \"Barney\", \"Lily\", \"Marshall\"]\n#> 5-element Vector{String}:\n#>  \"Ted\"\n#>  \"Robyn\"\n#>  \"Barney\"\n#>  \"Lily\"\n#>  \"Marshall\"\n\nArray{String,1} means this is a one dimensional vector. An Array{String,2} would be a 2d matrix.\n\nfibonacci = [1, 1, 2, 3, 5, 8, 13]\n#> 7-element Vector{Int64}:\n#>   1\n#>   1\n#>   2\n#>   3\n#>   5\n#>   8\n#>  13\n\n\nmixture = [1, 1, 2, 3, \"Ted\", \"Robyn\"]\n#> 6-element Vector{Any}:\n#>  1\n#>  1\n#>  2\n#>  3\n#>   \"Ted\"\n#>   \"Robyn\"\nmixture[1]\n#> 1\n\npush! adds an element to the end of an array and pop! removes the last element of an array.\n\npush!(fibonacci, 21)\n#> 8-element Vector{Int64}:\n#>   1\n#>   1\n#>   2\n#>   3\n#>   5\n#>   8\n#>  13\n#>  21\n\n\npop!(fibonacci)\n#> 21\n\n\n4.3.1 Multi-dims Array\n\nfavorites = [\n    [\"koobideh\", \"chocolate\", \"eggs\"],\n    [\"penguins\", \"cats\", \"sugargliders\"]\n    ]\n#> 2-element Vector{Vector{String}}:\n#>  [\"koobideh\", \"chocolate\", \"eggs\"]\n#>  [\"penguins\", \"cats\", \"sugargliders\"]\n\n\nrand(4, 3)\n#> 4×3 Matrix{Float64}:\n#>  0.205309   0.867579   0.598126\n#>  0.0416623  0.0442032  0.826039\n#>  0.129189   0.910989   0.667986\n#>  0.0980359  0.144535   0.40367\n\n\n\n4.3.2 Copy Array\nThe correct way is\n\nsomemorenumbers = copy(fibonacci)\n#> 7-element Vector{Int64}:\n#>   1\n#>   1\n#>   2\n#>   3\n#>   5\n#>   8\n#>  13\n\nwhich will bound to different memory ID."
   },
   {
-    "objectID": "data-str.html#exercise",
-    "href": "data-str.html#exercise",
-    "title": "3  Data Structure",
-    "section": "3.4 Exercise",
-    "text": "3.4 Exercise\n\na_ray = [1, 2, 3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n\n# Add 4\npush!(a_ray, 4)\n#> 4-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n#>  4\n# Remove 4\npop!(a_ray)\n#> 4\n\na_ray\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3"
+    "objectID": "basic/data-str.html#exercise",
+    "href": "basic/data-str.html#exercise",
+    "title": "4  Data Structure",
+    "section": "4.4 Exercise",
+    "text": "4.4 Exercise\n\na_ray = [1, 2, 3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n\n# Add 4\npush!(a_ray, 4)\n#> 4-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n#>  4\n# Remove 4\npop!(a_ray)\n#> 4\n\na_ray\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3"
   },
   {
-    "objectID": "function.html",
-    "href": "function.html",
-    "title": "4  Function",
+    "objectID": "basic/function.html",
+    "href": "basic/function.html",
+    "title": "5  Function",
     "section": "",
     "text": "See Function"
   },
   {
-    "objectID": "function.html#declare-a-function",
-    "href": "function.html#declare-a-function",
-    "title": "4  Function",
-    "section": "4.1 Declare a Function",
-    "text": "4.1 Declare a Function\n\nfunction sayhi(name)\n    println(\"Hi $name, it's great to see you!\")\nend\n#> sayhi (generic function with 1 method)\n\n\nsayhi(\"😸\")\n#> Hi 😸, it's great to see you!\n\nSingle line\n\nsquare(x) = x^2\n#> square (generic function with 1 method)\n\nsquare(3)\n#> 9"
+    "objectID": "basic/function.html#declare-a-function",
+    "href": "basic/function.html#declare-a-function",
+    "title": "5  Function",
+    "section": "5.1 Declare a Function",
+    "text": "5.1 Declare a Function\n\nfunction sayhi(name)\n    println(\"Hi $name, it's great to see you!\")\nend\n#> sayhi (generic function with 1 method)\n\n\nsayhi(\"😸\")\n#> Hi 😸, it's great to see you!\n\nSingle line\n\nsquare(x) = x^2\n#> square (generic function with 1 method)\n\nsquare(3)\n#> 9"
   },
   {
-    "objectID": "function.html#return-keyword",
-    "href": "function.html#return-keyword",
-    "title": "4  Function",
-    "section": "4.2 Return Keyword",
-    "text": "4.2 Return Keyword\nLike R the last line in the body of function is returned.\nIf you want to return prematurely use return keyword.\n\nfunction g(x,y)\n    return x * y\n    x + y\nend\n#> g (generic function with 1 method)\n\ng(1, 2)\n#> 2\n\nIf function has no return value (called for side-effect), return nothing by convention."
+    "objectID": "basic/function.html#return-keyword",
+    "href": "basic/function.html#return-keyword",
+    "title": "5  Function",
+    "section": "5.2 Return Keyword",
+    "text": "5.2 Return Keyword\nLike R the last line in the body of function is returned.\nIf you want to return prematurely use return keyword.\n\nfunction g(x,y)\n    return x * y\n    x + y\nend\n#> g (generic function with 1 method)\n\ng(1, 2)\n#> 2\n\nIf function has no return value (called for side-effect), return nothing by convention."
   },
   {
-    "objectID": "function.html#infix-function",
-    "href": "function.html#infix-function",
-    "title": "4  Function",
-    "section": "4.3 Infix Function",
-    "text": "4.3 Infix Function\n\n1 + 2 + 3\n#> 6\n\n+(1,2,3)\n#> 6"
+    "objectID": "basic/function.html#infix-function",
+    "href": "basic/function.html#infix-function",
+    "title": "5  Function",
+    "section": "5.3 Infix Function",
+    "text": "5.3 Infix Function\n\n1 + 2 + 3\n#> 6\n\n+(1,2,3)\n#> 6"
   },
   {
-    "objectID": "function.html#argument-type-declaration",
-    "href": "function.html#argument-type-declaration",
-    "title": "4  Function",
-    "section": "4.4 Argument-type Declaration",
-    "text": "4.4 Argument-type Declaration\nInteger method\n\nfib(n::Integer) = n ≤ 2 ? one(n) : fib(n-1) + fib(n-2)\n#> fib (generic function with 1 method)\n\n\nfib(4)\n#> 3\n\nString method\n\nfib(x::String) = x^fib(length(x))\n#> fib (generic function with 2 methods)\n\n\nfib(\"abcd\")\n#> \"abcdabcdabcd\"\n\nInput non-defined argument type will error.\n\nfib(1.5)\n# This will error"
+    "objectID": "basic/function.html#argument-type-declaration",
+    "href": "basic/function.html#argument-type-declaration",
+    "title": "5  Function",
+    "section": "5.4 Argument-type Declaration",
+    "text": "5.4 Argument-type Declaration\nInteger method\n\nfib(n::Integer) = n ≤ 2 ? one(n) : fib(n-1) + fib(n-2)\n#> fib (generic function with 1 method)\n\n\nfib(4)\n#> 3\n\nString method\n\nfib(x::String) = x^fib(length(x))\n#> fib (generic function with 2 methods)\n\n\nfib(\"abcd\")\n#> \"abcdabcdabcd\"\n\nInput non-defined argument type will error.\n\nfib(1.5)\n# This will error"
   },
   {
-    "objectID": "function.html#anonymous-function",
-    "href": "function.html#anonymous-function",
-    "title": "4  Function",
-    "section": "4.5 Anonymous Function",
-    "text": "4.5 Anonymous Function\n\nx -> x^2 + 2x - 1\n#> #35 (generic function with 1 method)\n\nThe primary use for anonymous functions is passing them to functions which take other functions as arguments.\nUseful in map(f, collection)"
+    "objectID": "basic/function.html#anonymous-function",
+    "href": "basic/function.html#anonymous-function",
+    "title": "5  Function",
+    "section": "5.5 Anonymous Function",
+    "text": "5.5 Anonymous Function\n\nx -> x^2 + 2x - 1\n#> #35 (generic function with 1 method)\n\nThe primary use for anonymous functions is passing them to functions which take other functions as arguments.\nUseful in map(f, collection)"
   },
   {
-    "objectID": "function.html#functional-programming",
-    "href": "function.html#functional-programming",
-    "title": "4  Function",
-    "section": "4.6 Functional Programming",
-    "text": "4.6 Functional Programming\n\n4.6.1 Map\n\n📖 = [1.2, 2.7]\n#> 2-element Vector{Float64}:\n#>  1.2\n#>  2.7\n\n\nmap(round, 📖)\n#> 2-element Vector{Float64}:\n#>  1.0\n#>  3.0\n\n\nmap(x -> 2x + 1, 📖)\n#> 2-element Vector{Float64}:\n#>  3.4\n#>  6.4\n\n\n\n4.6.2 Broadcast\nShorter way is to broadcast a function.\n\nh(x) = 2x + 1\n#> h (generic function with 1 method)\nh.(📖)\n#> 2-element Vector{Float64}:\n#>  3.4\n#>  6.4"
+    "objectID": "basic/function.html#functional-programming",
+    "href": "basic/function.html#functional-programming",
+    "title": "5  Function",
+    "section": "5.6 Functional Programming",
+    "text": "5.6 Functional Programming\n\n5.6.1 Map\n\n📖 = [1.2, 2.7]\n#> 2-element Vector{Float64}:\n#>  1.2\n#>  2.7\n\n\nmap(round, 📖)\n#> 2-element Vector{Float64}:\n#>  1.0\n#>  3.0\n\n\nmap(x -> 2x + 1, 📖)\n#> 2-element Vector{Float64}:\n#>  3.4\n#>  6.4\n\n\n\n5.6.2 Broadcast\nShorter way is to broadcast a function.\n\nh(x) = 2x + 1\n#> h (generic function with 1 method)\nh.(📖)\n#> 2-element Vector{Float64}:\n#>  3.4\n#>  6.4"
   },
   {
-    "objectID": "function.html#multiple-return-values",
-    "href": "function.html#multiple-return-values",
-    "title": "4  Function",
-    "section": "4.7 Multiple Return Values",
-    "text": "4.7 Multiple Return Values\nA tuple is useful for return multiple values from a function.\n\nfunction foo(a,b)\n    (add = a+b, prod = a*b)\nend\n#> foo (generic function with 1 method)\n\n\nx = foo(2,3)\n#> (add = 5, prod = 6)\n\nx\n#> (add = 5, prod = 6)\nx.add\n#> 5"
+    "objectID": "basic/function.html#multiple-return-values",
+    "href": "basic/function.html#multiple-return-values",
+    "title": "5  Function",
+    "section": "5.7 Multiple Return Values",
+    "text": "5.7 Multiple Return Values\nA tuple is useful for return multiple values from a function.\n\nfunction foo(a,b)\n    (add = a+b, prod = a*b)\nend\n#> foo (generic function with 1 method)\n\n\nx = foo(2,3)\n#> (add = 5, prod = 6)\n\nx\n#> (add = 5, prod = 6)\nx.add\n#> 5"
   },
   {
-    "objectID": "function.html#destructuring-assignment",
-    "href": "function.html#destructuring-assignment",
-    "title": "4  Function",
-    "section": "4.8 Destructuring Assignment",
-    "text": "4.8 Destructuring Assignment\nA comma-separated list of variables (optionally wrapped in parentheses) can appear on the left side of an assignment: the value on the right side is destructured by iterating over and assigning to each variable in turn:\n\n(a,b,c) = 1:3 \n#> 1:3\n# or \na, b, c = 1:3\n#> 1:3\n\nb\n#> 2\n\nDestructuring assignment extracts each value from function into a variable:\n\na, b = foo(4, 5)\n#> (add = 9, prod = 20)\n\na\n#> 9\nb\n#> 20\n\nUnderscore _\nIf only a subset of the elements of the iterator are required, a common convention is to assign ignored elements to a variable consisting of only underscores _\n\n_, _, _, d = 1:10\n#> 1:10\n\nd\n#> 4\n\nslurping ...\nIf the last symbol in the assignment list is suffixed by ... (known as slurping), then it will be assigned a collection or lazy iterator of the remaining elements of the right-hand side iterator:\n\na, b... = \"hello\"\n#> \"hello\"\n\na\n#> 'h': ASCII/Unicode U+0068 (category Ll: Letter, lowercase)\nb\n#> \"ello\"\n\n\n_, a, b... = 1:5\n#> 1:5\n\na\n#> 2\nb\n#> 3-element Vector{Int64}:\n#>  3\n#>  4\n#>  5"
+    "objectID": "basic/function.html#destructuring-assignment",
+    "href": "basic/function.html#destructuring-assignment",
+    "title": "5  Function",
+    "section": "5.8 Destructuring Assignment",
+    "text": "5.8 Destructuring Assignment\nA comma-separated list of variables (optionally wrapped in parentheses) can appear on the left side of an assignment: the value on the right side is destructured by iterating over and assigning to each variable in turn:\n\n(a,b,c) = 1:3 \n#> 1:3\n# or \na, b, c = 1:3\n#> 1:3\n\nb\n#> 2\n\nDestructuring assignment extracts each value from function into a variable:\n\na, b = foo(4, 5)\n#> (add = 9, prod = 20)\n\na\n#> 9\nb\n#> 20\n\nUnderscore _\nIf only a subset of the elements of the iterator are required, a common convention is to assign ignored elements to a variable consisting of only underscores _\n\n_, _, _, d = 1:10\n#> 1:10\n\nd\n#> 4\n\nslurping ...\nIf the last symbol in the assignment list is suffixed by ... (known as slurping), then it will be assigned a collection or lazy iterator of the remaining elements of the right-hand side iterator:\n\na, b... = \"hello\"\n#> \"hello\"\n\na\n#> 'h': ASCII/Unicode U+0068 (category Ll: Letter, lowercase)\nb\n#> \"ello\"\n\n\n_, a, b... = 1:5\n#> 1:5\n\na\n#> 2\nb\n#> 3-element Vector{Int64}:\n#>  3\n#>  4\n#>  5"
   },
   {
-    "objectID": "function.html#argument-destructuring",
-    "href": "function.html#argument-destructuring",
-    "title": "4  Function",
-    "section": "4.9 Argument destructuring",
-    "text": "4.9 Argument destructuring\nIf a function argument name is written as a tuple (e.g. (x, y)) instead of just a symbol, then an assignment (x, y) = argument will be inserted for you:\n\ngap((min, max)) = max - min\n#> gap (generic function with 1 method)\ngap((1, 3))\n#> 2\n\n\nminmax(x, y) = (y < x) ? (y, x) : (x, y)\n#> minmax (generic function with 1 method)\nminmax(3, 2)\n#> (2, 3)\n\n\nminmax(3, 2) |> gap\n#> 1\n\nNotice the |> pipe operator.\nFor anonymous functions, destructuring a single tuple requires an extra comma:\n\nmap(((x,y),) -> x + y, [(1,2), (3,4)])\n#> 2-element Vector{Int64}:\n#>  3\n#>  7"
+    "objectID": "basic/function.html#argument-destructuring",
+    "href": "basic/function.html#argument-destructuring",
+    "title": "5  Function",
+    "section": "5.9 Argument destructuring",
+    "text": "5.9 Argument destructuring\nIf a function argument name is written as a tuple (e.g. (x, y)) instead of just a symbol, then an assignment (x, y) = argument will be inserted for you:\n\ngap((min, max)) = max - min\n#> gap (generic function with 1 method)\ngap((1, 3))\n#> 2\n\n\nminmax(x, y) = (y < x) ? (y, x) : (x, y)\n#> minmax (generic function with 1 method)\nminmax(3, 2)\n#> (2, 3)\n\n\nminmax(3, 2) |> gap\n#> 1\n\nNotice the |> pipe operator.\nFor anonymous functions, destructuring a single tuple requires an extra comma:\n\nmap(((x,y),) -> x + y, [(1,2), (3,4)])\n#> 2-element Vector{Int64}:\n#>  3\n#>  7"
   },
   {
-    "objectID": "loop.html",
-    "href": "loop.html",
-    "title": "5  Loop",
+    "objectID": "basic/loop.html",
+    "href": "basic/loop.html",
+    "title": "6  Loop",
     "section": "",
     "text": "while *condition*\n    *loop body*\nend\n\n🍑 = 0\nwhile 🍑 < 10\n    🍑 += 1\n    println(🍑)\nend\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\nmyfriends = [\"Ted\", \"Robyn\", \"Barney\", \"Lily\", \"Marshall\"]\n\ni = 1\nwhile i <= length(myfriends)\n    friend = myfriends[i]\n    println(\"Hi $friend, it's great to see you!\")\n    i += 1\nend\n\nHi Ted, it's great to see you!\nHi Robyn, it's great to see you!\nHi Barney, it's great to see you!\nHi Lily, it's great to see you!\nHi Marshall, it's great to see you!"
   },
   {
-    "objectID": "loop.html#for-loop",
-    "href": "loop.html#for-loop",
-    "title": "5  Loop",
-    "section": "5.2 For Loop",
-    "text": "5.2 For Loop\nfor *var* in *loop iterable*\n    *loop body*\nend\n\nfor n in 1:10\n    println(n)\nend\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\nmyfriends = [\"Ted\", \"Robyn\", \"Barney\", \"Lily\", \"Marshall\"]\n\nfor friend in myfriends\n    println(\"Hi $friend, it's great to see you!\")\nend\n\nHi Ted, it's great to see you!\nHi Robyn, it's great to see you!\nHi Barney, it's great to see you!\nHi Lily, it's great to see you!\nHi Marshall, it's great to see you!\n\n\nor use ∈\n\nfor i ∈ 1:3\n    println(i)\nend\n\n1\n2\n3\n\n\nNow let’s use for loops to create some addition tables, where the value of every entry is the sum of its row and column indices.\n\nm, n = 5, 5\nA = fill(0, (m, n))\n\n5×5 Matrix{Int64}:\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n\n\n\ntypeof(1:10)\n\nUnitRange{Int64}\n\n\n\nfor j in 1:n\n    for i in 1:m\n        A[i, j] = i + j\n    end\nend\nA\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10\n\n\n\n5.2.1 Double Loop\nMultiple nested for loops can be combined into a single outer loop, forming the cartesian product of its iterables:\n\nfor i = 1:2, j = 3:4\n    println((i, j))\nend\n\n(1, 3)\n(1, 4)\n(2, 3)\n(2, 4)\n\n\n\nm, n = 5, 5\nB = fill(0, (m, n))\n\n5×5 Matrix{Int64}:\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n\n\n\nm, n = 5, 5\nfor j in 1:n, i in 1:m\n    B[i, j] = i + j\nend\nB\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10\n\n\nMultiple containers can be iterated over at the same time in a single for loop using zip:\n\nfor (j, k) in zip([1 2 3], [4 5 6 7])\n    println((j,k))\nend\n\n(1, 4)\n(2, 5)\n(3, 6)\n\n\n\n\n5.2.2 Array Comprehension\nOne line array comprehension\n\nC = [i + j for i in 1:n, j in 1:m]\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10"
+    "objectID": "basic/loop.html#for-loop",
+    "href": "basic/loop.html#for-loop",
+    "title": "6  Loop",
+    "section": "6.2 For Loop",
+    "text": "6.2 For Loop\nfor *var* in *loop iterable*\n    *loop body*\nend\n\nfor n in 1:10\n    println(n)\nend\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\nmyfriends = [\"Ted\", \"Robyn\", \"Barney\", \"Lily\", \"Marshall\"]\n\nfor friend in myfriends\n    println(\"Hi $friend, it's great to see you!\")\nend\n\nHi Ted, it's great to see you!\nHi Robyn, it's great to see you!\nHi Barney, it's great to see you!\nHi Lily, it's great to see you!\nHi Marshall, it's great to see you!\n\n\nor use ∈\n\nfor i ∈ 1:3\n    println(i)\nend\n\n1\n2\n3\n\n\nNow let’s use for loops to create some addition tables, where the value of every entry is the sum of its row and column indices.\n\nm, n = 5, 5\nA = fill(0, (m, n))\n\n5×5 Matrix{Int64}:\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n\n\n\ntypeof(1:10)\n\nUnitRange{Int64}\n\n\n\nfor j in 1:n\n    for i in 1:m\n        A[i, j] = i + j\n    end\nend\nA\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10\n\n\n\n6.2.1 Double Loop\nMultiple nested for loops can be combined into a single outer loop, forming the cartesian product of its iterables:\n\nfor i = 1:2, j = 3:4\n    println((i, j))\nend\n\n(1, 3)\n(1, 4)\n(2, 3)\n(2, 4)\n\n\n\nm, n = 5, 5\nB = fill(0, (m, n))\n\n5×5 Matrix{Int64}:\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n 0  0  0  0  0\n\n\n\nm, n = 5, 5\nfor j in 1:n, i in 1:m\n    B[i, j] = i + j\nend\nB\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10\n\n\nMultiple containers can be iterated over at the same time in a single for loop using zip:\n\nfor (j, k) in zip([1 2 3], [4 5 6 7])\n    println((j,k))\nend\n\n(1, 4)\n(2, 5)\n(3, 6)\n\n\n\n\n6.2.2 Array Comprehension\nOne line array comprehension\n\nC = [i + j for i in 1:n, j in 1:m]\n\n5×5 Matrix{Int64}:\n 2  3  4  5   6\n 3  4  5  6   7\n 4  5  6  7   8\n 5  6  7  8   9\n 6  7  8  9  10"
   },
   {
-    "objectID": "loop.html#exercise",
-    "href": "loop.html#exercise",
-    "title": "5  Loop",
-    "section": "5.3 Exercise",
-    "text": "5.3 Exercise\nLoop over integers between 1 and 10 and print their squares.\nArray Loop\n\n## Create Vector\nD = fill(0, 10)\n\n## Loop\nfor i in 1:10\n    D[i] = i^2\nend\nD\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nArray Comprehension\n\nD = [i^2 for i in 1:10]\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nDict\n\n## Create Empty Dict\nE = Dict{Int, Int}()\n\n## Loop\nfor i in 1:10\n    E[i] = i^2\nend\nE\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1\n\n\nDict Comprehension\n\nE = Dict(i => i^2 for i in 1:10)\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1"
+    "objectID": "basic/loop.html#exercise",
+    "href": "basic/loop.html#exercise",
+    "title": "6  Loop",
+    "section": "6.3 Exercise",
+    "text": "6.3 Exercise\nLoop over integers between 1 and 10 and print their squares.\nArray Loop\n\n## Create Vector\nD = fill(0, 10)\n\n## Loop\nfor i in 1:10\n    D[i] = i^2\nend\nD\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nArray Comprehension\n\nD = [i^2 for i in 1:10]\n\n10-element Vector{Int64}:\n   1\n   4\n   9\n  16\n  25\n  36\n  49\n  64\n  81\n 100\n\n\nDict\n\n## Create Empty Dict\nE = Dict{Int, Int}()\n\n## Loop\nfor i in 1:10\n    E[i] = i^2\nend\nE\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1\n\n\nDict Comprehension\n\nE = Dict(i => i^2 for i in 1:10)\n\nDict{Int64, Int64} with 10 entries:\n  5  => 25\n  4  => 16\n  6  => 36\n  7  => 49\n  2  => 4\n  10 => 100\n  9  => 81\n  8  => 64\n  3  => 9\n  1  => 1"
   },
   {
-    "objectID": "conditional.html",
-    "href": "conditional.html",
-    "title": "6  Conditional",
+    "objectID": "basic/conditional.html",
+    "href": "basic/conditional.html",
+    "title": "7  Conditional",
     "section": "",
     "text": "Julia doc: Conditional Operation"
   },
   {
-    "objectID": "conditional.html#if",
-    "href": "conditional.html#if",
-    "title": "6  Conditional",
-    "section": "6.1 IF",
-    "text": "6.1 IF\nif *condition 1*\n    *option 1*\nelseif *condition 2*\n    *option 2*\nelse\n    *option 3*\nend\n\nfunction FizzBuzz(🥚)\n    \n    if (🥚 % 3 == 0) && (🥚 % 5 == 0)\n        println(\"Fizz Buzz 🚌\")\n    elseif 🥚 % 3 == 0\n        println(\"$(🥚 ÷ 3) Fizz\")\n    elseif 🥚 % 5 == 0\n        println(\"$(🥚 ÷ 5) Buzz 🚌\")\n    else\n        println(\"$🥚\")\n    end\n\nend\n\nFizzBuzz (generic function with 1 method)\n\n\n\nFizzBuzz(15)\n\nFizz Buzz 🚌\n\n\nif return a value, so we can assign a value after that.\n\nx = 2\n\n❓ = if x > 0\n        \"positive\"\n    else\n        \"negative\"\n    end\n        \n❓\n\n\"positive\"\n\n\nBoolean in if must be true or false.\n\nif 1\n    println(\"true\")\nend\n# This will error"
+    "objectID": "basic/conditional.html#if",
+    "href": "basic/conditional.html#if",
+    "title": "7  Conditional",
+    "section": "7.1 IF",
+    "text": "7.1 IF\nif *condition 1*\n    *option 1*\nelseif *condition 2*\n    *option 2*\nelse\n    *option 3*\nend\n\nfunction FizzBuzz(🥚)\n    \n    if (🥚 % 3 == 0) && (🥚 % 5 == 0)\n        println(\"Fizz Buzz 🚌\")\n    elseif 🥚 % 3 == 0\n        println(\"$(🥚 ÷ 3) Fizz\")\n    elseif 🥚 % 5 == 0\n        println(\"$(🥚 ÷ 5) Buzz 🚌\")\n    else\n        println(\"$🥚\")\n    end\n\nend\n\nFizzBuzz (generic function with 1 method)\n\n\n\nFizzBuzz(15)\n\nFizz Buzz 🚌\n\n\nif return a value, so we can assign a value after that.\n\nx = 2\n\n❓ = if x > 0\n        \"positive\"\n    else\n        \"negative\"\n    end\n        \n❓\n\n\"positive\"\n\n\nBoolean in if must be true or false.\n\nif 1\n    println(\"true\")\nend\n# This will error"
   },
   {
-    "objectID": "conditional.html#ternary-operators",
-    "href": "conditional.html#ternary-operators",
-    "title": "6  Conditional",
-    "section": "6.2 Ternary operators",
-    "text": "6.2 Ternary operators\na ? b : c\nTranslate to\nif a\n    b\nelse\n    c\nend\n\nwhat_is_larger(x, y) = x > y ? \"$x is larger than $y\" : \"$y is larger than $x\" \n\nwhat_is_larger(1, 2)\n\n\"2 is larger than 1\""
+    "objectID": "basic/conditional.html#ternary-operators",
+    "href": "basic/conditional.html#ternary-operators",
+    "title": "7  Conditional",
+    "section": "7.2 Ternary operators",
+    "text": "7.2 Ternary operators\na ? b : c\nTranslate to\nif a\n    b\nelse\n    c\nend\n\nwhat_is_larger(x, y) = x > y ? \"$x is larger than $y\" : \"$y is larger than $x\" \n\nwhat_is_larger(1, 2)\n\n\"2 is larger than 1\""
   },
   {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "7  Summary",
+    "title": "8  Summary",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
   }

@@ -1,0 +1,45 @@
+# Type
+
+```{r, include=FALSE}
+library(here)
+here::i_am("basic/type.qmd")
+source(here("./_common.R"))
+```
+
+## User-defined Type
+
+let’s create a `struct` to represent scientific open source programming languages. 
+
+```{julia}
+struct Language
+    name::String
+    title::String
+    year_of_birth::Int64
+    fast::Bool
+end
+```
+
+
+Access field names
+
+```{julia}
+fieldnames(Language)
+```
+
+Initiate objects (immutable)
+
+```{julia}
+julia = Language("Julia", "Rapidus", 2012, true)
+R = Language("R", "R & R", 1993, false)
+```
+
+```{julia}
+typeof(julia)
+```
+
+Accessing individual values
+
+```{julia}
+julia.name
+R.name
+```
