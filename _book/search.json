@@ -38,15 +38,15 @@
     "objectID": "basic/intro.html#exercise",
     "href": "basic/intro.html#exercise",
     "title": "1  Introduction",
-    "section": "1.5 Exercise",
-    "text": "1.5 Exercise\nconvert() function\n\ndays = 365\n\n\ndays_float = convert(Float64, days) # Convert to Float64\n#> 365.0\n\n\ndays == days_float \n#> true\n\n\n@assert days == 365\n@assert days_float == 365.0\n\n\nconvert(Int64, \"1\") # Error\n\n\nparse(Int64, \"1\")\n#> 1"
+    "section": "1.6 Exercise",
+    "text": "1.6 Exercise\nconvert() function\n\ndays = 365\n\n\ndays_float = convert(Float64, days) # Convert to Float64\n#> 365.0\n\n\ndays == days_float \n#> true\n\n\n@assert days == 365\n@assert days_float == 365.0\n\n\nconvert(Int64, \"1\") # Error\n\n\nparse(Int64, \"1\")\n#> 1"
   },
   {
     "objectID": "basic/type.html",
     "href": "basic/type.html",
     "title": "2  Type",
     "section": "",
-    "text": "let’s create a struct to represent scientific open source programming languages.\n\nstruct Language\n    name::String\n    title::String\n    year_of_birth::Int64\n    fast::Bool\nend\n\nAccess field names\n\nfieldnames(Language)\n#> (:name, :title, :year_of_birth, :fast)\n\nInitiate objects (immutable)\n\njulia = Language(\"Julia\", \"Rapidus\", 2012, true)\n#> Language(\"Julia\", \"Rapidus\", 2012, true)\nR = Language(\"R\", \"R & R\", 1993, false)\n#> Language(\"R\", \"R & R\", 1993, false)\n\n\ntypeof(julia)\n#> Language\n\nAccessing individual values\n\njulia.name\n#> \"Julia\"\nR.name\n#> \"R\""
+    "text": "isa(1, Int)\n#> true\nisa(1, Int64)\n#> true\nisa(1, Int128)\n#> false\n\nor\n\n1 isa Int\n#> true"
   },
   {
     "objectID": "basic/string.html",
@@ -144,14 +144,14 @@
     "href": "basic/function.html#argument-type-declaration",
     "title": "5  Function",
     "section": "5.4 Argument-type Declaration",
-    "text": "5.4 Argument-type Declaration\nInteger method\n\nfib(n::Integer) = n ≤ 2 ? one(n) : fib(n-1) + fib(n-2)\n#> fib (generic function with 1 method)\n\n\nfib(4)\n#> 3\n\nString method\n\nfib(x::String) = x^fib(length(x))\n#> fib (generic function with 2 methods)\n\n\nfib(\"abcd\")\n#> \"abcdabcdabcd\"\n\nInput non-defined argument type will error.\n\nfib(1.5)\n# This will error"
+    "text": "5.4 Argument-type Declaration\nInteger method\n\nfib(n::Integer) = n ≤ 2 ? one(n) : fib(n-1) + fib(n-2)\n#> fib (generic function with 1 method)\n\n\nfib(4)\n#> 3\n\nString method\nI declare x as a super-type AbstractString to include all possible string type.\n\nfib(x::AbstractString) = x^fib(length(x))\n#> fib (generic function with 2 methods)\n\nNow fib has 2 methods\n\nmethods(fib)\n#> # 2 methods for generic function \"fib\":\n#> [1] fib(n::Integer) in Main at none:3\n#> [2] fib(x::AbstractString) in Main at none:3\n\n\nfib(\"abcd\")\n#> \"abcdabcdabcd\"\n\nInput non-defined argument type will error.\n\nfib(1.5)\n# This will error"
   },
   {
     "objectID": "basic/function.html#anonymous-function",
     "href": "basic/function.html#anonymous-function",
     "title": "5  Function",
     "section": "5.5 Anonymous Function",
-    "text": "5.5 Anonymous Function\n\nx -> x^2 + 2x - 1\n#> #35 (generic function with 1 method)\n\nThe primary use for anonymous functions is passing them to functions which take other functions as arguments.\nUseful in map(f, collection)"
+    "text": "5.5 Anonymous Function\n\nx -> x^2 + 2x - 1\n#> #37 (generic function with 1 method)\n\nThe primary use for anonymous functions is passing them to functions which take other functions as arguments.\nUseful in map(f, collection)"
   },
   {
     "objectID": "basic/function.html#functional-programming",
@@ -229,5 +229,19 @@
     "title": "8  Summary",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "basic/type.html#user-defined-type",
+    "href": "basic/type.html#user-defined-type",
+    "title": "2  Type",
+    "section": "2.2 User-defined Type",
+    "text": "2.2 User-defined Type\nlet’s create a struct to represent scientific open source programming languages.\n\nstruct Language\n    name::String\n    title::String\n    year_of_birth::Int64\n    fast::Bool\nend\n\nAccess field names\n\nfieldnames(Language)\n#> (:name, :title, :year_of_birth, :fast)\n\n\n2.2.1 Initiate objects (immutable)\n\njulia = Language(\"Julia\", \"Rapidus\", 2012, true)\n#> Language(\"Julia\", \"Rapidus\", 2012, true)\nR = Language(\"R\", \"R & R\", 1993, false)\n#> Language(\"R\", \"R & R\", 1993, false)\n\n\ntypeof(julia)\n#> Language\n\n\n\n2.2.2 Accessing individual values\n\njulia.name\n#> \"Julia\"\nR.name\n#> \"R\"\n\n\n\n2.2.3 Printing with Base.show method\n\n\"Hello World\"\n#> \"Hello World\"\nBase.show(\"Hello World\")\n#> \"Hello World\"\n\nImplement using print()\n\nprint(\"Hello World\")\n#> Hello World\n\n\nusing Dates\n\n\nfunction Base.show(io::IO, l::Language)\n\n    years_old = year(today()) - l.year_of_birth\n    print(io, \"$(l.name) is $years_old years old,\")\n    print(io, \" created by $(l.title).\") \n\n    return nothing\nend\n\n\njulia\n#> Julia is 10 years old, created by Rapidus.\n\n\nR\n#> R is 29 years old, created by R & R."
+  },
+  {
+    "objectID": "basic/intro.html#operator",
+    "href": "basic/intro.html#operator",
+    "title": "1  Introduction",
+    "section": "1.5 Operator",
+    "text": "1.5 Operator\nOperators Docs\nBoolean Operators\n\n!true\n#> false\nfalse && true\n#> false\nfalse || true\n#> true\n\nLogical Operator ignore type\n\n1 == 1.0\n#> true"
   }
 ]

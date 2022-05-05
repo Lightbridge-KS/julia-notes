@@ -100,6 +100,25 @@ like Python
 5 % 2
 ```
 
+## Operator
+
+[Operators Docs](https://docs.julialang.org/en/v1/manual/mathematical-operations/)
+
+**Boolean Operators**
+
+```{julia}
+!true
+false && true
+false || true
+```
+
+Logical Operator ignore type
+
+```{julia}
+1 == 1.0
+```
+
+
 
 ## Exercise
 

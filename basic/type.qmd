@@ -6,6 +6,22 @@ here::i_am("basic/type.qmd")
 source(here("./_common.R"))
 ```
 
+## Check type by `isa`
+
+```{julia}
+isa(1, Int)
+isa(1, Int64)
+isa(1, Int128)
+```
+
+or
+
+```{julia}
+1 isa Int
+```
+
+
+
 ## User-defined Type
 
 let’s create a `struct` to represent scientific open source programming languages. 
@@ -26,7 +42,7 @@ Access field names
 fieldnames(Language)
 ```
 
-Initiate objects (immutable)
+### Initiate objects (immutable)
 
 ```{julia}
 julia = Language("Julia", "Rapidus", 2012, true)
@@ -37,9 +53,47 @@ R = Language("R", "R & R", 1993, false)
 typeof(julia)
 ```
 
-Accessing individual values
+### Accessing individual values
 
 ```{julia}
 julia.name
 R.name
+```
+
+### Printing with `Base.show` method 
+
+```{julia}
+"Hello World"
+Base.show("Hello World")
+```
+
+Implement using `print()`
+
+```{julia}
+print("Hello World")
+```
+
+
+```{julia}
+using Dates
+```
+
+```{julia}
+function Base.show(io::IO, l::Language)
+
+    years_old = year(today()) - l.year_of_birth
+    print(io, "$(l.name) is $years_old years old,")
+    print(io, " created by $(l.title).") 
+
+    return nothing
+end
+```
+
+
+```{julia}
+julia
+```
+
+```{julia}
+R
 ```

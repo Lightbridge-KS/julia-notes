@@ -58,7 +58,7 @@ If function has no return value (called for side-effect), return `nothing` by co
 
 ## Argument-type Declaration
 
-`Integer` method
+**`Integer` method**
 
 ```{julia}
 fib(n::Integer) = n ≤ 2 ? one(n) : fib(n-1) + fib(n-2)
@@ -69,11 +69,18 @@ fib(4)
 ```
 
 
-`String` method
+**`String` method** 
 
+I declare `x` as a super-type `AbstractString` to include all possible string type.
 
 ```{julia}
-fib(x::String) = x^fib(length(x))
+fib(x::AbstractString) = x^fib(length(x))
+```
+
+Now `fib` has 2 methods
+
+```{julia}
+methods(fib)
 ```
 
 ```{julia}
