@@ -103,8 +103,31 @@ Gather values by
 collect(1:2:10)
 ```
 
+## Pairs
+
+```{julia}
+my_pair = "Julia" => 42
+```
+
+```{julia}
+typeof(my_pair)
+```
+
+pair subset
+
+```{julia}
+my_pair.first
+my_pair.second
+```
+
+```{julia}
+first(my_pair)
+last(my_pair)
+```
 
 ## Dictionary
+
+**Dict Constuction**
 
 `Dict(key1 => value1, key2 => value2, ...)`
 
@@ -116,6 +139,12 @@ or construct by tuples:
 
 ```{julia}
 Dict( [("A", 1), ("B", 2)] )
+```
+
+Obtain keys by:
+
+```{julia}
+keys(myphonebook)
 ```
 
 Subset with Key 
@@ -138,6 +167,33 @@ Remove Item (modify in-place)
 
 ```{julia}
 pop!(myphonebook, "Kramer")
+```
+
+### Example: tuple and dict conversion
+
+```{julia}
+function separate2(str::AbstractString) 
+    x = split(str, r"[^[:alnum:].]+"; limit = 2)
+    (x[1], x[2])
+end
+
+separate2("asdf, dfs")
+```
+
+
+```{julia}
+["name: Mark", "age: 20"] .|> separate2
+```
+
+Separate to dictionary
+
+```{julia}
+function separate2(vec::Vector) 
+    tups = separate2.(vec)
+    Dict(tups)
+end
+
+separate2(["name: Mark", "age: 20"])
 ```
 
 
