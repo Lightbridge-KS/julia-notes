@@ -289,6 +289,96 @@ M[2, 1]
 M[2:3, 1]
 ```
 
+select columns
+
+```{julia}
+M[2, :]
+```
+
+### Array Manipulation
+
+```{julia}
+M = [[1 2 3];
+     [4 5 6];
+     [7 8 9]]
+```
+
+Assign single element
+
+```{julia}
+M[1, 2] = 10
+M
+```
+
+Assign column (or row) vector
+
+```{julia}
+M[2, :] = zeros(3)
+M
+```
+
+**Reshape**
+
+Reshape: Vector -> N-Dims Array
+
+```{julia}
+six_vector = collect(1:6)
+three_two_matrix = reshape(six_vector, (3, 2))
+three_two_matrix
+```
+
+Reshape: N-Dims Array -> Vector 
+
+```{julia}
+vec(three_two_matrix)
+```
+
+### Apply `Fun` over Array
+
+```{julia}
+M = [[1 2 3];
+     [4 5 6];
+     [7 8 9]]
+```
+
+Dot syntax
+
+```{julia}
+M .+ 10
+```
+
+`map` function
+
+```{julia}
+map(x -> 2x, M)
+```
+
+or
+
+```{julia}
+(x -> 2x).(M)
+```
+
+**mapslices()**
+
+Apply a function over all elements in a specific array dimension.
+
+```{julia}
+M2 = [1 2 3;
+      4 5 6]
+```
+
+Cols Sum
+
+```{julia}
+mapslices(sum, M2; dims = 1)
+```
+
+Row Sum
+
+```{julia}
+mapslices(sum, M2; dims = 2)
+```
 
 ### Copy Array
 
