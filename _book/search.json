@@ -98,6 +98,20 @@
     "text": "3.4 Vectorize String\nLet’s greet some people\n\nh = \"Hello\"\n#> \"Hello\"\n\n\npeople = [\"Marty\", \"Johny\"]\n#> 2-element Vector{String}:\n#>  \"Marty\"\n#>  \"Johny\"\ntypeof(people)\n#> Vector{String} (alias for Array{String, 1})\n\n\nstring.(h, \" \", people)\n#> 2-element Vector{String}:\n#>  \"Hello Marty\"\n#>  \"Hello Johny\"\n\n\nh .* \" \" .* people\n#> 2-element Vector{String}:\n#>  \"Hello Marty\"\n#>  \"Hello Johny\"\n\nNow write function hello() with 2 methods\n\nhello(people::AbstractString) = \"Hello\" * \" \" * people\n#> hello (generic function with 1 method)\nhello(people::AbstractArray) = \"Hello\" .* \" \" .* people\n#> hello (generic function with 2 methods)\n\n\nmethods(hello)\n#> # 2 methods for generic function \"hello\":\n#> [1] hello(people::AbstractString) in Main at none:3\n#> [2] hello(people::AbstractArray) in Main at none:3\n\n\nhello(\"A\")\n#> \"Hello A\"\n\n\nstudents = [\"Harry\", \"Ron\"]\n#> 2-element Vector{String}:\n#>  \"Harry\"\n#>  \"Ron\"\nhello(students)\n#> 2-element Vector{String}:\n#>  \"Hello Harry\"\n#>  \"Hello Ron\""
   },
   {
+    "objectID": "basic/string.html#string-manipulation",
+    "href": "basic/string.html#string-manipulation",
+    "title": "3  String",
+    "section": "3.5 String Manipulation",
+    "text": "3.5 String Manipulation\n\njulia_string = \"Julia is an amazing open source programming language\"\n#> \"Julia is an amazing open source programming language\"\n\nRegex define with r“text”\n\nr\"sometext\"\n#> r\"sometext\"\ntypeof(r\"sometext\")\n#> Regex\n\n\n3.5.1 Conditional Testing\nsubstring of the first argument\n\ncontains(julia_string, \"Julia\")\n#> true\n# Regex\ncontains(julia_string, r\"J.+e$\")\n#> true\n\nStarts With of the first argument\n\nstartswith(julia_string, \"Julia\")\n#> true\n\nEnds With of the first argument\n\nendswith(julia_string, \"Julia\")\n#> false\n\n\n\n3.5.2 Change Cases\n\nlowercase(julia_string)\n#> \"julia is an amazing open source programming language\"\n\n\nuppercase(julia_string)\n#> \"JULIA IS AN AMAZING OPEN SOURCE PROGRAMMING LANGUAGE\"\n\n\ntitlecase(julia_string)\n#> \"Julia Is An Amazing Open Source Programming Language\"\n\n\n\n3.5.3 Replace & Split\n\nreplace(\"R is a programming language.\", \"R\" => \"Julia\")\n#> \"Julia is a programming language.\"\n\ncount args\n\nreplace(\"R user comes from useR.\", \"R\" => \"Julia\")\n#> \"Julia user comes from useJulia.\"\nreplace(\"R user comes from useR.\", \"R\" => \"Julia\", count=1)\n#> \"Julia user comes from useR.\"\n\n\nsplit(\"a b c d\")\n#> 4-element Vector{SubString{String}}:\n#>  \"a\"\n#>  \"b\"\n#>  \"c\"\n#>  \"d\"\nsplit(\"a, b, c, d\", r\"\\s*,\\s*\")\n#> 4-element Vector{SubString{String}}:\n#>  \"a\"\n#>  \"b\"\n#>  \"c\"\n#>  \"d\""
+  },
+  {
+    "objectID": "basic/string.html#string-conversion",
+    "href": "basic/string.html#string-conversion",
+    "title": "3  String",
+    "section": "3.6 String Conversion",
+    "text": "3.6 String Conversion\n\nparse(Int64, \"123\")\n#> 123\n\n\nparse(Int64, \"a\") # Error\n\nSilently parse to nothing\n\ntryparse(Int64, \"A very non-numeric string\")"
+  },
+  {
     "objectID": "basic/string.html#exercise",
     "href": "basic/string.html#exercise",
     "title": "3  String",
@@ -116,28 +130,49 @@
     "href": "basic/data-str.html#tuples",
     "title": "4  Data Structure",
     "section": "4.1 Tuples",
-    "text": "4.1 Tuples\nWe can create a tuple by enclosing an ordered collection of elements in ( ).\nTuple can be named or unnamed.\n(name1 = item1, name2 = item2, ...)\n\nfav_anims = (\"penguins\", \"cats\", \"sugargliders\")\n#> (\"penguins\", \"cats\", \"sugargliders\")\nfav_anims_named = (bird = \"penguins\", mammal = \"cats\", marsupial = \"sugargliders\")\n#> (bird = \"penguins\", mammal = \"cats\", marsupial = \"sugargliders\")\n\n# Indexing\nfav_anims[1]\n#> \"penguins\"\nfav_anims_named[2]\n#> \"cats\"\n\n# Dot Notation\nfav_anims_named.bird\n#> \"penguins\"\n\n\ntypeof(fav_anims)\n#> Tuple{String, String, String}\ntypeof(fav_anims_named)\n#> NamedTuple{(:bird, :mammal, :marsupial), Tuple{String, String, String}}\n\nSubset first & Last value\n\nfav_anims[begin]\n#> \"penguins\"\nfav_anims[end]\n#> \"sugargliders\"\n\nTuples is unmutable. This will get Error.\n\nfav_anims[1] = \"Otters\" # Error"
+    "text": "4.1 Tuples\nWe can create a tuple by enclosing an ordered collection of elements in ( ).\nTuple can be named or unnamed.\n(name1 = item1, name2 = item2, ...)\n\nfav_anims = (\"penguins\", \"cats\", \"sugargliders\")\n#> (\"penguins\", \"cats\", \"sugargliders\")\nfav_anims_named = (bird = \"penguins\", mammal = \"cats\", marsupial = \"sugargliders\")\n#> (bird = \"penguins\", mammal = \"cats\", marsupial = \"sugargliders\")\n\n# Indexing\nfav_anims[1]\n#> \"penguins\"\nfav_anims_named[2]\n#> \"cats\"\n\n# Dot Notation\nfav_anims_named.bird\n#> \"penguins\"\n\n\ntypeof(fav_anims)\n#> Tuple{String, String, String}\ntypeof(fav_anims_named)\n#> NamedTuple{(:bird, :mammal, :marsupial), Tuple{String, String, String}}\n\nSubset first & Last value\n\nfav_anims[begin]\n#> \"penguins\"\nfav_anims[end]\n#> \"sugargliders\"\n\nTuples is unmutable. This will get Error.\n\nfav_anims[1] = \"Otters\" # Error\n\n\n4.1.1 Tuple construction from variables\nspecifying first a semicolon before the values.\n\ni = 1\n#> 1\nf = 3.14\n#> 3.14\ns = \"Julia\"\n#> \"Julia\"\n\nmy_quick_namedtuple = (; i, f, s)\n#> (i = 1, f = 3.14, s = \"Julia\")"
+  },
+  {
+    "objectID": "basic/data-str.html#ranges",
+    "href": "basic/data-str.html#ranges",
+    "title": "4  Data Structure",
+    "section": "4.2 Ranges",
+    "text": "4.2 Ranges\nRange object\n\n1:10\n#> 1:10\n\n\ntypeof(1:10)\n#> UnitRange{Int64}\n\n# Other types\ntypeof(1.0:10.0)\n#> StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}\n\nGather values by\nfor Loop\n\n[i for i in 1:2:10]\n#> 5-element Vector{Int64}:\n#>  1\n#>  3\n#>  5\n#>  7\n#>  9\n\ncollect()\n\ncollect(1:2:10)\n#> 5-element Vector{Int64}:\n#>  1\n#>  3\n#>  5\n#>  7\n#>  9"
   },
   {
     "objectID": "basic/data-str.html#dictionary",
     "href": "basic/data-str.html#dictionary",
     "title": "4  Data Structure",
-    "section": "4.2 Dictionary",
-    "text": "4.2 Dictionary\nDict(key1 => value1, key2 => value2, ...)\n\nmyphonebook = Dict(\"Jenny\" => \"867-5309\", \"Ghostbusters\" => \"555-2368\")\n#> Dict{String, String} with 2 entries:\n#>   \"Jenny\"        => \"867-5309\"\n#>   \"Ghostbusters\" => \"555-2368\"\n\nor construct by tuples:\n\nDict( [(\"A\", 1), (\"B\", 2)] )\n#> Dict{String, Int64} with 2 entries:\n#>   \"B\" => 2\n#>   \"A\" => 1\n\nSubset with Key\n\nmyphonebook[\"Jenny\"]\n#> \"867-5309\"\n\nAdd another item\n\nmyphonebook[\"Kramer\"] = \"555-FILK\"\n#> \"555-FILK\"\n\n\nmyphonebook\n#> Dict{String, String} with 3 entries:\n#>   \"Jenny\"        => \"867-5309\"\n#>   \"Kramer\"       => \"555-FILK\"\n#>   \"Ghostbusters\" => \"555-2368\"\n\nRemove Item (modify in-place)\n\npop!(myphonebook, \"Kramer\")\n#> \"555-FILK\""
+    "section": "4.3 Dictionary",
+    "text": "4.3 Dictionary\nDict(key1 => value1, key2 => value2, ...)\n\nmyphonebook = Dict(\"Jenny\" => \"867-5309\", \"Ghostbusters\" => \"555-2368\")\n#> Dict{String, String} with 2 entries:\n#>   \"Jenny\"        => \"867-5309\"\n#>   \"Ghostbusters\" => \"555-2368\"\n\nor construct by tuples:\n\nDict( [(\"A\", 1), (\"B\", 2)] )\n#> Dict{String, Int64} with 2 entries:\n#>   \"B\" => 2\n#>   \"A\" => 1\n\nSubset with Key\n\nmyphonebook[\"Jenny\"]\n#> \"867-5309\"\n\nAdd another item\n\nmyphonebook[\"Kramer\"] = \"555-FILK\"\n#> \"555-FILK\"\n\n\nmyphonebook\n#> Dict{String, String} with 3 entries:\n#>   \"Jenny\"        => \"867-5309\"\n#>   \"Kramer\"       => \"555-FILK\"\n#>   \"Ghostbusters\" => \"555-2368\"\n\nRemove Item (modify in-place)\n\npop!(myphonebook, \"Kramer\")\n#> \"555-FILK\""
   },
   {
     "objectID": "basic/data-str.html#arrays",
     "href": "basic/data-str.html#arrays",
     "title": "4  Data Structure",
-    "section": "4.3 Arrays",
-    "text": "4.3 Arrays\n[item1, item2, ...]\nsimilar to R vector\n\nmyfriends = [\"Ted\", \"Robyn\", \"Barney\", \"Lily\", \"Marshall\"]\n#> 5-element Vector{String}:\n#>  \"Ted\"\n#>  \"Robyn\"\n#>  \"Barney\"\n#>  \"Lily\"\n#>  \"Marshall\"\n\nArray{String,1} means this is a one dimensional vector. An Array{String,2} would be a 2d matrix.\n\nfibonacci = [1, 1, 2, 3, 5, 8, 13]\n#> 7-element Vector{Int64}:\n#>   1\n#>   1\n#>   2\n#>   3\n#>   5\n#>   8\n#>  13\n\n\nmixture = [1, 1, 2, 3, \"Ted\", \"Robyn\"]\n#> 6-element Vector{Any}:\n#>  1\n#>  1\n#>  2\n#>  3\n#>   \"Ted\"\n#>   \"Robyn\"\nmixture[1]\n#> 1\n\npush! adds an element to the end of an array and pop! removes the last element of an array.\n\npush!(fibonacci, 21)\n#> 8-element Vector{Int64}:\n#>   1\n#>   1\n#>   2\n#>   3\n#>   5\n#>   8\n#>  13\n#>  21\n\n\npop!(fibonacci)\n#> 21\n\n\n4.3.1 Multi-dims Array\n\nfavorites = [\n    [\"koobideh\", \"chocolate\", \"eggs\"],\n    [\"penguins\", \"cats\", \"sugargliders\"]\n    ]\n#> 2-element Vector{Vector{String}}:\n#>  [\"koobideh\", \"chocolate\", \"eggs\"]\n#>  [\"penguins\", \"cats\", \"sugargliders\"]\n\n\nrand(4, 3)\n#> 4×3 Matrix{Float64}:\n#>  0.205309   0.867579   0.598126\n#>  0.0416623  0.0442032  0.826039\n#>  0.129189   0.910989   0.667986\n#>  0.0980359  0.144535   0.40367\n\n\n\n4.3.2 Copy Array\nThe correct way is\n\nsomemorenumbers = copy(fibonacci)\n#> 7-element Vector{Int64}:\n#>   1\n#>   1\n#>   2\n#>   3\n#>   5\n#>   8\n#>  13\n\nwhich will bound to different memory ID."
+    "section": "4.4 Arrays",
+    "text": "4.4 Arrays\n\n4.4.1 Introduction\n[item1, item2, ...]\nsimilar to R vector\n\nmyfriends = [\"Ted\", \"Robyn\", \"Barney\", \"Lily\", \"Marshall\"]\n#> 5-element Vector{String}:\n#>  \"Ted\"\n#>  \"Robyn\"\n#>  \"Barney\"\n#>  \"Lily\"\n#>  \"Marshall\"\n\nArray{String,1} means this is a one dimensional vector. An Array{String,2} would be a 2d matrix.\n\nfibonacci = [1, 1, 2, 3, 5, 8, 13]\n#> 7-element Vector{Int64}:\n#>   1\n#>   1\n#>   2\n#>   3\n#>   5\n#>   8\n#>  13\n\n\nmixture = [1, 1, 2, 3, \"Ted\", \"Robyn\"]\n#> 6-element Vector{Any}:\n#>  1\n#>  1\n#>  2\n#>  3\n#>   \"Ted\"\n#>   \"Robyn\"\nmixture[1]\n#> 1\n\n\n\n4.4.2 Formal Array Contruction\n\nVector{T}: one-dimensional array. Alias for Array{T, 1}.\nMatrix{T}: two-dimensional array. Alias for Array{T, 2}.\n\nCreate vector (1d array) with type Float64. It has undefined 5 element\n\nmy_V = Vector{Float64}(undef, 3)\n#> 3-element Vector{Float64}:\n#>  2.1344081666e-314\n#>  2.134408388e-314\n#>  2.364432689e-314\n\n\nlength(my_V)\n#> 3\n\nCreate 2 x 3 Matrix with element undefined.\n\nmy_M = Matrix{Int}(undef, 2, 3)\n#> 2×3 Matrix{Int64}:\n#>           0  4785665040  4786082464\n#>  4786082464           0  4785665040\n\n\nlength(my_M) # Number of elements\n#> 6\n\nndims(my_M)  # Dims\n#> 2\n\nsize(my_M) # Size (shape) of Matrix\n#> (2, 3)\n\nThen fill array with\n\nfill!(my_V, 4)\n#> 3-element Vector{Float64}:\n#>  4.0\n#>  4.0\n#>  4.0\nmy_V\n#> 3-element Vector{Float64}:\n#>  4.0\n#>  4.0\n#>  4.0\n\npush! adds an element to the end of an array and pop! removes the last element of an array.\n\npush!(my_V, 21)\n#> 4-element Vector{Float64}:\n#>   4.0\n#>   4.0\n#>   4.0\n#>  21.0\n\n\npop!(my_V)\n#> 21.0\n\nzeros array\n\nzeros(3)\n#> 3-element Vector{Float64}:\n#>  0.0\n#>  0.0\n#>  0.0\n\nones array\n\nones(2)\n#> 2-element Vector{Float64}:\n#>  1.0\n#>  1.0\nones(Int, 2, 3)\n#> 2×3 Matrix{Int64}:\n#>  1  1  1\n#>  1  1  1\n\n\n\n4.4.3 Array literals\n\nfavorites = [\n    [\"koobideh\", \"chocolate\", \"eggs\"],\n    [\"penguins\", \"cats\", \"sugargliders\"]\n    ]\n#> 2-element Vector{Vector{String}}:\n#>  [\"koobideh\", \"chocolate\", \"eggs\"]\n#>  [\"penguins\", \"cats\", \"sugargliders\"]\n\nArray literals also accept a type specification\n\nFloat64[1 2; 3 4]\n#> 2×2 Matrix{Float64}:\n#>  1.0  2.0\n#>  3.0  4.0\n\nMix and match\n\n[ones(Int, 2, 2) zeros(Int, 2, 2)]\n#> 2×4 Matrix{Int64}:\n#>  1  1  0  0\n#>  1  1  0  0\n\n\n[zeros(Int, 2, 2)\n ones(Int, 2, 2)]\n#> 4×2 Matrix{Int64}:\n#>  0  0\n#>  0  0\n#>  1  1\n#>  1  1\n\n\nrand(4, 3)\n#> 4×3 Matrix{Float64}:\n#>  0.708228  0.246062  0.660766\n#>  0.973862  0.377012  0.0082465\n#>  0.404015  0.324269  0.0492449\n#>  0.683777  0.485667  0.842699\n\n\n\n4.4.4 Array Indexing and Slicing\n\nV = [1, 2, 3, 4, 5]\n#> 5-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n#>  4\n#>  5\n\nM = [[1 2 3];\n     [4 5 6];\n     [7 8 9]]\n#> 3×3 Matrix{Int64}:\n#>  1  2  3\n#>  4  5  6\n#>  7  8  9\n\n\nV[1:3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n\n# First and Last Value\nV[begin]\n#> 1\nV[end]\n#> 5\n\nCan’t use negative index, however.\n\nV[-1]\n# Error\n\n\nM[2, 1]\n#> 4\n\nM[2:3, 1]\n#> 2-element Vector{Int64}:\n#>  4\n#>  7\n\n\n\n4.4.5 Copy Array\nThe correct way is\n\nsomemorenumbers = copy(fibonacci)\n#> 7-element Vector{Int64}:\n#>   1\n#>   1\n#>   2\n#>   3\n#>   5\n#>   8\n#>  13\n\nwhich will bound to different memory ID."
+  },
+  {
+    "objectID": "basic/data-str.html#array-comprehension",
+    "href": "basic/data-str.html#array-comprehension",
+    "title": "4  Data Structure",
+    "section": "4.5 Array Comprehension",
+    "text": "4.5 Array Comprehension\n\n[x^2 for x in 1:3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  4\n#>  9\n\nMultiple inputs also support.\n\n[string(x, \"-\", y) for x in 1:3 for y in 1:2]\n#> 6-element Vector{String}:\n#>  \"1-1\"\n#>  \"1-2\"\n#>  \"2-1\"\n#>  \"2-2\"\n#>  \"3-1\"\n#>  \"3-2\"\n\nAdd conditionals:\n\n[x^2 for x in 1:10 if isodd(x)]\n#> 5-element Vector{Int64}:\n#>   1\n#>   9\n#>  25\n#>  49\n#>  81"
+  },
+  {
+    "objectID": "basic/data-str.html#array-manipulation",
+    "href": "basic/data-str.html#array-manipulation",
+    "title": "4  Data Structure",
+    "section": "4.6 Array Manipulation",
+    "text": "4.6 Array Manipulation\nConcatenate array\n\ncat(): concatenate input arrays along a specific dimension dims\n\n\ncat(ones(2), zeros(2), dims=1)\n#> 4-element Vector{Float64}:\n#>  1.0\n#>  1.0\n#>  0.0\n#>  0.0\n\n\nvcat(): vertical concatenation\n\n\nvcat(ones(2), zeros(2))\n#> 4-element Vector{Float64}:\n#>  1.0\n#>  1.0\n#>  0.0\n#>  0.0\n\n\nhcat(): horizontal concatenation\n\n\nhcat(ones(2), zeros(2))\n#> 2×2 Matrix{Float64}:\n#>  1.0  0.0\n#>  1.0  0.0"
   },
   {
     "objectID": "basic/data-str.html#exercise",
     "href": "basic/data-str.html#exercise",
     "title": "4  Data Structure",
-    "section": "4.4 Exercise",
-    "text": "4.4 Exercise\n\na_ray = [1, 2, 3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n\n# Add 4\npush!(a_ray, 4)\n#> 4-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n#>  4\n# Remove 4\npop!(a_ray)\n#> 4\n\na_ray\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3"
+    "section": "4.7 Exercise",
+    "text": "4.7 Exercise\n\na_ray = [1, 2, 3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n\n# Add 4\npush!(a_ray, 4)\n#> 4-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n#>  4\n# Remove 4\npop!(a_ray)\n#> 4\n\na_ray\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3"
   },
   {
     "objectID": "basic/function.html",
@@ -159,6 +194,13 @@
     "title": "5  Function",
     "section": "5.2 Return Keyword",
     "text": "5.2 Return Keyword\nLike R the last line in the body of function is returned.\nIf you want to return prematurely use return keyword.\n\nfunction g(x,y)\n    return x * y\n    x + y\nend\n#> g (generic function with 1 method)\n\ng(1, 2)\n#> 2\n\nIf function has no return value (called for side-effect), return nothing by convention."
+  },
+  {
+    "objectID": "basic/function.html#side-effect",
+    "href": "basic/function.html#side-effect",
+    "title": "5  Function",
+    "section": "5.3 Side Effect !",
+    "text": "5.3 Side Effect !\nFunction that modifys argument in-place are suffix with !.\n\nfunction add_one!(V)\n    for i in 1:length(V)\n        V[i] += 1\n    end\n    return nothing\nend\n#> add_one! (generic function with 1 method)\n\n\nX = [i for i ∈ 1:3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n\n\nadd_one!(X)\nX\n#> 3-element Vector{Int64}:\n#>  2\n#>  3\n#>  4"
   },
   {
     "objectID": "basic/function.html#infix-function",
@@ -207,7 +249,21 @@
     "href": "basic/function.html#argument-destructuring",
     "title": "5  Function",
     "section": "5.10 Argument destructuring",
-    "text": "5.10 Argument destructuring\nIf a function argument name is written as a tuple (e.g. (x, y)) instead of just a symbol, then an assignment (x, y) = argument will be inserted for you:\n\ngap((min, max)) = max - min\n#> gap (generic function with 1 method)\ngap((1, 3))\n#> 2\n\n\nminmax(x, y) = (y < x) ? (y, x) : (x, y)\n#> minmax (generic function with 1 method)\nminmax(3, 2)\n#> (2, 3)\n\n\nminmax(3, 2) |> gap\n#> 1\n\nNotice the |> pipe operator.\nFor anonymous functions, destructuring a single tuple requires an extra comma:\n\nmap(((x,y),) -> x + y, [(1,2), (3,4)])\n#> 2-element Vector{Int64}:\n#>  3\n#>  7"
+    "text": "5.10 Argument destructuring\nIf a function argument name is written as a tuple (e.g. (x, y)) instead of just a symbol, then an assignment (x, y) = argument will be inserted for you:\n\ngap((min, max)) = max - min\n#> gap (generic function with 1 method)\ngap((1, 3))\n#> 2\n\n\nminmax(x, y) = (y < x) ? (y, x) : (x, y)\n#> minmax (generic function with 1 method)\nminmax(3, 2)\n#> (2, 3)\n\n\nminmax(3, 2) |> gap\n#> 1\n\nNotice the |> pipe operator.\nFor anonymous functions, destructuring a single tuple requires an extra comma:\n\nmap( ((x,y),) -> x + y, [(1,2), (3,4)] )\n#> 2-element Vector{Int64}:\n#>  3\n#>  7"
+  },
+  {
+    "objectID": "basic/function.html#do-block",
+    "href": "basic/function.html#do-block",
+    "title": "5  Function",
+    "section": "5.11 Do Block",
+    "text": "5.11 Do Block\nFrom this map(long_f, collection)\n\nmap(x->begin\n           if x < 0 && iseven(x)\n               return 0\n           elseif x == 0\n               return 1\n           else\n               return x\n           end\n       end,\n    [-1, 0, 1])\n#> 3-element Vector{Int64}:\n#>  -1\n#>   1\n#>   1\n\nIs equivalent to map(collection) do long_f\n\nmap([-1, 0, 1]) do x\n    if x < 0 && iseven(x)\n        return 0\n    elseif x == 0\n        return 1\n    else\n        return x\n    end\nend\n#> 3-element Vector{Int64}:\n#>  -1\n#>   1\n#>   1\n\nThe do x syntax creates an anonymous function with argument x and passes it as the first argument to map.\nDo blog might help reader to read from left to right."
+  },
+  {
+    "objectID": "basic/function.html#compose-piping",
+    "href": "basic/function.html#compose-piping",
+    "title": "5  Function",
+    "section": "5.12 Compose & Piping",
+    "text": "5.12 Compose & Piping\n(f ∘ g)(args...) is the same as f(g(args...))\ncomposition operator is ∘ \\circ<tab>\n\nsqrt(sum([1, 3]))\n#> 2.0\n\nbecomes\n\n(sqrt ∘ sum)([1, 3])\n#> 2.0\n\nPipe\n\n1:10 |> sum |> sqrt\n#> 7.416198487095663\n\nVectorized Pipe\n\n[\"a\", \"list\", \"of\", \"strings\"] .|> uppercase\n#> 4-element Vector{String}:\n#>  \"A\"\n#>  \"LIST\"\n#>  \"OF\"\n#>  \"STRINGS\""
   },
   {
     "objectID": "basic/loop.html",
@@ -257,26 +313,5 @@
     "title": "8  Summary",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "basic/string.html#string-manipulation",
-    "href": "basic/string.html#string-manipulation",
-    "title": "3  String",
-    "section": "3.5 String Manipulation",
-    "text": "3.5 String Manipulation\n\njulia_string = \"Julia is an amazing open source programming language\"\n#> \"Julia is an amazing open source programming language\"\n\nRegex define with r“text”\n\nr\"sometext\"\n#> r\"sometext\"\ntypeof(r\"sometext\")\n#> Regex\n\n\n3.5.1 Conditional Testing\nsubstring of the first argument\n\ncontains(julia_string, \"Julia\")\n#> true\n# Regex\ncontains(julia_string, r\"J.+e$\")\n#> true\n\nStarts With of the first argument\n\nstartswith(julia_string, \"Julia\")\n#> true\n\nEnds With of the first argument\n\nendswith(julia_string, \"Julia\")\n#> false\n\n\n\n3.5.2 Change Cases\n\nlowercase(julia_string)\n#> \"julia is an amazing open source programming language\"\n\n\nuppercase(julia_string)\n#> \"JULIA IS AN AMAZING OPEN SOURCE PROGRAMMING LANGUAGE\"\n\n\ntitlecase(julia_string)\n#> \"Julia Is An Amazing Open Source Programming Language\"\n\n\n\n3.5.3 Replace & Split\n\nreplace(\"R is a programming language.\", \"R\" => \"Julia\")\n#> \"Julia is a programming language.\"\n\ncount args\n\nreplace(\"R user comes from useR.\", \"R\" => \"Julia\")\n#> \"Julia user comes from useJulia.\"\nreplace(\"R user comes from useR.\", \"R\" => \"Julia\", count=1)\n#> \"Julia user comes from useR.\"\n\n\nsplit(\"a b c d\")\n#> 4-element Vector{SubString{String}}:\n#>  \"a\"\n#>  \"b\"\n#>  \"c\"\n#>  \"d\"\nsplit(\"a, b, c, d\", r\"\\s*,\\s*\")\n#> 4-element Vector{SubString{String}}:\n#>  \"a\"\n#>  \"b\"\n#>  \"c\"\n#>  \"d\""
-  },
-  {
-    "objectID": "basic/string.html#string-conversion",
-    "href": "basic/string.html#string-conversion",
-    "title": "3  String",
-    "section": "3.6 String Conversion",
-    "text": "3.6 String Conversion\n\nparse(Int64, \"123\")\n#> 123\n\n\nparse(Int64, \"a\") # Error\n\nSilently parse to nothing\n\ntryparse(Int64, \"A very non-numeric string\")"
-  },
-  {
-    "objectID": "basic/function.html#side-effect",
-    "href": "basic/function.html#side-effect",
-    "title": "5  Function",
-    "section": "5.3 Side Effect !",
-    "text": "5.3 Side Effect !\nFunction that modifys argument in-place are suffix with !.\n\nfunction add_one!(V)\n    for i in 1:length(V)\n        V[i] += 1\n    end\n    return nothing\nend\n#> add_one! (generic function with 1 method)\n\n\nX = [i for i ∈ 1:3]\n#> 3-element Vector{Int64}:\n#>  1\n#>  2\n#>  3\n\n\nadd_one!(X)\nX\n#> 3-element Vector{Int64}:\n#>  2\n#>  3\n#>  4"
   }
 ]

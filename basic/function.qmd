@@ -260,5 +260,71 @@ Notice the `|>` pipe operator.
 For anonymous functions, destructuring a single tuple requires an extra comma:
 
 ```{julia}
-map(((x,y),) -> x + y, [(1,2), (3,4)])
+map( ((x,y),) -> x + y, [(1,2), (3,4)] )
+```
+
+
+## Do Block
+
+From this `map(long_f, collection)`
+
+```{julia}
+map(x->begin
+           if x < 0 && iseven(x)
+               return 0
+           elseif x == 0
+               return 1
+           else
+               return x
+           end
+       end,
+    [-1, 0, 1])
+```
+
+Is equivalent to `map(collection) do long_f`
+
+```{julia}
+map([-1, 0, 1]) do x
+    if x < 0 && iseven(x)
+        return 0
+    elseif x == 0
+        return 1
+    else
+        return x
+    end
+end
+```
+
+The `do x` syntax creates an anonymous function with argument `x` and passes it as the first argument to `map`. 
+
+`Do` blog might help reader to read from left to right.
+
+
+## Compose & Piping
+
+`(f ∘ g)(args...)` is the same as `f(g(args...))`
+
+composition operator is `∘` `\circ<tab>`
+
+```{julia}
+sqrt(sum([1, 3]))
+```
+
+becomes
+
+```{julia}
+(sqrt ∘ sum)([1, 3])
+```
+
+
+**Pipe**
+
+```{julia}
+1:10 |> sum |> sqrt
+```
+
+Vectorized Pipe
+
+```{julia}
+["a", "list", "of", "strings"] .|> uppercase
 ```

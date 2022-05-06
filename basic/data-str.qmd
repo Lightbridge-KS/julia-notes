@@ -12,9 +12,11 @@ Types of data structures covered:
 
 1. **Tuples**: unmutable, ordered or named, subset with integer `tup[1]` or dot notation `tup.key`
 
-2. **Dictionaries**: mutable, named only, subset with name only `dct["key"]`.
+2. **Ranges**: `start:step` or `start:step:stop`
 
-3. **Arrays**: mutable, ordered only, can mixed type of elements, subset with `arr[1]`
+3. **Dictionaries**: mutable, named only, subset with name only `dct["key"]`.
+
+4. **Arrays**: mutable, ordered only, can mixed type of elements, subset with `arr[1]`
 
 tuples and arrays are both ordered sequences of elements (so we can index into them). Dictionaries and arrays are both mutable. 
 
@@ -60,6 +62,48 @@ Tuples is unmutable. This will get Error.
 fav_anims[1] = "Otters" # Error
 ```
 
+### Tuple construction from variables
+
+specifying first a semicolon before the values. 
+
+```{julia}
+i = 1
+f = 3.14
+s = "Julia"
+
+my_quick_namedtuple = (; i, f, s)
+```
+
+## Ranges
+
+Range object
+
+```{julia}
+1:10
+```
+
+```{julia}
+typeof(1:10)
+
+# Other types
+typeof(1.0:10.0)
+```
+
+Gather values by 
+
+**`for` Loop**
+
+```{julia}
+[i for i in 1:2:10]
+```
+
+**`collect()`**
+
+```{julia}
+collect(1:2:10)
+```
+
+
 ## Dictionary
 
 `Dict(key1 => value1, key2 => value2, ...)`
@@ -99,6 +143,8 @@ pop!(myphonebook, "Kramer")
 
 ## Arrays
 
+### Introduction
+
 `[item1, item2, ...]`
 
 similar to R vector
@@ -109,7 +155,6 @@ myfriends = ["Ted", "Robyn", "Barney", "Lily", "Marshall"]
 
 `Array{String,1}` means this is a one dimensional vector. An `Array{String,2}` would be a 2d matrix.
 
-
 ```{julia}
 fibonacci = [1, 1, 2, 3, 5, 8, 13]
 ```
@@ -119,19 +164,70 @@ mixture = [1, 1, 2, 3, "Ted", "Robyn"]
 mixture[1]
 ```
 
+### Formal Array Contruction
+
+-   `Vector{T}`: one-dimensional array. Alias for `Array{T, 1}`.
+-   `Matrix{T}`: two-dimensional array. Alias for `Array{T, 2}`.
+
+
+Create vector (1d array) with type `Float64`. It has undefined 5 element 
+
+```{julia}
+my_V = Vector{Float64}(undef, 3)
+```
+
+```{julia}
+length(my_V)
+```
+
+Create 2 x 3 Matrix with element undefined.
+
+```{julia}
+my_M = Matrix{Int}(undef, 2, 3)
+```
+
+```{julia}
+length(my_M) # Number of elements
+
+ndims(my_M)  # Dims
+
+size(my_M) # Size (shape) of Matrix
+```
+
+Then fill array with
+
+```{julia}
+fill!(my_V, 4)
+my_V
+```
+
+
 
 
 `push!` adds an element to the end of an array and `pop!` removes the last element of an array.
 
 ```{julia}
-push!(fibonacci, 21)
+push!(my_V, 21)
 ```
 
 ```{julia}
-pop!(fibonacci)
+pop!(my_V)
 ```
 
-### Multi-dims Array
+zeros array
+
+```{julia}
+zeros(3)
+```
+
+ones array
+
+```{julia}
+ones(2)
+ones(Int, 2, 3)
+```
+
+### Array literals
 
 ```{julia}
 favorites = [
@@ -140,9 +236,59 @@ favorites = [
     ]
 ```
 
+Array literals also accept a type specification
+
+```{julia}
+Float64[1 2; 3 4]
+```
+
+Mix and match
+
+```{julia}
+[ones(Int, 2, 2) zeros(Int, 2, 2)]
+```
+
+```{julia}
+[zeros(Int, 2, 2)
+ ones(Int, 2, 2)]
+```
+
 ```{julia}
 rand(4, 3)
 ```
+
+### Array Indexing and Slicing
+
+```{julia}
+V = [1, 2, 3, 4, 5]
+
+M = [[1 2 3];
+     [4 5 6];
+     [7 8 9]]
+```
+
+```{julia}
+V[1:3]
+
+# First and Last Value
+V[begin]
+V[end]
+```
+
+Can't use negative index, however.
+
+```{julia}
+#| eval: false
+V[-1]
+# Error
+```
+
+```{julia}
+M[2, 1]
+
+M[2:3, 1]
+```
+
 
 ### Copy Array
 
@@ -154,6 +300,45 @@ somemorenumbers = copy(fibonacci)
 
 which will bound to different memory ID.
 
+## Array Comprehension
+
+```{julia}
+[x^2 for x in 1:3]
+```
+
+Multiple inputs also support.
+
+```{julia}
+[string(x, "-", y) for x in 1:3 for y in 1:2]
+```
+
+Add conditionals:
+
+```{julia}
+[x^2 for x in 1:10 if isodd(x)]
+```
+
+## Array Manipulation
+
+**Concatenate array**
+
+-   `cat()`: concatenate input arrays along a specific dimension `dims`
+
+```{julia}
+cat(ones(2), zeros(2), dims=1)
+```
+
+-   `vcat()`: vertical concatenation
+
+```{julia}
+vcat(ones(2), zeros(2))
+```
+
+-   `hcat()`: horizontal concatenation
+
+```{julia}
+hcat(ones(2), zeros(2))
+```
 
 ## Exercise
 
