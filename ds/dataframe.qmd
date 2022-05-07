@@ -1,0 +1,77 @@
+# Data Frame
+
+## Create DF
+
+```{julia}
+using DataFrames
+```
+
+### Using Column Vector
+
+```{julia}
+df = DataFrame(
+    ID = 1:4, 
+    Subject = repeat(["M", "F"], outer=2),
+    Is_OK = true
+    )
+```
+
+
+```{julia}
+typeof(df)
+```
+
+```{julia}
+names(df)
+```
+
+
+### Create from Dict
+
+```{julia}
+dict = Dict(:first_name => ["Rohit", "Rahul", "Akshat"],
+            :customer_age => [15, 20, 25]
+            )
+df2 = DataFrame(dict)
+```
+
+Convert `df2` back to `Dict` ([Ref](https://stackoverflow.com/questions/63752067/how-to-create-dictionary-from-julia-dataframe))
+
+```{julia}
+pairs(eachcol(df2)) |> Dict
+```
+
+```{julia}
+pairs(df2.first_name) |> Dict
+```
+
+
+```{julia}
+Pair.(df2.first_name, df2.customer_age) |> Dict
+```
+
+
+## Subsetting
+
+### By Column
+
+```{julia}
+df.ID
+```
+
+Return a copy of the column by:
+
+```{julia}
+df[:, :ID]
+```
+
+This will modify `df` in-place:
+
+```{julia}
+df[!, :ID][1] = 5
+```
+
+```{julia}
+df
+```
+

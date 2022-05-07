@@ -20,6 +20,10 @@ book:
       chapters:
         - basic/loop.qmd
         - basic/conditional.qmd
+        - basic/ctr-flow-ex.qmd
+    - part: "Data Science"
+      chapters:
+        - ds/dataframe.qmd
     - summary.qmd
     - references.qmd
 

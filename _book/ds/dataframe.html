@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Julia Notes - 7&nbsp; Conditional</title>
+<title>Julia Notes - 9&nbsp; Data Frame</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,8 +87,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
-<link href="../basic/ctr-flow-ex.html" rel="next">
-<link href="../basic/loop.html" rel="prev">
+<link href="../summary.html" rel="next">
+<link href="../basic/ctr-flow-ex.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -117,6 +117,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -127,7 +130,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Conditional</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Frame</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -208,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../basic/conditional.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Conditional</span></a>
+  <a href="../basic/conditional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Conditional</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -228,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ds/dataframe.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Frame</span></a>
+  <a href="../ds/dataframe.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Frame</span></a>
   </div>
 </li>
     </ul>
@@ -252,8 +255,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#if" id="toc-if" class="nav-link active" data-scroll-target="#if"> <span class="header-section-number">7.1</span> IF</a></li>
-  <li><a href="#ternary-operators" id="toc-ternary-operators" class="nav-link" data-scroll-target="#ternary-operators"> <span class="header-section-number">7.2</span> Ternary operators</a></li>
+  <li><a href="#create-df" id="toc-create-df" class="nav-link active" data-scroll-target="#create-df"> <span class="header-section-number">9.1</span> Create DF</a>
+  <ul class="collapse">
+  <li><a href="#using-column-vector" id="toc-using-column-vector" class="nav-link" data-scroll-target="#using-column-vector"> <span class="header-section-number">9.1.1</span> Using Column Vector</a></li>
+  <li><a href="#create-from-dict" id="toc-create-from-dict" class="nav-link" data-scroll-target="#create-from-dict"> <span class="header-section-number">9.1.2</span> Create from Dict</a></li>
+  </ul></li>
+  <li><a href="#subsetting" id="toc-subsetting" class="nav-link" data-scroll-target="#subsetting"> <span class="header-section-number">9.2</span> Subsetting</a>
+  <ul class="collapse">
+  <li><a href="#by-column" id="toc-by-column" class="nav-link" data-scroll-target="#by-column"> <span class="header-section-number">9.2.1</span> By Column</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -262,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Conditional</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Frame</span></h1>
 </div>
 
 
@@ -278,82 +288,120 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Julia doc: <a href="Lightbridge-KS/julia-notes">Conditional Operation</a></p>
-<section id="if" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="if"><span class="header-section-number">7.1</span> IF</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode jl code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">*</span>condition <span class="fl">1</span><span class="op">*</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>option <span class="fl">1</span><span class="op">*</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">elseif</span> <span class="op">*</span>condition <span class="fl">2</span><span class="op">*</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>option <span class="fl">2</span><span class="op">*</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>option <span class="fl">3</span><span class="op">*</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="create-df" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="create-df"><span class="header-section-number">9.1</span> Create DF</h2>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">FizzBuzz</span>(🥚)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (🥚 <span class="op">%</span> <span class="fl">3</span> <span class="op">==</span> <span class="fl">0</span>) <span class="op">&amp;&amp;</span> (🥚 <span class="op">%</span> <span class="fl">5</span> <span class="op">==</span> <span class="fl">0</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"Fizz Buzz 🚌"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elseif</span> 🥚 <span class="op">%</span> <span class="fl">3</span> <span class="op">==</span> <span class="fl">0</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>(🥚 <span class="op">÷</span> <span class="fl">3</span>)<span class="st"> Fizz"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elseif</span> 🥚 <span class="op">%</span> <span class="fl">5</span> <span class="op">==</span> <span class="fl">0</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>(🥚 <span class="op">÷</span> <span class="fl">5</span>)<span class="st"> Buzz 🚌"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span><span class="st">🥚")</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="st">    </span>end</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>FizzBuzz (generic function with 1 method)</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">DataFrames</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+<section id="using-column-vector" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="using-column-vector"><span class="header-section-number">9.1.1</span> Using Column Vector</h3>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">FizzBuzz</span>(<span class="fl">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Fizz Buzz 🚌</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="fu">DataFrame</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ID <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    Subject <span class="op">=</span> <span class="fu">repeat</span>([<span class="st">"M"</span>, <span class="st">"F"</span>], outer<span class="op">=</span><span class="fl">2</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    Is_OK <span class="op">=</span> <span class="cn">true</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="data-frame"><p>4 rows × 3 columns</p><table class="data-frame table table-sm table-striped"><thead><tr><th></th><th>ID</th><th>Subject</th><th>Is_OK</th></tr><tr><th></th><th title="Int64">Int64</th><th title="String">String</th><th title="Bool">Bool</th></tr></thead><tbody><tr><th>1</th><td>1</td><td>M</td><td>1</td></tr><tr><th>2</th><td>2</td><td>F</td><td>1</td></tr><tr><th>3</th><td>3</td><td>M</td><td>1</td></tr><tr><th>4</th><td>4</td><td>F</td><td>1</td></tr></tbody></table></div>
 </div>
 </div>
-<p><code>if</code> return a value, so we can assign a value after that.</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">2</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>❓ <span class="op">=</span> <span class="cf">if</span> x <span class="op">&gt;</span> <span class="fl">0</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"positive"</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"negative"</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>❓</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>"positive"</code></pre>
+<pre><code>DataFrame</code></pre>
 </div>
 </div>
-<p>Boolean in <code>if</code> must be <code>true</code> or <code>false</code>.</p>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="fl">1</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"true"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This will error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>3-element Vector{String}:
+ "ID"
+ "Subject"
+ "Is_OK"</code></pre>
+</div>
 </div>
 </section>
-<section id="ternary-operators" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="ternary-operators"><span class="header-section-number">7.2</span> Ternary operators</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode jl code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a ? b <span class="op">:</span> c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Translate to</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode jl code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    b</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    c</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="create-from-dict" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="create-from-dict"><span class="header-section-number">9.1.2</span> Create from Dict</h3>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">what_is_larger</span>(x, y) <span class="op">=</span> x <span class="op">&gt;</span> y ? <span class="st">"</span><span class="sc">$</span>x<span class="st"> is larger than </span><span class="sc">$</span>y<span class="st">"</span> <span class="op">:</span> <span class="st">"</span><span class="sc">$</span>y<span class="st"> is larger than </span><span class="sc">$</span>x<span class="st">"</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">what_is_larger</span>(<span class="fl">1</span>, <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>"2 is larger than 1"</code></pre>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dict <span class="op">=</span> <span class="fu">Dict</span>(<span class="op">:</span>first_name <span class="op">=&gt;</span> [<span class="st">"Rohit"</span>, <span class="st">"Rahul"</span>, <span class="st">"Akshat"</span>],</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>            <span class="op">:</span>customer_age <span class="op">=&gt;</span> [<span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">25</span>]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> <span class="fu">DataFrame</span>(dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="data-frame"><p>3 rows × 2 columns</p><table class="data-frame table table-sm table-striped"><thead><tr><th></th><th>customer_age</th><th>first_name</th></tr><tr><th></th><th title="Int64">Int64</th><th title="String">String</th></tr></thead><tbody><tr><th>1</th><td>15</td><td>Rohit</td></tr><tr><th>2</th><td>20</td><td>Rahul</td></tr><tr><th>3</th><td>25</td><td>Akshat</td></tr></tbody></table></div>
+</div>
+</div>
+<p>Convert <code>df2</code> back to <code>Dict</code> (<a href="https://stackoverflow.com/questions/63752067/how-to-create-dictionary-from-julia-dataframe">Ref</a>)</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">eachcol</span>(df2)) <span class="op">|&gt;</span> <span class="dt">Dict</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>Dict{Symbol, AbstractVector} with 2 entries:
+  :customer_age =&gt; [15, 20, 25]
+  :first_name   =&gt; ["Rohit", "Rahul", "Akshat"]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(df2.first_name) <span class="op">|&gt;</span> <span class="dt">Dict</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>Dict{Int64, String} with 3 entries:
+  2 =&gt; "Rahul"
+  3 =&gt; "Akshat"
+  1 =&gt; "Rohit"</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Pair</span>.(df2.first_name, df2.customer_age) <span class="op">|&gt;</span> <span class="dt">Dict</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>Dict{String, Int64} with 3 entries:
+  "Akshat" =&gt; 25
+  "Rahul"  =&gt; 20
+  "Rohit"  =&gt; 15</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="subsetting" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="subsetting"><span class="header-section-number">9.2</span> Subsetting</h2>
+<section id="by-column" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="by-column"><span class="header-section-number">9.2.1</span> By Column</h3>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.ID</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>4-element Vector{Int64}:
+ 1
+ 2
+ 3
+ 4</code></pre>
+</div>
+</div>
+<p>Return a copy of the column by:</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df[<span class="op">:</span>, <span class="op">:</span>ID]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>4-element Vector{Int64}:
+ 1
+ 2
+ 3
+ 4</code></pre>
+</div>
+</div>
+<p>This will modify <code>df</code> in-place:</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df[!, <span class="op">:</span>ID][<span class="fl">1</span>] <span class="op">=</span> <span class="fl">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>5</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="data-frame"><p>4 rows × 3 columns</p><table class="data-frame table table-sm table-striped"><thead><tr><th></th><th>ID</th><th>Subject</th><th>Is_OK</th></tr><tr><th></th><th title="Int64">Int64</th><th title="String">String</th><th title="Bool">Bool</th></tr></thead><tbody><tr><th>1</th><td>5</td><td>M</td><td>1</td></tr><tr><th>2</th><td>2</td><td>F</td><td>1</td></tr><tr><th>3</th><td>3</td><td>M</td><td>1</td></tr><tr><th>4</th><td>4</td><td>F</td><td>1</td></tr></tbody></table></div>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -438,13 +486,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../basic/loop.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Loop</span></span>
+      <a href="../basic/ctr-flow-ex.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exercise for control flow</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../basic/ctr-flow-ex.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exercise for control flow</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../summary.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -315,9 +315,37 @@
     "text": "7.2 Ternary operators\na ? b : c\nTranslate to\nif a\n    b\nelse\n    c\nend\n\nwhat_is_larger(x, y) = x > y ? \"$x is larger than $y\" : \"$y is larger than $x\" \n\nwhat_is_larger(1, 2)\n\n\"2 is larger than 1\""
   },
   {
+    "objectID": "basic/ctr-flow-ex.html",
+    "href": "basic/ctr-flow-ex.html",
+    "title": "8  Exercise for control flow",
+    "section": "",
+    "text": "meaw(): using simple for loop\n\nfunction meaw(n::Int)\n    for _ in 1:n\n    println(\"meaw\")\n    end\nend\n#> meaw (generic function with 1 method)\n\n\nmeaw(3)\n#> meaw\n#> meaw\n#> meaw\n\nmeaw(): one-liner\n\nmeaw(n::Int) = print(\"meaw\\n\" ^ n)\n#> meaw (generic function with 1 method)\n\n\nmeaw(2)\n#> meaw\n#> meaw"
+  },
+  {
+    "objectID": "basic/ctr-flow-ex.html#hogwarts",
+    "href": "basic/ctr-flow-ex.html#hogwarts",
+    "title": "8  Exercise for control flow",
+    "section": "8.2 Hogwarts",
+    "text": "8.2 Hogwarts\n\nstudents = [\"Hermione\", \"Harry\", \"Ron\"]\n#> 3-element Vector{String}:\n#>  \"Hermione\"\n#>  \"Harry\"\n#>  \"Ron\"\n\n\nfor student in students\n    println(student)\nend\n#> Hermione\n#> Harry\n#> Ron\n\n\n8.2.1 Dictionary of Students\n\nstudents = [\n    Dict(\"name\"=> \"Hermione\", \"house\"=> \"Gryffindor\", \"patronus\"=> \"Otter\"),\n    Dict(\"name\"=> \"Harry\", \"house\"=> \"Gryffindor\", \"patronous\"=> \"Stag\"),\n    Dict(\"name\"=> \"Draco\", \"house\"=> \"Slytherin\", \"patronous\"=> Nothing)\n]\n#> 3-element Vector{Dict{String}}:\n#>  Dict(\"name\" => \"Hermione\", \"patronus\" => \"Otter\", \"house\" => \"Gryffindor\")\n#>  Dict(\"name\" => \"Harry\", \"patronous\" => \"Stag\", \"house\" => \"Gryffindor\")\n#>  Dict{String, Any}(\"name\" => \"Draco\", \"patronous\" => Nothing, \"house\" => \"Slytherin\")\n\nIterate though array of student (row by row)\n\nfor student in students\n    println(student[\"name\"], \", \", student[\"house\"])\nend\n#> Hermione, Gryffindor\n#> Harry, Gryffindor\n#> Draco, Slytherin\n\nDefine a function to print information from each student\n\nfunction print_student_info(i::Int)\n    println(\"Student No.\", i)\n    for (k, v) in students[i]\n        println(\"- \", k, \": \", v)\n    end\nend\n#> print_student_info (generic function with 1 method)\n\n\nprint_student_info(1)\n#> Student No.1\n#> - name: Hermione\n#> - patronus: Otter\n#> - house: Gryffindor\n\n\nfor i in 1:length(students)\n    print_student_info(i)\nend\n#> Student No.1\n#> - name: Hermione\n#> - patronus: Otter\n#> - house: Gryffindor\n#> Student No.2\n#> - name: Harry\n#> - patronous: Stag\n#> - house: Gryffindor\n#> Student No.3\n#> - name: Draco\n#> - patronous: Nothing\n#> - house: Slytherin\n\nor use broadcasting\n\nprint_student_info.(1:length(students))\n#> Student No.1\n#> - name: Hermione\n#> - patronus: Otter\n#> - house: Gryffindor\n#> Student No.2\n#> - name: Harry\n#> - patronous: Stag\n#> - house: Gryffindor\n#> Student No.3\n#> - name: Draco\n#> - patronous: Nothing\n#> - house: Slytherin\n#> 3-element Vector{Nothing}:\n#>  nothing\n#>  nothing\n#>  nothing"
+  },
+  {
+    "objectID": "ds/dataframe.html",
+    "href": "ds/dataframe.html",
+    "title": "9  Data Frame",
+    "section": "",
+    "text": "using DataFrames\n\n\n\n\ndf = DataFrame(\n    ID = 1:4, \n    Subject = repeat([\"M\", \"F\"], outer=2),\n    Is_OK = true\n    )\n\n4 rows × 3 columnsIDSubjectIs_OKInt64StringBool11M122F133M144F1\n\n\n\ntypeof(df)\n\nDataFrame\n\n\n\nnames(df)\n\n3-element Vector{String}:\n \"ID\"\n \"Subject\"\n \"Is_OK\"\n\n\n\n\n\n\ndict = Dict(:first_name => [\"Rohit\", \"Rahul\", \"Akshat\"],\n            :customer_age => [15, 20, 25]\n            )\ndf2 = DataFrame(dict)\n\n3 rows × 2 columnscustomer_agefirst_nameInt64String115Rohit220Rahul325Akshat\n\n\nConvert df2 back to Dict (Ref)\n\npairs(eachcol(df2)) |> Dict\n\nDict{Symbol, AbstractVector} with 2 entries:\n  :customer_age => [15, 20, 25]\n  :first_name   => [\"Rohit\", \"Rahul\", \"Akshat\"]\n\n\n\npairs(df2.first_name) |> Dict\n\nDict{Int64, String} with 3 entries:\n  2 => \"Rahul\"\n  3 => \"Akshat\"\n  1 => \"Rohit\"\n\n\n\nPair.(df2.first_name, df2.customer_age) |> Dict\n\nDict{String, Int64} with 3 entries:\n  \"Akshat\" => 25\n  \"Rahul\"  => 20\n  \"Rohit\"  => 15"
+  },
+  {
+    "objectID": "ds/dataframe.html#subsetting",
+    "href": "ds/dataframe.html#subsetting",
+    "title": "9  Data Frame",
+    "section": "9.2 Subsetting",
+    "text": "9.2 Subsetting\n\n9.2.1 By Column\n\ndf.ID\n\n4-element Vector{Int64}:\n 1\n 2\n 3\n 4\n\n\nReturn a copy of the column by:\n\ndf[:, :ID]\n\n4-element Vector{Int64}:\n 1\n 2\n 3\n 4\n\n\nThis will modify df in-place:\n\ndf[!, :ID][1] = 5\n\n5\n\n\n\ndf\n\n4 rows × 3 columnsIDSubjectIs_OKInt64StringBool15M122F133M144F1"
+  },
+  {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "8  Summary",
+    "title": "10  Summary",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
   }
